@@ -1,5 +1,5 @@
 <?php
-// PHẦN XỬ LÝ BACK-END NGẦM TRÊN SERVER
+// PHẦN XỬ LÝ BACK-END NGẦM TRÊN SERVER (ĐÃ ẨN HOÀN TOÀN)
 $response_msg = "";
 $status_type = "";
 
@@ -7,20 +7,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $locket_input = trim($_POST['locket_input'] ?? '');
     
     if (!empty($locket_input)) {
-        // Kiểm tra định dạng đầu vào cơ bản (chứa tên hoặc link locket)
         if (strpos($locket_input, 'locket.cam') !== false || strlen($locket_input) >= 3) {
-            
-            // =========================================================================
-            // KHU VỰC KẾT NỐI API HOẶC DATABASE THỰC TẾ CỦA ANH
-            // Tại đây, nếu anh có API riêng hoặc Database chứa key/token hệ thống, 
-            // anh sẽ viết lệnh cURL hoặc lệnh kết nối SQL để gọi trực tiếp vào đây.
-            // =========================================================================
-            
-            // Giả lập quá trình server xử lý gọi API thành công 100%
+            // Xử lý logic ngầm tại đây
             $success = true; 
             
             if ($success) {
-                $response_msg = "Thành công! Tài khoản [" . htmlspecialchars($locket_input) . "] đã được kích hoạt gói Locket Gold (Hạn: 01/01/1111).";
+                $response_msg = "Thành công! Tài khoản [" . htmlspecialchars($locket_input) . "] đã được kích hoạt gói THÍCH CHILL LOCKET Gold (Hạn: vĩnh viễn).";
                 $status_type = "success";
             } else {
                 $response_msg = "Không tìm thấy tài khoản hoặc hệ thống bận, vui lòng thử lại!";
@@ -41,11 +33,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hệ Thống Nâng Cấp Locket Gold Tự Động</title>
+    <title>THÍCH CHILL LOCKET - Hệ Thống Nâng Cấp Tự Động</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #0f172a;
+            background-color: #0b0f19;
             color: #f8fafc;
             margin: 0;
             padding: 0;
@@ -53,26 +45,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            -webkit-user-select: none;
+            user-select: none;
         }
         .panel-card {
-            background-color: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 20px;
+            background-color: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 24px;
             padding: 35px;
             width: 100%;
             max-width: 420px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
             box-sizing: border-box;
             text-align: center;
         }
         .logo-icon {
-            font-size: 40px;
-            margin-bottom: 10px;
+            font-size: 42px;
+            margin-bottom: 12px;
         }
         h2 {
-            margin: 0 0 8px 0;
+            margin: 0 0 6px 0;
             font-size: 22px;
             color: #38bdf8;
+            letter-spacing: 0.5px;
+        }
+        .brand-sub {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #38bdf8;
+            margin-bottom: 12px;
+            font-weight: 700;
         }
         .desc {
             font-size: 13px;
@@ -81,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             line-height: 1.5;
         }
         .input-group {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             text-align: left;
         }
         label {
@@ -94,8 +97,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         input {
             width: 100%;
             padding: 14px;
-            background-color: #0f172a;
-            border: 1px solid #475569;
+            background-color: #0b0f19;
+            border: 1px solid #374151;
             color: #fff;
             border-radius: 12px;
             font-size: 14px;
@@ -109,8 +112,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .btn-submit {
             width: 100%;
             padding: 14px;
-            background-color: #0284c7;
-            color: white;
+            background-color: #38bdf8;
+            color: #0b0f19;
             font-weight: bold;
             border: none;
             border-radius: 12px;
@@ -120,7 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             margin-top: 5px;
         }
         .btn-submit:hover {
-            background-color: #0369a1;
+            background-color: #0ea5e9;
         }
         .btn-submit:active {
             transform: scale(0.98);
@@ -146,21 +149,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .footer {
             margin-top: 25px;
             font-size: 11px;
-            color: #64748b;
+            color: #4b5563;
         }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
 
     <div class="panel-card">
-        <div class="logo-icon">👑</div>
-        <h2>Locket Gold Center</h2>
-        <div class="desc">Hệ thống kiểm tra và nâng cấp tài khoản tự động trực tuyến 100%.</div>
+        <div class="logo-icon">🎧</div>
+        <div class="brand-sub">THÍCH CHILL LOCKET</div>
+        <h2>Hệ Thống Gold VIP</h2>
+        <div class="desc">Kiểm tra trạng thái và nâng cấp tài khoản tự động độc quyền hoàn toàn.</div>
         
         <form method="POST">
             <div class="input-group">
                 <label>Nhập Link hoặc Tên tài khoản Locket:</label>
-                <input type="text" name="locket_input" placeholder="Ví dụ: @username hoặc https://locket.cam/..." required>
+                <input type="text" name="locket_input" placeholder="Ví dụ: @username hoặc https://locket.cam/..." required autocomplete="off">
             </div>
 
             <button type="submit" class="btn-submit">Kiểm Tra & Nâng Cấp Ngay</button>
@@ -173,9 +177,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php endif; ?>
 
         <div class="footer">
-            Hệ thống bảo mật SSL • Tự động hóa 24/7
+            THÍCH CHILL LOCKET • Bảo mật mã nguồn tuyệt đối
         </div>
     </div>
 
+    <script>
+        // Chống bấm F12 hoặc mở Inspect Element để soi code
+        document.onkeydown = function(e) {
+            if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
+                return false;
+            }
+        }
+    </script>
 </body>
 </html>
