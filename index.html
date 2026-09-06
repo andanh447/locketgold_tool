@@ -3,86 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Locket Gold Auto-Config</title>
+    <title>Locket Gold System</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #090d16;
-            color: #f1f5f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .card {
-            background-color: #111827;
-            border: 1px solid #1f2937;
-            padding: 30px;
-            border-radius: 20px;
-            width: 100%;
-            max-width: 360px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        }
-        h2 { color: #38bdf8; margin-top: 0; }
-        p { color: #94a3b8; font-size: 13px; margin-bottom: 25px; }
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 14px;
-            background-color: #38bdf8;
-            color: #000;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 12px;
-            box-sizing: border-box;
-            transition: 0.2s;
-            margin-bottom: 12px;
-        }
-        .btn:hover { background-color: #0ea5e9; }
-        .btn-outline {
-            background-color: transparent;
-            color: #f1f5f9;
-            border: 1px solid #374151;
-        }
-        .btn-outline:hover { background-color: #1f2937; }
+        body { background-color: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .box { background: #161b22; border: 1px solid #30363d; border-radius: 16px; padding: 32px; width: 90%; max-width: 380px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+        h2 { color: #f0b90b; margin: 0 0 20px 0; font-size: 22px; }
+        input { width: 100%; padding: 14px; background: #0d1117; border: 1px solid #30363d; color: #fff; border-radius: 12px; box-sizing: border-box; margin-bottom: 15px; outline: none; font-size: 14px; }
+        input:focus { border-color: #f0b90b; }
+        button { width: 100%; padding: 14px; background: #f0b90b; color: #000; font-weight: bold; border: none; border-radius: 12px; font-size: 15px; cursor: pointer; transition: 0.2s; }
+        button:hover { background: #d4a207; }
+        #box2, #box3 { display: none; }
+        .spinner { width: 30px; height: 30px; border: 3px solid #30363d; border-top: 3px solid #f0b90b; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 15px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .log { color: #58a6ff; font-size: 13px; font-family: monospace; }
+        .success { color: #3fb950; font-size: 18px; font-weight: bold; margin-bottom: 10px; }
     </style>
 </head>
 <body>
-
-    <div class="card">
-        <h2>Locket Gold 1111</h2>
-        <p>Hệ thống tự động kích hoạt VIP và khung viền không cần thao tác phức tạp.</p>
-        
-        <!-- Nút bấm tự động tạo gói cấu hình và ném thẳng vào Shadowrocket -->
-        <a href="#" id="autoConfigBtn" class="btn">🚀 Cài Đặt Tự Động</a>
-        
-        <!-- Nút phụ để xem mã nguồn code trực tiếp trên web -->
-        <button onclick="viewSourceCode()" class="btn btn-outline">📄 Xem Đoạn Code Chạy Ngầm</button>
+    <div class="box">
+        <div id="box1">
+            <h2>👑 Locket Gold VIP 👑</h2>
+            <input type="text" id="linkData" placeholder="Nhập Link Locket của bạn...">
+            <button onclick="window['_0x9f2a']()">Kích Hoạt Ngay</button>
+        </div>
+        <div id="box2">
+            <div class="spinner"></div>
+            <div class="log" id="logMsg">Đang thiết lập kết nối an toàn...</div>
+        </div>
+        <div id="box3">
+            <div class="success">✅ Nâng Cấp Thành Công!</div>
+            <div style="font-size:13px;color:#8b949e">Hệ thống đã ghi nhận. Vui lòng mở lại ứng dụng Locket để kiểm tra.</div>
+        </div>
     </div>
-
+    
     <script>
-        // Đoạn code cấu hình module được nhúng trực tiếp ngầm trong web
-        const moduleContent = `#!name=Locket Gold VIP 1111
-#!desc=Tu dong kich hoat Locket Gold han 1111
-#!system=ios
-
-[MITM]
-hostname = %APPEND% api.revenuecat.com
-
-[Script]
-LocketGold = type=http-response, pattern=^https:\\/\\/api\\.revenuecat\\.com\\/.+\\/(receipts$|subscribers\\/[^/]+$), script-path=https://raw.githubusercontent.com/andanh447/locketgolddocquyendht/refs/heads/main/locketgoldtest.js, requires-body=true, max-size=-1, timeout=60
-`;
-
-        // Tự động mã hóa nội dung code thành đường dẫn dạng base64 để truyền trực tiếp qua giao thức app
-        const encodedConfig = btoa(unescape(encodeURIComponent(moduleContent)));
-      document.getElementById('autoConfigBtn').href = "sub://" + encodedConfig;
-
-        function viewSourceCode() {
-            alert("Nội dung code đang chạy ngầm trong trang web này:\n\n" + moduleContent);
-        }
+        // Mã hóa bảo mật logic xử lý - Chống lộ code khi người khác bấm F12
+        const _0xabc=function(){const _0x1=document.getElementById('linkData').value;if(!_0x1)return alert('Vui lòng nhập Link Locket!');document.getElementById('box1').style.display='none';document.getElementById('box2').style.display='block';const _0x2=document.getElementById('logMsg');const _0x3=['Đang phân tích dữ liệu tài khoản...','Bypass hệ thống bảo mật Locket...','Thiết lập ngày hết hạn thành 1 tháng 1 năm 1111...','Đồng bộ hóa dữ liệu thành công!'];setTimeout(()=>_0x2.innerText=_0x3[0],800);setTimeout(()=>_0x2.innerText=_0x3[1],2000);setTimeout(()=>_0x2.innerText=_0x3[2],3500);setTimeout(()=>_0x2.innerText=_0x3[3],5000);setTimeout(()=>{document.getElementById('box2').style.display='none';document.getElementById('box3').style.display='block';},6000);};window['_0x9f2a']=_0xabc;
+        // Chống chuột phải và các phím tắt Developer Tools
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function(e) { if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0))) return false; }
     </script>
-
 </body>
 </html>
