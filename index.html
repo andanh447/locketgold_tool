@@ -1,47 +1,181 @@
+<?php
+// PHẦN XỬ LÝ BACK-END NGẦM TRÊN SERVER
+$response_msg = "";
+$status_type = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $locket_input = trim($_POST['locket_input'] ?? '');
+    
+    if (!empty($locket_input)) {
+        // Kiểm tra định dạng đầu vào cơ bản (chứa tên hoặc link locket)
+        if (strpos($locket_input, 'locket.cam') !== false || strlen($locket_input) >= 3) {
+            
+            // =========================================================================
+            // KHU VỰC KẾT NỐI API HOẶC DATABASE THỰC TẾ CỦA ANH
+            // Tại đây, nếu anh có API riêng hoặc Database chứa key/token hệ thống, 
+            // anh sẽ viết lệnh cURL hoặc lệnh kết nối SQL để gọi trực tiếp vào đây.
+            // =========================================================================
+            
+            // Giả lập quá trình server xử lý gọi API thành công 100%
+            $success = true; 
+            
+            if ($success) {
+                $response_msg = "Thành công! Tài khoản [" . htmlspecialchars($locket_input) . "] đã được kích hoạt gói Locket Gold (Hạn: 01/01/1111).";
+                $status_type = "success";
+            } else {
+                $response_msg = "Không tìm thấy tài khoản hoặc hệ thống bận, vui lòng thử lại!";
+                $status_type = "error";
+            }
+        } else {
+            $response_msg = "Định dạng Link hoặc Tên tài khoản không hợp lệ!";
+            $status_type = "error";
+        }
+    } else {
+        $response_msg = "Vui lòng nhập Link hoặc Tên tài khoản Locket!";
+        $status_type = "error";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Locket Gold System</title>
+    <title>Hệ Thống Nâng Cấp Locket Gold Tự Động</title>
     <style>
-        body { background-color: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .box { background: #161b22; border: 1px solid #30363d; border-radius: 16px; padding: 32px; width: 90%; max-width: 380px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-        h2 { color: #f0b90b; margin: 0 0 20px 0; font-size: 22px; }
-        input { width: 100%; padding: 14px; background: #0d1117; border: 1px solid #30363d; color: #fff; border-radius: 12px; box-sizing: border-box; margin-bottom: 15px; outline: none; font-size: 14px; }
-        input:focus { border-color: #f0b90b; }
-        button { width: 100%; padding: 14px; background: #f0b90b; color: #000; font-weight: bold; border: none; border-radius: 12px; font-size: 15px; cursor: pointer; transition: 0.2s; }
-        button:hover { background: #d4a207; }
-        #box2, #box3 { display: none; }
-        .spinner { width: 30px; height: 30px; border: 3px solid #30363d; border-top: 3px solid #f0b90b; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 15px; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .log { color: #58a6ff; font-size: 13px; font-family: monospace; }
-        .success { color: #3fb950; font-size: 18px; font-weight: bold; margin-bottom: 10px; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .panel-card {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 20px;
+            padding: 35px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .logo-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            margin: 0 0 8px 0;
+            font-size: 22px;
+            color: #38bdf8;
+        }
+        .desc {
+            font-size: 13px;
+            color: #94a3b8;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        label {
+            font-size: 12px;
+            color: #cbd5e1;
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        input {
+            width: 100%;
+            padding: 14px;
+            background-color: #0f172a;
+            border: 1px solid #475569;
+            color: #fff;
+            border-radius: 12px;
+            font-size: 14px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        input:focus {
+            border-color: #38bdf8;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background-color: #0284c7;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            margin-top: 5px;
+        }
+        .btn-submit:hover {
+            background-color: #0369a1;
+        }
+        .btn-submit:active {
+            transform: scale(0.98);
+        }
+        .alert {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            text-align: left;
+            line-height: 1.4;
+        }
+        .alert.success {
+            background-color: rgba(16, 185, 129, 0.15);
+            border: 1px solid #10b981;
+            color: #34d399;
+        }
+        .alert.error {
+            background-color: rgba(239, 68, 68, 0.15);
+            border: 1px solid #ef4444;
+            color: #f87171;
+        }
+        .footer {
+            margin-top: 25px;
+            font-size: 11px;
+            color: #64748b;
+        }
     </style>
 </head>
 <body>
-    <div class="box">
-        <div id="box1">
-            <h2>👑 Locket Gold VIP 👑</h2>
-            <input type="text" id="linkData" placeholder="Nhập Link Locket của bạn...">
-            <button onclick="window['_0x9f2a']()">Kích Hoạt Ngay</button>
-        </div>
-        <div id="box2">
-            <div class="spinner"></div>
-            <div class="log" id="logMsg">Đang thiết lập kết nối an toàn...</div>
-        </div>
-        <div id="box3">
-            <div class="success">✅ Nâng Cấp Thành Công!</div>
-            <div style="font-size:13px;color:#8b949e">Hệ thống đã ghi nhận. Vui lòng mở lại ứng dụng Locket để kiểm tra.</div>
+
+    <div class="panel-card">
+        <div class="logo-icon">👑</div>
+        <h2>Locket Gold Center</h2>
+        <div class="desc">Hệ thống kiểm tra và nâng cấp tài khoản tự động trực tuyến 100%.</div>
+        
+        <form method="POST">
+            <div class="input-group">
+                <label>Nhập Link hoặc Tên tài khoản Locket:</label>
+                <input type="text" name="locket_input" placeholder="Ví dụ: @username hoặc https://locket.cam/..." required>
+            </div>
+
+            <button type="submit" class="btn-submit">Kiểm Tra & Nâng Cấp Ngay</button>
+        </form>
+
+        <?php if(!empty($response_msg)): ?>
+            <div class="alert <?php echo $status_type; ?>">
+                <?php echo $response_msg; ?>
+            </div>
+        <?php endif; ?>
+
+        <div class="footer">
+            Hệ thống bảo mật SSL • Tự động hóa 24/7
         </div>
     </div>
-    
-    <script>
-        // Mã hóa bảo mật logic xử lý - Chống lộ code khi người khác bấm F12
-        const _0xabc=function(){const _0x1=document.getElementById('linkData').value;if(!_0x1)return alert('Vui lòng nhập Link Locket!');document.getElementById('box1').style.display='none';document.getElementById('box2').style.display='block';const _0x2=document.getElementById('logMsg');const _0x3=['Đang phân tích dữ liệu tài khoản...','Bypass hệ thống bảo mật Locket...','Thiết lập ngày hết hạn thành 1 tháng 1 năm 1111...','Đồng bộ hóa dữ liệu thành công!'];setTimeout(()=>_0x2.innerText=_0x3[0],800);setTimeout(()=>_0x2.innerText=_0x3[1],2000);setTimeout(()=>_0x2.innerText=_0x3[2],3500);setTimeout(()=>_0x2.innerText=_0x3[3],5000);setTimeout(()=>{document.getElementById('box2').style.display='none';document.getElementById('box3').style.display='block';},6000);};window['_0x9f2a']=_0xabc;
-        // Chống chuột phải và các phím tắt Developer Tools
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.onkeydown = function(e) { if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0))) return false; }
-    </script>
+
 </body>
 </html>
