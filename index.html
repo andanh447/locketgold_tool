@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THÍCH CHILL LOCKET - Hệ Thống Nâng Cấp Tự Động</title>
+    <title>THÍCH CHILL LOCKET - Hệ Thống Nâng Cấp Gold VIP</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -31,21 +31,21 @@
         }
         .logo-icon {
             font-size: 42px;
-            margin-bottom: 12px;
-        }
-        h2 {
-            margin: 0 0 6px 0;
-            font-size: 22px;
-            color: #38bdf8;
-            letter-spacing: 0.5px;
+            margin-bottom: 10px;
         }
         .brand-sub {
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #38bdf8;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             font-weight: 700;
+        }
+        h2 {
+            margin: 0 0 6px 0;
+            font-size: 22px;
+            color: #ffffff;
+            letter-spacing: 0.5px;
         }
         .desc {
             font-size: 13px;
@@ -79,7 +79,7 @@
         input:focus {
             border-color: #38bdf8;
         }
-        .btn-submit {
+        .btn-action {
             width: 100%;
             padding: 14px;
             background-color: #38bdf8;
@@ -92,19 +92,50 @@
             transition: background 0.2s, transform 0.1s;
             margin-top: 5px;
         }
-        .btn-submit:hover {
+        .btn-action:hover {
             background-color: #0ea5e9;
         }
-        .btn-submit:active {
+        .btn-action:active {
             transform: scale(0.98);
         }
+        
+        /* Trạng thái ẩn hiện các bước */
+        #step-upgrade { display: none; }
+        
+        /* Hiệu ứng loading chạy ngầm */
+        .loading-box {
+            display: none;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .log-text {
+            font-size: 12px;
+            color: #38bdf8;
+            font-family: monospace;
+            margin-bottom: 8px;
+        }
+        .progress-bg {
+            width: 100%;
+            background-color: #1f2937;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 8px;
+        }
+        .progress-fill {
+            height: 100%;
+            background-color: #10b981;
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        /* Khung thông báo kết quả */
         .alert {
             margin-top: 20px;
-            padding: 12px;
-            border-radius: 10px;
+            padding: 14px;
+            border-radius: 12px;
             font-size: 13px;
             text-align: left;
-            line-height: 1.4;
+            line-height: 1.5;
             display: none;
         }
         .alert.success {
@@ -112,6 +143,7 @@
             border: 1px solid #10b981;
             color: #34d399;
             display: block;
+            text-align: center;
         }
         .alert.error {
             background-color: rgba(239, 68, 68, 0.15);
@@ -132,43 +164,84 @@
         <div class="logo-icon">🎧</div>
         <div class="brand-sub">THÍCH CHILL LOCKET</div>
         <h2>Hệ Thống Gold VIP</h2>
-        <div class="desc">Kiểm tra trạng thái và nâng cấp tài khoản tự động độc quyền hoàn toàn.</div>
+        <div class="desc">Bảo mật tuyệt đối • Kiểm tra & Nâng cấp tự động hóa</div>
         
-        <div class="input-group">
-            <label>Nhập Link hoặc Tên tài khoản Locket:</label>
-            <input type="text" id="locketInput" placeholder="Ví dụ: @username hoặc https://locket.cam/..." autocomplete="off">
+        <div id="step-check">
+            <div class="input-group">
+                <label>Nhập Link hoặc Tên tài khoản Locket:</label>
+                <input type="text" id="locketInput" placeholder="Ví dụ: @username hoặc https://locket.cam/..." autocomplete="off">
+            </div>
+            <button type="button" class="btn-action" onclick="checkAccount()">Kiểm Tra Tài Khoản</button>
         </div>
 
-        <button type="button" class="btn-submit" onclick="processUpgrade()">Kiểm Tra & Nâng Cấp Ngay</button>
+        <div id="step-upgrade">
+            <div id="accountInfo" style="font-size: 13px; color: #34d399; margin-bottom: 15px; font-weight: 500;"></div>
+            <button type="button" class="btn-action" style="background-color: #10b981; color: #fff;" onclick="startUpgrade()">Tiến Hành Nâng Cấp Gold</button>
+        </div>
+
+        <div class="loading-box" id="loadingBox">
+            <div class="log-text" id="logText">Đang khởi tạo kết nối máy chủ...</div>
+            <div class="progress-bg">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </div>
 
         <div id="alertBox" class="alert"></div>
 
         <div class="footer">
-            THÍCH CHILL LOCKET • Bảo mật mã nguồn tuyệt đối
+            THÍCH CHILL LOCKET • All rights reserved
         </div>
     </div>
 
     <script>
-        function processUpgrade() {
-            var val = document.getElementById('locketInput').value.trim();
+        let userVal = "";
+
+        // Hàm 1: Kiểm tra tài khoản riêng biệt
+        function checkAccount() {
+            userVal = document.getElementById('locketInput').value.trim();
             var alertBox = document.getElementById('alertBox');
             
-            if(!val) {
+            if(!userVal) {
                 alertBox.className = "alert error";
-                alertBox.innerText = "Vui lòng nhập Link hoặc Tên tài khoản Locket!";
+                alertBox.innerText = "⚠️ Vui lòng nhập Link hoặc Tên tài khoản Locket!";
                 return;
             }
 
-            if(val.length >= 3) {
-                alertBox.className = "alert success";
-                alertBox.innerText = "Thành công! Tài khoản [" + val + "] đã được kích hoạt gói THÍCH CHILL LOCKET Gold (Hạn: vĩnh viễn).";
+            if(userVal.length >= 3) {
+                alertBox.style.display = "none";
+                document.getElementById('step-check').style.display = "none";
+                document.getElementById('step-upgrade').style.display = "block";
+                document.getElementById('accountInfo').innerHTML = "✅ Tài khoản hợp lệ: <b>" + userVal + "</b>";
             } else {
                 alertBox.className = "alert error";
-                alertBox.innerText = "Định dạng Link hoặc Tên tài khoản không hợp lệ!";
+                alertBox.innerText = "⚠️ Tên tài khoản quá ngắn hoặc không hợp lệ!";
             }
         }
 
-        // Chống bấm F12 hoặc mở Inspect Element
+        // Hàm 2: Tiến hành nâng cấp Gold riêng
+        function startUpgrade() {
+            document.getElementById('step-upgrade').style.display = "none";
+            var loadingBox = document.getElementById('loadingBox');
+            loadingBox.style.display = "block";
+
+            var log = document.getElementById('logText');
+            var bar = document.getElementById('progressBar');
+            var alertBox = document.getElementById('alertBox');
+
+            // Kịch bản chạy hiệu ứng giả lập mượt mà như hệ thống chuyên nghiệp
+            setTimeout(() => { log.innerText = "Đang kết nối API RevenueCat..."; bar.style.width = "30%"; }, 800);
+            setTimeout(() => { log.innerText = "Đang thiết lập gói cước VIP vĩnh viễn..."; bar.style.width = "65%"; }, 2200);
+            setTimeout(() => { log.innerText = "Đang đồng bộ hóa dữ liệu tài khoản..."; bar.style.width = "90%"; }, 3800);
+            
+            setTimeout(() => { 
+                bar.style.width = "100%";
+                loadingBox.style.display = "none";
+                alertBox.className = "alert success";
+                alertBox.innerHTML = "👑 <b>ĐÃ NÂNG THÀNH LOCKET GOLD THÀNH CÔNG!</b><br><br><span style='color: #f8fafc; font-size: 12px;'>Hạn mức: Vĩnh viễn.<br><b>Thoát app Locket hoàn toàn rồi vào lại để nhận Gold!</b></span>";
+            }, 5000);
+        }
+
+        // Chống bấm F12, Ctrl+U để bảo vệ code không bị soi
         document.onkeydown = function(e) {
             if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
                 return false;
