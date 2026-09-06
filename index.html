@@ -1,33 +1,3 @@
-<?php
-// PHẦN XỬ LÝ BACK-END NGẦM TRÊN SERVER (ĐÃ ẨN HOÀN TOÀN)
-$response_msg = "";
-$status_type = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $locket_input = trim($_POST['locket_input'] ?? '');
-    
-    if (!empty($locket_input)) {
-        if (strpos($locket_input, 'locket.cam') !== false || strlen($locket_input) >= 3) {
-            // Xử lý logic ngầm tại đây
-            $success = true; 
-            
-            if ($success) {
-                $response_msg = "Thành công! Tài khoản [" . htmlspecialchars($locket_input) . "] đã được kích hoạt gói THÍCH CHILL LOCKET Gold (Hạn: vĩnh viễn).";
-                $status_type = "success";
-            } else {
-                $response_msg = "Không tìm thấy tài khoản hoặc hệ thống bận, vui lòng thử lại!";
-                $status_type = "error";
-            }
-        } else {
-            $response_msg = "Định dạng Link hoặc Tên tài khoản không hợp lệ!";
-            $status_type = "error";
-        }
-    } else {
-        $response_msg = "Vui lòng nhập Link hoặc Tên tài khoản Locket!";
-        $status_type = "error";
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -135,16 +105,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-size: 13px;
             text-align: left;
             line-height: 1.4;
+            display: none;
         }
         .alert.success {
             background-color: rgba(16, 185, 129, 0.15);
             border: 1px solid #10b981;
             color: #34d399;
+            display: block;
         }
         .alert.error {
             background-color: rgba(239, 68, 68, 0.15);
             border: 1px solid #ef4444;
             color: #f87171;
+            display: block;
         }
         .footer {
             margin-top: 25px;
@@ -161,20 +134,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h2>Hệ Thống Gold VIP</h2>
         <div class="desc">Kiểm tra trạng thái và nâng cấp tài khoản tự động độc quyền hoàn toàn.</div>
         
-        <form method="POST">
-            <div class="input-group">
-                <label>Nhập Link hoặc Tên tài khoản Locket:</label>
-                <input type="text" name="locket_input" placeholder="Ví dụ: @username hoặc https://locket.cam/..." required autocomplete="off">
-            </div>
+        <div class="input-group">
+            <label>Nhập Link hoặc Tên tài khoản Locket:</label>
+            <input type="text" id="locketInput" placeholder="Ví dụ: @username hoặc https://locket.cam/..." autocomplete="off">
+        </div>
 
-            <button type="submit" class="btn-submit">Kiểm Tra & Nâng Cấp Ngay</button>
-        </form>
+        <button type="button" class="btn-submit" onclick="processUpgrade()">Kiểm Tra & Nâng Cấp Ngay</button>
 
-        <?php if(!empty($response_msg)): ?>
-            <div class="alert <?php echo $status_type; ?>">
-                <?php echo $response_msg; ?>
-            </div>
-        <?php endif; ?>
+        <div id="alertBox" class="alert"></div>
 
         <div class="footer">
             THÍCH CHILL LOCKET • Bảo mật mã nguồn tuyệt đối
@@ -182,7 +149,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
     <script>
-        // Chống bấm F12 hoặc mở Inspect Element để soi code
+        function processUpgrade() {
+            var val = document.getElementById('locketInput').value.trim();
+            var alertBox = document.getElementById('alertBox');
+            
+            if(!val) {
+                alertBox.className = "alert error";
+                alertBox.innerText = "Vui lòng nhập Link hoặc Tên tài khoản Locket!";
+                return;
+            }
+
+            if(val.length >= 3) {
+                alertBox.className = "alert success";
+                alertBox.innerText = "Thành công! Tài khoản [" + val + "] đã được kích hoạt gói THÍCH CHILL LOCKET Gold (Hạn: vĩnh viễn).";
+            } else {
+                alertBox.className = "alert error";
+                alertBox.innerText = "Định dạng Link hoặc Tên tài khoản không hợp lệ!";
+            }
+        }
+
+        // Chống bấm F12 hoặc mở Inspect Element
         document.onkeydown = function(e) {
             if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
                 return false;
