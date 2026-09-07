@@ -65,3 +65,8 @@ body = JSON.stringify(jsonToUpdate);
 $done({body});
 
 });
+[MITM]
+hostname = api.revenuecat.com
+
+[Script]
+locket_gold = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/v1\/(product_entitlement_mapping|subscribers),script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locketgold.js,requires-body=1,max-size=0,debug=1
