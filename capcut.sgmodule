@@ -1,0 +1,6 @@
+[Script]
+# CapCut Pro Script
+capcut_pro = type=http-response, pattern=^https?:\/\/(api|subs|pay)\.(capcut|hypic)\.(com|net|ivibe)\/.+, script-path=https://raw.githubusercontent.com/andanh447/Shadowrocketpremium.private-HT/refs/heads/main/capcut.js, requires-body=true, max-size=-1, timeout=60
+
+[MITM]
+hostname = *.capcut.com, *.hypic.com, *.ivibe.com
