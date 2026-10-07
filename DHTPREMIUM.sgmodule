@@ -1,0 +1,66 @@
+#!name= All In 1 With ĐHT
+#!desc= crack mọi app premium vip pro
+#!author=andanh447
+#!homepage=https://note3s.top/notes/WM6212
+#!moduleUrl=https://raw.githubusercontent.com/andanh447/Shadowrocketpremium.private-HT/refs/heads/main/ALL_IN_HTVIP.sgmodule
+#!howtouse=shadowrocket ĐHT
+#Shadowrocket Configuration - ALL IN Đ.H.T (htienz07)
+
+[Rule]
+AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
+
+[Header Rewrite]
+^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del x-revenuecat-etag
+^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del X-RevenueCat-ETag
+http-request ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del if-none-match
+
+[Url Rewrite]
+# Chặn quảng cáo Google Video
+^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad _ reject-200
+
+# YouTube Ads
+^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads _ reject-200
+^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) _ reject-200
+^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext _ reject-200
+
+# General Video Ad request
+(^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
+
+[Script]
+#Sub-Store
+#hostname = sub.store
+Sub-Store Core=type=http-request,pattern=^https?:\/\/sub\.store\/((download)|api\/(preview|sync|(utils\/node-info))),script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-1.min.js,requires-body=true,timeout=120
+Sub-Store Simple=type=http-request,pattern=^https?:\/\/sub\.store,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-0.min.js,requires-body=true
+Sub-Store Sync=type=cron,cronexp=0 0 * * *,wake-system=1,timeout=120,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/cron-sync-artifacts.min.js
+#************************************#
+
+#Youtube Premium (Search|Play Page|Short Video ||| PiP|Background Play)
+#hostname = *.googlevideo.com, youtubei.googleapis.com
+youtube.request = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch),requires-body=1,max-size=-1,binary-body-mode=1,engine=jsc,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Youtube.respones.js
+youtube.response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/(youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch))(\?(.*))?$,requires-body=1,max-size=-1,binary-body-mode=1,engine={{{script}}},script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Youtube.respones.js,argument="{"lyricLang":"vi","captionLang":"vi","blockUpload":true,"blockImmersive":true,"debug":false}"
+#************************************#
+
+#SoundCloudGo+
+#hostname= api-mobile.soundcloud.com
+SoundCloudGo+=type=http-response,pattern=https://api-mobile.soundcloud.com/configuration/ios,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Soundcloudpremium.js
+#************************************#
+
+#LocketGold
+#hostname = api.revenuecat.com
+revenuecat = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locketgoldHT.js, requires-body=true, max-size=-1, timeout=60
+deleteHeader = type=http-request, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/deleteheader.js, timeout=60
+#************************************#
+
+#RevenueCatVip
+#hostname = api.revenuecat.com
+RevenueCatVip = type=http-response, pattern=^https:\/\/api\.(revenuecat|rc-backup)\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/revenuecat.js, requires-body=true, max-size=-1, timeout=60
+#RevenueCatDeleteHeader = type=http-request, pattern=^https:\/\/api\.(revenuecat|rc-backup)\.com\/.+\/(receipts|subscribers), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/deleteHeader.js, timeout=60
+#************************************#
+
+#iTunes
+#hostname = buy.itunes.apple.com
+iTunes = type=http-response, pattern=^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/itunes.js, requires-body=true, max-size=-1, timeout=60
+#************************************#
+[MITM]
+hostname = %APPEND%, .googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector.googlevideo.com, sub.store, api.revenuecat.com,  buy.itunes.apple.com,  api-mobile.soundcloud.com
