@@ -1,11 +1,13 @@
-#!name= All In 1 With ĐHT
-#!desc= crack mọi app premium vip pro
+#!name=All In 1 With ĐHT
+#!desc=Crack mọi app premium vip pro (Bản Full Cập Nhật)
 #!author=andanh447
 #!homepage=https://note3s.top/notes/WM6212
 #!moduleUrl=https://raw.githubusercontent.com/andanh447/Shadowrocketpremium.private-HT/refs/heads/main/ALL_IN_HTVIP.sgmodule
-#!howtouse=shadowrocket ĐHT
-#Shadowrocket Configuration - ALL IN Đ.H.T (htienz07)
+#!howtouse=Shadowrocket ĐHT
 
+# ==========================================
+# CẤU HÌNH TỐI ƯU & CHẶN QUẢNG CÁO
+# ==========================================
 [Rule]
 AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
 AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
@@ -15,103 +17,83 @@ AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
 ^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del X-RevenueCat-ETag
 http-request ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del if-none-match
 
-[Url Rewrite]
+[URL Rewrite]
 # Chặn quảng cáo Google Video
-^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad _ reject-200
+^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad reject-200
 
 # YouTube Ads
-^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads _ reject-200
-^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) _ reject-200
-^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext _ reject-200
+^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads reject-200
+^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) reject-200
+^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext reject-200
 
 # General Video Ad request
 (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
 
+# ==========================================
+# MODULE VIP / PREMIUM TỔNG HỢP
+# ==========================================
 [Script]
-#Sub-Store
-#hostname = sub.store
+# --- BỘ MODULE GỐC CỦA ĐHT ---
+# Sub-Store
 Sub-Store Core=type=http-request,pattern=^https?:\/\/sub\.store\/((download)|api\/(preview|sync|(utils\/node-info))),script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-1.min.js,requires-body=true,timeout=120
 Sub-Store Simple=type=http-request,pattern=^https?:\/\/sub\.store,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-0.min.js,requires-body=true
 Sub-Store Sync=type=cron,cronexp=0 0 * * *,wake-system=1,timeout=120,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/cron-sync-artifacts.min.js
-#************************************#
 
-#Youtube Premium (Search|Play Page|Short Video ||| PiP|Background Play)
-#hostname = *.googlevideo.com, youtubei.googleapis.com
+# Youtube Premium
 youtube.request = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch),requires-body=1,max-size=-1,binary-body-mode=1,engine=jsc,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Youtube.respones.js
 youtube.response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/(youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch))(\?(.*))?$,requires-body=1,max-size=-1,binary-body-mode=1,engine={{{script}}},script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Youtube.respones.js,argument="{"lyricLang":"vi","captionLang":"vi","blockUpload":true,"blockImmersive":true,"debug":false}"
-#************************************#
 
-#SoundCloudGo+
-#hostname= api-mobile.soundcloud.com
+# SoundCloudGo+
 SoundCloudGo+=type=http-response,pattern=https://api-mobile.soundcloud.com/configuration/ios,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Soundcloudpremium.js
-#************************************#
 
-#LocketGold
-#hostname = api.revenuecat.com
+# LocketGold (ĐHT)
 revenuecat = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locketgoldHT.js, requires-body=true, max-size=-1, timeout=60
 deleteHeader = type=http-request, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/deleteheader.js, timeout=60
-#************************************#
 
-#RevenueCatVip
-#hostname = api.revenuecat.com
+# RevenueCatVip Tổng hợp
 RevenueCatVip = type=http-response, pattern=^https:\/\/api\.(revenuecat|rc-backup)\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/revenuecat.js, requires-body=true, max-size=-1, timeout=60
-#RevenueCatDeleteHeader = type=http-request, pattern=^https:\/\/api\.(revenuecat|rc-backup)\.com\/.+\/(receipts|subscribers), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/deleteHeader.js, timeout=60
-#************************************#
 
-#iTunes
-#hostname = buy.itunes.apple.com
+# iTunes Bazzat
 iTunes = type=http-response, pattern=^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/itunes.js, requires-body=true, max-size=-1, timeout=60
-#************************************#
+bazaart = type=http-response,pattern=https://buy.itunes.apple.com/verifyReceipt,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/bazzat.js
 
-#Bazzat
+# Spotify ĐHT (Dịch lời)
+spotify = type=http-response,pattern=^https:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify.js,argument=appid=此处填入APPID&securityKey=此处填入密钥
 
-#!name=bazaart会员解锁
+# --- BỘ MODULE VIP MỚI THÊM TỪ ẢNH ---
+# 1. MOJO
+MOJO = type=http-response,pattern=https:\/\/api\.revenuecat\.com\/v1\/(receipts|subscribers)\/*,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScrpty/main/mojo.js
 
-#!desc=bazaart会员解锁
+# 2. Clica
+Clica = type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/(subscribers\/[^\/]+$|receipts$),requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Clica.js
 
+# 3. Smallpdf
+Smallpdf = type=http-response,pattern=https:\/\/pro\.smallpdf\.com\/pro\/account,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScrpty/main/smallpdf.js
 
-bazaart会员解锁=type=http-response,pattern=https://buy.itunes.apple.com/verifyReceipt,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/bazzat.js
+# 4. Photomath
+Photomath = type=http-response,pattern=https:\/\/lapi\.photomath\.net\/v4\/me,requires-body=1,script-path=https://raw.githubusercontent.com/deezertidal/private/master/js-backup/Crack/poh.js
 
+# 5. Piccollage
+Piccollage = type=http-response,pattern=https:\/\/piccollage\.com\/api\/graphql,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScrpty/main/picCollage.js
 
+# 6. Pixelance
+Pixelance = type=http-response,pattern=^https:\/\/iap\.etm\.tech\/receipts,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Pixelance.js
 
-hostname= %APPEND% buy.itunes.apple.com
+# 7. 1blocker
+1blocker = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/v1\/subscribers,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/1blocker.js
 
-#spotify ĐHT
-#!name=Spotify歌词翻译
+# 8. ILovePDF
+ILovePDF = type=http-response,pattern=https:\/\/service\.ilovepdf\.com\/v1\/user,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScript/main/lovePdf.js
 
-#!desc=自行修改自己的appid和密钥
+# 9. Chic
+Chic = type=http-response,pattern=^https:\/\/api-sub\.meitu\.com\/v2\/user\/vip_info\.json,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Chic.js
 
-[Script]
+# 10. PhotoshopExpress
+PhotoshopExpress = type=http-response,pattern=^https:\/\/lcs-mobile-cops\.adobe\.io\/mobile_profile,requires-body=1,script-path=https://raw.githubusercontent.com/litieyin/AD_VIP/main/Script/photoshop.js
 
-spotify歌词翻译 = type=http-response,pattern=^https:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify.js,argument=appid=此处填入APPID&securityKey=此处填入密钥
-
-
-
-/*
-
-
-
------------申请百度翻译(有标准版和高级版 建议申请高级版)api--------------
-
-2022年8月1日起，通用翻译API标准版免费调用量调整为5万字符/月，高级版免费调用量调整为100万字符/月
-
-    注册百度翻译个人开发者: http://api.fanyi.baidu.com/register
-
-    注册后如果需要认证可自行选择是否实人认证(高级版需要验证)
-
-    开通(通用翻译)API服务: https://fanyi-api.baidu.com/choose
-
-    成功后即可看到自己的appid和密钥(不要泄露给任何人): http://api.fanyi.baidu.com/manage/developer
-
-
-
-*/
-
-
-
+# ==========================================
+# CẤP QUYỀN GIẢI MÃ SSL / MITM
+# ==========================================
 [MITM]
-
-hostname = %APPEND% spclient.wg.spotify.com
-
-[MITM]
-hostname = %APPEND%, .googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector.googlevideo.com, sub.store, api.revenuecat.com,  buy.itunes.apple.com,  api-mobile.soundcloud.com, spclient.wg.spotify.com
+# Đã xóa googlevideo để tránh quá nhiệt
+hostname = %APPEND%, youtubei.googleapis.com, www.youtube.com, s.youtube.com, sub.store, api.revenuecat.com, buy.itunes.apple.com, api-mobile.soundcloud.com, spclient.wg.spotify.com, pro.smallpdf.com, lapi.photomath.net, piccollage.com, iap.etm.tech, service.ilovepdf.com, api-sub.meitu.com, lcs-mobile-cops.adobe.io
