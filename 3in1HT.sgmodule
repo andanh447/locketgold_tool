@@ -62,4 +62,4 @@ SoundCloud = type=http-response,pattern=^https?:\/\/api-v2\.soundcloud\.com\/.*,
 YouTube_NoAds = type=http-response,pattern=^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(player|next|browse),requires-body=1,max-size=3145728,timeout=60,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Youtubenoads.js
 
 [MITM]
-hostname = %APPEND%, youtubei.googleapis.com, www.youtube.com, s.youtube.com, api-v2.soundcloud.com, api-mobile.soundcloud.com, api.revenuecat.com
+%APPEND%, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com,pi-mobile.soundcloud.com,  api.revenuecat.com
