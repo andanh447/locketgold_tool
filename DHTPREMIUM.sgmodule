@@ -64,6 +64,7 @@ iTunes = type=http-response, pattern=^https?:\/\/buy\.itunes\.apple\.com\/verify
 #************************************#
 
 #Bazzat
+
 #!name=bazaart会员解锁
 
 #!desc=bazaart会员解锁
@@ -74,6 +75,7 @@ bazaart会员解锁=type=http-response,pattern=https://buy.itunes.apple.com/veri
 
 
 hostname= %APPEND% buy.itunes.apple.com
+
 
 [MITM]
 hostname = %APPEND%, .googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector.googlevideo.com, sub.store, api.revenuecat.com,  buy.itunes.apple.com,  api-mobile.soundcloud.com
