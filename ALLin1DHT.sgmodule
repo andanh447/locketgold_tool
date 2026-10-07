@@ -57,43 +57,63 @@ RevenueCatVip = type=http-response, pattern=^https:\/\/api\.(revenuecat|rc-backu
 iTunes = type=http-response, pattern=^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/itunes.js, requires-body=true, max-size=-1, timeout=60
 bazaart = type=http-response,pattern=https://buy.itunes.apple.com/verifyReceipt,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/bazzat.js
 
-# Spotify ĐHT (Dịch lời)
+# Spotify ĐHT 
 spotify = type=http-response,pattern=^https:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify.js,argument=appid=此处填入APPID&securityKey=此处填入密钥
 
-# --- BỘ MODULE VIP MỚI THÊM TỪ ẢNH ---
-# 1. MOJO
+# MOJO
 MOJO = type=http-response,pattern=https:\/\/api\.revenuecat\.com\/v1\/(receipts|subscribers)\/*,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScrpty/main/mojo.js
 
-# 2. Clica
+# Clica
 Clica = type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/(subscribers\/[^\/]+$|receipts$),requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Clica.js
 
-# 3. Smallpdf
+# Smallpdf
 Smallpdf = type=http-response,pattern=https:\/\/pro\.smallpdf\.com\/pro\/account,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScrpty/main/smallpdf.js
 
-# 4. Photomath
+# Photomath
 Photomath = type=http-response,pattern=https:\/\/lapi\.photomath\.net\/v4\/me,requires-body=1,script-path=https://raw.githubusercontent.com/deezertidal/private/master/js-backup/Crack/poh.js
 
-# 5. Piccollage
+# Piccollage
 Piccollage = type=http-response,pattern=https:\/\/piccollage\.com\/api\/graphql,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScrpty/main/picCollage.js
 
-# 6. Pixelance
+# Pixelance
 Pixelance = type=http-response,pattern=^https:\/\/iap\.etm\.tech\/receipts,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Pixelance.js
 
-# 7. 1blocker
+# 1blocker
 1blocker = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/v1\/subscribers,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/1blocker.js
 
-# 8. ILovePDF
+# ILovePDF
 ILovePDF = type=http-response,pattern=https:\/\/service\.ilovepdf\.com\/v1\/user,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScript/main/lovePdf.js
 
-# 9. Chic
+# Chic
 Chic = type=http-response,pattern=^https:\/\/api-sub\.meitu\.com\/v2\/user\/vip_info\.json,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Chic.js
 
-# 10. PhotoshopExpress
+# PhotoshopExpress
 PhotoshopExpress = type=http-response,pattern=^https:\/\/lcs-mobile-cops\.adobe\.io\/mobile_profile,requires-body=1,script-path=https://raw.githubusercontent.com/litieyin/AD_VIP/main/Script/photoshop.js
+
+# SODA
+yueh=type=http-response,pattern=^http:\/\/yueh\.app168\.cc\/(first|panda|jiaopian|emoji|manghe)\/iap\/check\.php$,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/yueh.js
+
+# TouchRetouch
+TouchRetouch=type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/(receipts|subscribers\/(\$RCAnonymousID%3A\w{32}))$,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/TouchRetouch.js
+
+# VSCO
+VSCO=type=http-request,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/subscribers\/,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/vsco.js
+VSCO3=type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/subscribers\/,requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/vsco.js
+
+# Truecaller
+Truecaller = type=http-response,pattern=^https:\/\/premium-(.+)\.truecaller\.com\/v\d\/(subscriptions|products\/apple),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/TrueCaller.js
+
+# Kinemaster
+Kinemaster = type=http-response,pattern=^https:\/\/api-account\.kinemasters\.com\/v\d\/user\/subscribe$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/Kinemaster.js
+
+# CamScanner
+Camscanner = type=http-response,pattern=https:\/\/(api|api-cs.*)\.intsig\.net\/purchase\/cs\/query_prop,requires-body=1,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/camScanner.js
+
+# AlightMotion
+AlightMotion = type=http-response,pattern=^https:\/\/us-central1-alight-creative\.cloudfunctions\.net\/getAccountStatusAndLicenses,requires-body=true,max-size=131072,timeout=10,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/AlightMotion.js
 
 # ==========================================
 # CẤP QUYỀN GIẢI MÃ SSL / MITM
 # ==========================================
 [MITM]
-# Đã xóa googlevideo để tránh quá nhiệt
-hostname = %APPEND%, youtubei.googleapis.com, www.youtube.com, s.youtube.com, sub.store, api.revenuecat.com, buy.itunes.apple.com, api-mobile.soundcloud.com, spclient.wg.spotify.com, pro.smallpdf.com, lapi.photomath.net, piccollage.com, iap.etm.tech, service.ilovepdf.com, api-sub.meitu.com, lcs-mobile-cops.adobe.io
+hostname = %APPEND%, *.googlevideo.com, -redirector*.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, sub.store, api.revenuecat.com, buy.itunes.apple.com, api-mobile.soundcloud.com, pi-mobile.soundcloud.com, spclient.wg.spotify.com, pro.smallpdf.com, lapi.photomath.net, piccollage.com, iap.etm.tech, service.ilovepdf.com, api-sub.meitu.com, lcs-mobile-cops.adobe.io, yueh.app168.cc, premium*.truecaller.com, api-account.kinemasters.com, ap*.intsig.net, us-central1-alight-creative.cloudfunctions.net, api.picsart.com, api.mr.pixocial.com, newbeee-api.beautyplus.com, *spclient.spotify.com
