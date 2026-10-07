@@ -7,6 +7,8 @@
 #Shadowrocket Configuration - ALL IN Đ.H.T (htienz07)
 
 [Rule]
+AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
 DOMAIN-SUFFIX,admob.com,REJECT
 DOMAIN-SUFFIX,googlesyndication.com,REJECT
 DOMAIN-SUFFIX,doubleclick.net,REJECT
@@ -53,13 +55,16 @@ http-request ^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) he
 
 [Script]
 # Locket Gold VIP (Code ĐHT)
+#hostname = api.revenuecat.com
 LocketGold = type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/(receipts|subscribers\/.*),requires-body=1,max-size=524288,timeout=60,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locketgoldHT.js
 
 # SoundCloud Premium
+#hostname =  api-mobile.soundcloud.com
 SoundCloud = type=http-response,pattern=^https?:\/\/api-v2\.soundcloud\.com\/.*,requires-body=1,max-size=524288,timeout=60,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Soundcloudpremium.js
 
 # YouTube No Ads
+#hostname = *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com
 YouTube_NoAds = type=http-response,pattern=^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(player|next|browse),requires-body=1,max-size=3145728,timeout=60,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Youtubenoads.js
 
 [MITM]
-%APPEND%, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com,pi-mobile.soundcloud.com,  api.revenuecat.com
+#hostname = %APPEND%, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, api-mobile.soundcloud.com, api.revenuecat.com
