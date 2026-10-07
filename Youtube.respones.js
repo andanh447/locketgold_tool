@@ -1,4 +1,3 @@
-YOUTUBE NO ADS WITH Đ_H_T
 // Build: 2025/3/30 17:50:34
 (() => {
   var Ar = Object.defineProperty;
