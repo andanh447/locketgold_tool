@@ -1,5 +1,5 @@
 #!name=All In 1 With ĐHT
-#!desc=Crack mọi app premium vip pro (Bản Full Cập Nhật)
+#!desc=Crack mọi app premium vip pro bởi Đ_H_T (andanh447)
 #!author=andanh447
 #!homepage=https://note3s.top/notes/WM6212
 #!moduleUrl=https://raw.githubusercontent.com/andanh447/Shadowrocketpremium.private-HT/refs/heads/main/ALL_IN_HTVIP.sgmodule
@@ -64,7 +64,7 @@ spotify = type=http-response,pattern=^https:\/\/spclient\.wg\.spotify\.com\/colo
 MOJO = type=http-response,pattern=https:\/\/api\.revenuecat\.com\/v1\/(receipts|subscribers)\/*,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScrpty/main/mojo.js
 
 # Clica
-Clica = type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/(subscribers\/[^\/]+$|receipts$),requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Clica.js
+Clica = type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/(subscribers\/[^\/]+$|receipts$),requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/ClicaVip.js
 
 # Smallpdf
 Smallpdf = type=http-response,pattern=https:\/\/pro\.smallpdf\.com\/pro\/account,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScrpty/main/smallpdf.js
