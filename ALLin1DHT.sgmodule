@@ -11,6 +11,69 @@
 [Rule]
 AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
 AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
+[Rule]
+# ==========================================
+# 1. TƯỜNG LỬA "HỐ ĐEN" - PHẢN DAME HACKER & CHỐNG THEO DÕI
+# Sử dụng REJECT-DROP để treo công cụ quét của hacker, máy không tốn CPU phản hồi
+# ==========================================
+# Chặn đứng các cổng (port) nguy hiểm hay bị hacker nhòm ngó (SMB, RPC, Telnet...)
+AND,((PROTOCOL,TCP),(DEST-PORT,445)),REJECT-DROP
+AND,((PROTOCOL,TCP),(DEST-PORT,135-139)),REJECT-DROP
+AND,((PROTOCOL,TCP),(DEST-PORT,23)),REJECT-DROP
+AND,((PROTOCOL,UDP),(DEST-PORT,1900)),REJECT-DROP
+
+# Chặn các máy chủ thu thập dữ liệu ngầm (Telemetry/Analytics) gây tốn pin
+DOMAIN-SUFFIX,metrics.icloud.com,REJECT-DROP
+DOMAIN-SUFFIX,logs.apple.com,REJECT-DROP
+DOMAIN-SUFFIX,analytics.google.com,REJECT-DROP
+DOMAIN-KEYWORD,telemetry,REJECT-DROP
+DOMAIN-KEYWORD,tracking,REJECT-DROP
+
+# ==========================================
+# 2. ĐIỀU HÒA NHIỆT ĐỘ TỐI ĐA (CHỐNG NÓNG MÁY KHI BẬT VPN)
+# Cho phép các luồng dữ liệu siêu nặng đi thẳng, không bắt chip iPhone phải giải mã
+# ==========================================
+# Giao thức UDP của Game (Liên Quân, PUBG, Asphalt...)
+AND,((PROTOCOL,UDP),(DEST-PORT,10000-65535)),DIRECT
+AND,((PROTOCOL,UDP),(DEST-PORT,443)),DIRECT
+
+# Các CDN tải Video/Ảnh siêu nặng
+DOMAIN-SUFFIX,googlevideo.com,DIRECT
+DOMAIN-SUFFIX,nflxvideo.net,DIRECT
+DOMAIN-KEYWORD,tiktokcdn,DIRECT
+DOMAIN-KEYWORD,fbcdn,DIRECT
+DOMAIN-KEYWORD,vcdn,DIRECT
+DOMAIN-KEYWORD,akamaihd,DIRECT
+
+# Cho phép mạng nội địa VN (Ngân hàng, Shopee, Zalo) đi thẳng tốc độ tối đa
+GEOIP,VN,DIRECT
+
+# ==========================================
+# 3. KHIÊN CHỐNG QUẢNG CÁO TUYỆT ĐỐI
+# Tiết kiệm dung lượng 5G, chặn pop-up bẩn và mã độc
+# ==========================================
+DOMAIN-SUFFIX,admob.com,REJECT-DROP
+DOMAIN-SUFFIX,googlesyndication.com,REJECT-DROP
+DOMAIN-SUFFIX,doubleclick.net,REJECT-DROP
+DOMAIN-SUFFIX,googleadservices.com,REJECT-DROP
+DOMAIN-SUFFIX,applovin.com,REJECT-DROP
+DOMAIN-SUFFIX,applvn.com,REJECT-DROP
+DOMAIN-SUFFIX,unityads.unity3d.com,REJECT-DROP
+DOMAIN-SUFFIX,vungle.com,REJECT-DROP
+DOMAIN-SUFFIX,ironsrc.com,REJECT-DROP
+DOMAIN-SUFFIX,chartboost.com,REJECT-DROP
+DOMAIN-SUFFIX,adcolony.com,REJECT-DROP
+DOMAIN-SUFFIX,inmobi.com,REJECT-DROP
+DOMAIN-SUFFIX,appsflyer.com,REJECT-DROP
+DOMAIN-SUFFIX,adjust.com,REJECT-DROP
+DOMAIN-SUFFIX,rayjump.com,REJECT-DROP
+DOMAIN-SUFFIX,criteo.com,REJECT-DROP
+DOMAIN-KEYWORD,adsystem,REJECT-DROP
+
+# ==========================================
+# 4. QUY TẮC CUỐI: CÁC KẾT NỐI KHÁC VÀO PROXY
+# ==========================================
+FINAL,PROXY
 
 [Header Rewrite]
 ^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del x-revenuecat-etag
