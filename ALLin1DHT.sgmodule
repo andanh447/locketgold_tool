@@ -114,4 +114,4 @@ spotify歌词翻译 = type=http-response,pattern=^https:\/\/spclient\.wg\.spotif
 hostname = %APPEND% spclient.wg.spotify.com
 
 [MITM]
-hostname = %APPEND%, .googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector.googlevideo.com, sub.store, api.revenuecat.com,  buy.itunes.apple.com,  api-mobile.soundcloud.com
+hostname = %APPEND%, .googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector.googlevideo.com, sub.store, api.revenuecat.com,  buy.itunes.apple.com,  api-mobile.soundcloud.com, spclient.wg.spotify.com
