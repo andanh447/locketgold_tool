@@ -56,14 +56,13 @@ http-request ^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) he
 [Script]
 # === Các Module VIP Của ĐHT ===
 # Locket Gold VIP
-LocketGold = type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/(receipts|subscribers\/.*),requires-body=1,max-size=524288,timeout=60,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locketgoldHT.js
+LocketGold = type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/(receipts|subscribers\/.*),requires-body=1,max-size=524288,timeout=60,script-path
 
 # SoundCloud Premium
-SoundCloud = type=http-response,pattern=^https?:\/\/api-v2\.soundcloud\.com\/.*,requires-body=1,max-size=524288,timeout=60,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Soundcloudpremium.js
+SoundCloud = type=http-response,pattern=^https?:\/\/api-v2\.soundcloud\.com\/.*,requires-body=1,max-size=524288,timeout=60,script-path
 
 # YouTube No Ads
-YouTube_NoAds = type=http-response,pattern=^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(player|next|browse),requires-body=1,max-size=3145728,timeout=60,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Youtubenoads.js
-
+YouTube_NoAds = type=http-response,pattern=^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(player|next|browse),requires-body=1,max-size=3145728,timeout=60,script-path
 [MITM]
 # === Đã Mở Khóa MITM & Lọc Host An Toàn ===
 hostname = %APPEND%, youtubei.googleapis.com, www.youtube.com, s.youtube.com, api-v2.soundcloud.com, api-mobile.soundcloud.com, api.revenuecat.com
