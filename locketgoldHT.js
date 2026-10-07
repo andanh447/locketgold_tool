@@ -1,4 +1,3 @@
-LOCKET GOLD ĐHT
 // ========= ID ========= //
 const mapping = {
   '%E8%BD%A6%E7%A5%A8%E7%A5%A8': ['vip+watch_vip'],
@@ -25,8 +24,8 @@ var duyvinh09 = {
       grace_period_expires_date: null,
       refunded_at: null,
       unsubscribe_detected_at: null,
-      original_purchase_date: "2005-01-09T10:10:15Z",
-      purchase_date: "2005-01-09T10:10:14Z",
+      original_purchase_date: "9999-01-09T10:10:15Z",
+      purchase_date: "9999-01-09T10:10:14Z",
       store: "app_store",
       store_transaction_id: "2000001108724193",
   },
