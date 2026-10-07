@@ -62,5 +62,19 @@ RevenueCatVip = type=http-response, pattern=^https:\/\/api\.(revenuecat|rc-backu
 #hostname = buy.itunes.apple.com
 iTunes = type=http-response, pattern=^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/itunes.js, requires-body=true, max-size=-1, timeout=60
 #************************************#
+
+#Bazzat
+#!name=bazaart会员解锁
+
+#!desc=bazaart会员解锁
+
+[Script]
+
+bazaart会员解锁=type=http-response,pattern=https://buy.itunes.apple.com/verifyReceipt,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScrpt/main/bazaart.js
+
+[MITM]
+
+hostname= %APPEND% buy.itunes.apple.com
+
 [MITM]
 hostname = %APPEND%, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, sub.store, api.revenuecat.com,  buy.itunes.apple.com,  api-mobile.soundcloud.com
