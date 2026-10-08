@@ -1,0 +1,16 @@
+#!name=SHADOWROCKET ALL APPS BY DHT
+#!desc=All Apps Script + MITM
+
+[Script]
+
+AllApps_Request = type=http-request,pattern=^https?:\/\/(?:[a-zA-Z0-9-]+\.)*(?:youtube\.com|youtu\.be|youtubei\.googleapis\.com|spotify\.com|soundcloud\.com|locketcamera\.com|locketwidget\.com|picsart\.com|mojo-app\.com|mojo\.video|soda\.snow\.me|1blocker\.com|snow\.me|photomath\.com|piccollage\.com|collart\.app|smallpdf\.com|ilovepdf\.com|vsco\.co|camscanner\.com|photoshop\.adobe\.com|alightmotion\.com|kinemaster\.com|capcut\.com|capcut\.net)(?::[0-9]+)?(?:[/?#]|$),requires-body=0,script-path=all_apps.js,timeout=10
+
+AllApps_Response = type=http-response,pattern=^https?:\/\/(?:[a-zA-Z0-9-]+\.)*(?:youtube\.com|youtu\.be|youtubei\.googleapis\.com|spotify\.com|soundcloud\.com|locketcamera\.com|locketwidget\.com|picsart\.com|mojo-app\.com|mojo\.video|soda\.snow\.me|1blocker\.com|snow\.me|photomath\.com|piccollage\.com|collart\.app|smallpdf\.com|ilovepdf\.com|vsco\.co|camscanner\.com|photoshop\.adobe\.com|alightmotion\.com|kinemaster\.com|capcut\.com|capcut\.net)(?::[0-9]+)?(?:[/?#]|$),requires-body=0,script-path=all_apps.js,timeout=10
+
+[MITM]
+
+enable = true
+
+skip-server-cert-verify = false
+
+hostname = %APPEND% youtube.com, *.youtube.com, youtu.be, youtubei.googleapis.com, spotify.com, *.spotify.com, soundcloud.com, *.soundcloud.com, locketcamera.com, *.locketcamera.com, locketwidget.com, *.locketwidget.com, picsart.com, *.picsart.com, mojo-app.com, *.mojo-app.com, mojo.video, *.mojo.video, soda.snow.me, 1blocker.com, *.1blocker.com, snow.me, *.snow.me, photomath.com, *.photomath.com, piccollage.com, *.piccollage.com, collart.app, *.collart.app, smallpdf.com, *.smallpdf.com, ilovepdf.com, *.ilovepdf.com, vsco.co, *.vsco.co, camscanner.com, *.camscanner.com, photoshop.adobe.com, alightmotion.com, *.alightmotion.com, kinemaster.com, *.kinemaster.com, capcut.com, *.capcut.com, capcut.net, *.capcut.net
