@@ -1,4 +1,3 @@
-Thêm các code anh đưa bé thêm vào văn bản java anh đưa nha bé yêu
 var objc = JSON.parse($response.body);
 
 objc = {
