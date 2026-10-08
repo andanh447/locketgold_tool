@@ -6995,3 +6995,165 @@ obj = {
 
 body = JSON.stringify(obj);
 $done({body});
+
+import java.io.*;
+import java.net.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class ShadowJavaFirewall {
+
+    private static final int PROXY_PORT = 8080;
+    private static final ExecutorService threadPool = Executors.newCachedThreadPool();
+
+    // ========================================================
+    // 1. RULE ENGINE (BÊ NGUYÊN TỪ SHADOWROCKET SANG)
+    // ========================================================
+    private static final String[] APPLE_WHITELIST_SUFFIX = {
+        "apple.com", "icloud.com", "mzstatic.com", "aaplimg.com", "apple-dns.net", "me.com", "mac.com"
+    };
+    private static final String[] APPLE_WHITELIST_KEYWORD = {"apple"};
+
+    private static final String[] REJECT_KEYWORD = {"tracker", "telemetry", "analytics", "adsystem"};
+    private static final String[] REJECT_SUFFIX = {
+        "doubleclick.net", "googlesyndication.com", "adservice.google.com", 
+        "applovin.com", "unityads.unity3d.com", "vungle.com", "ironsrc.mobi", 
+        "inmobi.com", "chartboost.com"
+    };
+    
+    // URL Rewrite sang Regex trên TCP Host
+    private static final Pattern[] REJECT_REGEX = {
+        Pattern.compile("^.*\\.gdtimg\\.com.*$"),
+        Pattern.compile("^.*\\.ads\\..*$")
+    };
+
+    public static void main(String[] args) {
+        System.out.println("[Shadow-Java] Hệ thống Local Proxy Firewall đang chạy trên cổng " + PROXY_PORT);
+        try (ServerSocket serverSocket = new ServerSocket(PROXY_PORT)) {
+            while (true) {
+                Socket clientSocket = serverSocket.accept();
+                threadPool.submit(() -> handleClient(clientSocket));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void handleClient(Socket clientSocket) {
+        try {
+            clientSocket.setSoTimeout(5000);
+            InputStream clientIn = clientSocket.getInputStream();
+            OutputStream clientOut = clientSocket.getOutputStream();
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(clientIn));
+            String requestLine = reader.readLine();
+            
+            if (requestLine == null || requestLine.isEmpty()) return;
+
+            // Phân tích Request Line (VD: CONNECT doubleclick.net:443 HTTP/1.1)
+            String[] parts = requestLine.split(" ");
+            if (parts.length < 3) return;
+
+            String method = parts[0];
+            String url = parts[1];
+            
+            String host;
+            int port;
+
+            if (method.equalsIgnoreCase("CONNECT")) {
+                // HTTPS
+                String[] hostPort = url.split(":");
+                host = hostPort[0];
+                port = hostPort.length > 1 ? Integer.parseInt(hostPort[1]) : 443;
+            } else {
+                // HTTP
+                URL targetUrl = new URL(url);
+                host = targetUrl.getHost();
+                port = targetUrl.getPort() != -1 ? targetUrl.getPort() : 80;
+}
+
+            // ========================================================
+            // 2. FIREWALL THỰC THI KIỂM TRA ĐIỀU KIỆN
+            // ========================================================
+            if (!isWhitelisted(host) && isBlacklisted(host)) {
+                System.out.println("[DROP] Chặn kết nối quảng cáo/theo dõi: " + host);
+                clientSocket.close(); // Silent Drop ngay lập tức tại RAM
+                return;
+            }
+
+            // ========================================================
+            // 3. CHO PHÉP KẾT NỐI & BYPASS TRAFFIC
+            // ========================================================
+            Socket serverSocket = new Socket(host, port);
+            InputStream serverIn = serverSocket.getInputStream();
+            OutputStream serverOut = serverSocket.getOutputStream();
+
+            if (method.equalsIgnoreCase("CONNECT")) {
+                // Trả về 200 Connection Established cho HTTPS
+                clientOut.write("HTTP/1.1 200 Connection Established\r\n\r\n".getBytes());
+                clientOut.flush();
+            } else {
+                // Đẩy Request Header nguyên bản đối với HTTP
+                serverOut.write((requestLine + "\r\n").getBytes());
+                String headerLine;
+                while (!(headerLine = reader.readLine()).isEmpty()) {
+                    serverOut.write((headerLine + "\r\n").getBytes());
+                }
+                serverOut.write("\r\n".getBytes());
+                serverOut.flush();
+            }
+
+            // Khởi tạo 2 luồng chuyển tiếp byte tốc độ cao (Relay)
+            Thread clientToServer = new Thread(() -> relayData(clientIn, serverOut));
+            Thread serverToClient = new Thread(() -> relayData(serverIn, clientOut));
+
+            clientToServer.start();
+            serverToClient.start();
+
+            clientToServer.join();
+            serverToClient.join();
+
+            serverSocket.close();
+            clientSocket.close();
+
+        } catch (Exception ignored) {
+            // Ngắt kết nối rác, không lưu log để tối ưu hiệu năng
+        }
+    }
+
+    private static boolean isWhitelisted(String host) {
+        String lowerHost = host.toLowerCase();
+        for (String suffix : APPLE_WHITELIST_SUFFIX) {
+            if (lowerHost.endsWith(suffix)) return true;
+        }
+        for (String keyword : APPLE_WHITELIST_KEYWORD) {
+            if (lowerHost.contains(keyword)) return true;
+        }
+        return false;
+    }
+
+    private static boolean isBlacklisted(String host) {
+        String lowerHost = host.toLowerCase();
+        for (String suffix : REJECT_SUFFIX) {
+            if (lowerHost.endsWith(suffix)) return true;
+        }
+        for (String keyword : REJECT_KEYWORD) {
+            if (lowerHost.contains(keyword)) return true;
+        }
+        for (Pattern regex : REJECT_REGEX) {
+if (regex.matcher(lowerHost).matches()) return true;
+        }
+        return false;
+    }
+
+    private static void relayData(InputStream in, OutputStream out) {
+        try {
+            byte[] buffer = new byte[8192];
+            int bytesRead;
+            while ((bytesRead = in.read(buffer)) != -1) {
+                out.write(buffer, 0, bytesRead);
+                out.flush();
+            }
+        } catch (IOException ignored) {}
+    }
+}
