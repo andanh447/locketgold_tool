@@ -1,11 +1,11 @@
-#!name=Shadowrocket Core Template
-#!desc=Standard script injection and MITM routing module.
+#!name=Shadowrocket Premium with ĐHT
+#!desc= muốn gì ib 0901894517
 #!author=Dinh Hoang Tien (andanh447)
 #!homepage=https://github.com/andanh447
 
 [Script]
 
-Tat_Ca_App_DHT = type=http-response,pattern=^https?:\/\/(api\.revenuecat\.com|api\.rc-backup\.com|youtubei\.googleapis\.com|api-mobile\.soundcloud\.com|buy\.itunes\.apple\.com|spclient\.wg\.spotify\.com|pro\.smallpdf\.com|lapi\.photomath\.net|piccollage\.com|iap\.etm\.tech|service\.ilovepdf\.com|api-sub\.meitu\.com|lcs-mobile-cops\.adobe\.io|yueh\.app168\.cc|premium-(.+)\.truecaller\.com|api-account\.kinemasters\.com|(api|api-cs.*)\.intsig\.net|us-central1-alight-creative\.cloudfunctions\.net|sub\.store),requires-body=1,max-size=3145728,timeout=60,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/All_In_One_DHT.js
+shadowrocket all app premium ĐHT = type=http-response,pattern=^https?:\/\/(api\.revenuecat\.com|api\.rc-backup\.com|youtubei\.googleapis\.com|api-mobile\.soundcloud\.com|buy\.itunes\.apple\.com|spclient\.wg\.spotify\.com|pro\.smallpdf\.com|lapi\.photomath\.net|piccollage\.com|iap\.etm\.tech|service\.ilovepdf\.com|api-sub\.meitu\.com|lcs-mobile-cops\.adobe\.io|yueh\.app168\.cc|premium-(.+)\.truecaller\.com|api-account\.kinemasters\.com|(api|api-cs.*)\.intsig\.net|us-central1-alight-creative\.cloudfunctions\.net|sub\.store),requires-body=1,max-size=3145728,timeout=60,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/ALLINHT.js
 
 [MITM]
-hostname =
+hostname = %APPEND%, *.googlevideo.com, -redirector*.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, sub.store, api.revenuecat.com, buy.itunes.apple.com, api-mobile.soundcloud.com, pi-mobile.soundcloud.com, spclient.wg.spotify.com, pro.smallpdf.com, lapi.photomath.net, piccollage.com, iap.etm.tech, service.ilovepdf.com, api-sub.meitu.com, lcs-mobile-cops.adobe.io, yueh.app168.cc, premium*.truecaller.com, api-account.kinemasters.com, ap*.intsig.net, us-central1-alight-creative.cloudfunctions.net, api.picsart.com, api.mr.pixocial.com, newbeee-api.beautyplus.com, *spclient.spotify.com
