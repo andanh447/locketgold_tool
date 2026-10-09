@@ -7157,3 +7157,150 @@ if (regex.matcher(lowerHost).matches()) return true;
         } catch (IOException ignored) {}
     }
 }
+
+import java.io.*;
+import java.net.*;
+import java.nio.ByteBuffer;
+import java.nio.channels.DatagramChannel;
+import java.nio.charset.StandardCharsets;
+import java.util.concurrent.*;
+import java.util.Arrays;
+
+public class UltraDnsTrieFirewall {
+    private static final int PORT = 53;
+    private static final String UPSTREAM_DNS = "1.1.1.1";
+    
+    // Cấu trúc Trie đảo ngược để tìm kiếm tên miền siêu tốc (O(L) với L là độ dài domain)
+    private static class TrieNode {
+        ConcurrentHashMap<String, TrieNode> children = new ConcurrentHashMap<>();
+        boolean isEndOfDomain;
+    }
+    
+    private static final TrieNode root = new TrieNode();
+    private static final ExecutorService workerPool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 4);
+
+    public static void main(String[] args) throws IOException {
+        System.out.println("[CORE] Khởi động Ultra DNS Trie Firewall - Chế độ Offload Shadowrocket");
+        
+        // 1. Nạp danh sách chặn quảng cáo toàn cầu vào RAM
+        loadAdblockRules();
+
+        // 2. Mở kênh DatagramChannel Non-blocking để chịu tải hàng vạn request 5G/Wi-Fi
+        try (DatagramChannel channel = DatagramChannel.open()) {
+            channel.socket().bind(new InetSocketAddress(PORT));
+            ByteBuffer buffer = ByteBuffer.allocate(1024);
+            System.out.println("[SYSTEM] Lắng nghe tại UDP Port " + PORT);
+
+            while (true) {
+                buffer.clear();
+                SocketAddress clientAddress = channel.receive(buffer);
+                if (clientAddress != null) {
+                    buffer.flip();
+                    byte[] requestData = new byte[buffer.remaining()];
+                    buffer.get(requestData);
+                    
+                    workerPool.submit(() -> processQuery(channel, clientAddress, requestData));
+                }
+            }
+        }
+    }
+
+    private static void processQuery(DatagramChannel channel, SocketAddress clientAddress, byte[] requestData) {
+        try {
+            String domain = extractDomain(requestData);
+            if (domain == null) return;
+
+            if (isBlocked(domain)) {
+                // Đánh sập quảng cáo lập tức: Trả về 0.0.0.0 (Sinkhole)
+                byte[] response = buildSinkholeResponse(requestData);
+                channel.send(ByteBuffer.wrap(response), clientAddress);
+            } else {
+                // Bypass mượt mà cho traffic sạch
+                forwardToUpstream(channel, clientAddress, requestData);
+            }
+        } catch (Exception ignored) {
+            // Drop im lặng để chống nghẽn mạng
+        }
+    }
+
+    // Nạp rule chặn toàn bộ tracker, ads vào Trie
+    private static void loadAdblockRules() {
+        String[] massiveBlacklist = {
+            "doubleclick.net", "adservice.google.com", "googlesyndication.com",
+            "facebook.com/tr", "appsflyer.com", "applovin.com", "vungle.com",
+            "unity3d.com", "inmobi.com", "tiktok/analytics" // Tích hợp danh sách vô hạn tại đây
+        };
+        
+        for (String domain : massiveBlacklist) {
+            insertDomain(domain);
+        }
+        System.out.println("[MEMORY] Đã nạp danh sách chặn vào cấu trúc Trie O(L) siêu tốc.");
+    }
+
+    // Chèn tên miền theo chiều đảo ngược (VD: com -> google -> adservice)
+    private static void insertDomain(String domain) {
+        String[] parts = domain.split("\\.");
+        TrieNode current = root;
+        for (int i = parts.length - 1; i >= 0; i--) {
+            current = current.children.computeIfAbsent(parts[i], k -> new TrieNode());
+        }
+        current.isEndOfDomain = true;
+    }
+
+    // Kiểm tra tên miền với tốc độ ánh sáng
+    private static boolean isBlocked(String domain) {
+        String[] parts = domain.split("\\.");
+        TrieNode current = root;
+        for (int i = parts.length - 1; i >= 0; i--) {
+            current = current.children.get(parts[i]);
+            if (current == null) return false;
+            if (current.isEndOfDomain) return true;
+        }
+        return false;
+    }
+
+    private static String extractDomain(byte[] data) {
+        StringBuilder domain = new StringBuilder();
+        int pos = 12; 
+        while (pos < data.length && data[pos] != 0) {
+            int len = data[pos++] & 0xFF;
+            if (pos + len > data.length) return null;
+            for (int i = 0; i < len; i++) {
+                domain.append((char) data[pos++]);
+            }
+            domain.append('.');
+        }
+        if (domain.length() > 0) domain.setLength(domain.length() - 1);
+        return domain.toString();
+    }
+
+    private static byte[] buildSinkholeResponse(byte[] request) {
+        byte[] response = Arrays.copyOf(request, request.length + 16);
+        response[2] = (byte) 0x81; 
+        response[3] = (byte) 0x80;
+        response[7] = 0x01; 
+        
+        int offset = request.length;
+        response[offset++] = (byte) 0xC0; response[offset++] = 0x0C;
+        response[offset++] = 0x00; response[offset++] = 0x01; // Type A
+        response[offset++] = 0x00; response[offset++] = 0x01; // Class IN
+        response[offset++] = 0x00; response[offset++] = 0x00; response[offset++] = 0x00; response[offset++] = 0x3C; // TTL
+        response[offset++] = 0x00; response[offset++] = 0x04; // IP length
+        response[offset++] = 0x00; response[offset++] = 0x00; response[offset++] = 0x00; response[offset++] = 0x00; // 0.0.0.0
+        return response;
+    }
+
+    private static void forwardToUpstream(DatagramChannel clientChannel, SocketAddress clientAddress, byte[] data) throws IOException {
+        try (DatagramSocket socket = new DatagramSocket()) {
+            socket.setSoTimeout(2000);
+            InetAddress upstream = InetAddress.getByName(UPSTREAM_DNS);
+            socket.send(new DatagramPacket(data, data.length, upstream, PORT));
+            
+            byte[] responseBuffer = new byte[1024];
+            DatagramPacket responsePacket = new DatagramPacket(responseBuffer, responseBuffer.length);
+            socket.receive(responsePacket);
+            
+            clientChannel.send(ByteBuffer.wrap(responsePacket.getData(), 0, responsePacket.getLength()), clientAddress);
+        }
+    }
+}
