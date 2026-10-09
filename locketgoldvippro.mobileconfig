@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <!-- 1. Cấu hình DNS Over HTTPS (DoH) -->
+        <dict>
+            <key>DNSSettings</key>
+            <dict>
+                <key>DNSProtocol</key>
+                <string>HTTPS</string>
+                <key>ServerURL</key>
+                <!-- URL Máy chủ giống trong hình của anh -->
+                <string>https://dns.nodns.vn/dns-query</string>
+            </dict>
+            <key>PayloadDescription</key>
+            <string>Ép toàn bộ luồng mạng qua DNS bảo mật của Locket Gold</string>
+            <key>PayloadDisplayName</key>
+            <string>Locket Gold DNS</string>
+            <key>PayloadIdentifier</key>
+            <string>com.hoangtien.locketdns</string>
+            <key>PayloadType</key>
+            <string>com.apple.dnsSettings.managed</string>
+            <key>PayloadUUID</key>
+            <string>3A420993-2713-4B83-B977-DE162C382A0F</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+        
+        <!-- 2. Cấu hình Root CA tự tạo (LocketProxy CA) -->
+        <dict>
+            <key>PayloadCertificateFileName</key>
+            <string>LocketGold CA.cer</string>
+            <key>PayloadContent</key>
+            <!-- Đây là chuỗi Base64 của chứng chỉ gốc. Anh phải tự thay thế bằng chuỗi Base64 của CA anh tự tạo (hướng dẫn tạo ở dưới) -->
+            <data>
+            MIIDaDCCAlCgAwIBAgIBAjANBgkqhkiG9w0BAQsFADA/MSwwKgYDVQQDDCNMb2Nr
+            ZXRQcm94eSBDQTEPMA0GA1UECgwGTG9jYWwgUmVzZWFyY2gxCzAJBgNVBAYTAlZO
+            MB4XDTI2MDkyNjA0NDQ0MloXDTM2MDkyNjA0NDQ0MlowPzEsMCoGA1UEAwwjTG9j
+            a2V0UHJveHkgQ0ExDzANBgNVBAoMBkxvY2FsIFJlc2VhcmNoMQswCQYDVQQGEwJW
+            TjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKUdidlfKihUwPbcFfR0
+            /cyLJ2FmpE09JRyXELA01Dye+YVLj0V1nX4JY/YC1U8MI0a7tp+uU96BwMtY/jnb
+            +ad6U4ZGWEh4Zw9uOS9f/JncUeb7FHaZUidVvSE6+FfbG4PgCBf6mlclSoDg+gVK
+            4LnwnJtbUI2EETOhRGTsl9blREaFjoHq83FwRp6RFeFMVpFHrIQ/WwI1bwCBfx1v
+            BoJ2YBJZtnDcKfP3KO4hIt72aTzsl+9SUQ6mPxXAthyUxJjY9c0ElW/sxNakyR7q
+            m0Q2EEc1Bwo7AgMBAAGjUDBOMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFB0e
+            /X2A6f3Z5Lz3mccNsZb/b8e+MB8GA1UdIwQYMBaAFB0e/X2A6f3Z5Lz3mccNsZb/
+            b8e+MA0GCSqGSIb3DQEBCwUAA4IBAQBV1/T9AdErHXVgNDw+GMkzPy3JH7VYyPFZ
+            euny8aWdm/Fz2HUJ8uowwkF7aQDeLjG9HnEw2ZUlKz5/aVjFX6cQ1cPj+VQ14f9u
+            rB7Fq8eLVK8nZmHvVd3IU7X2JToyrGCAFAw36tbsqMeRmCbBMAxPLs6Me5hL5Ldu
+            42kOqM3iEXK4D0r8b+LZiJzD+FpfyGx/fEdQSy8fDA6sDJm35kURE/0s+14Mzi2b
+            8yX78B+B0A+ZlZ/I3c588wE2alCCwsztNrUi9n/rU2/F9wHqTrV8I6ohb9HmbcMD
+            </data>
+            <key>PayloadDescription</key>
+            <string>Cài đặt Root CA để giải mã MITM</string>
+            <key>PayloadDisplayName</key>
+            <string>LocketGold CA</string>
+            <key>PayloadIdentifier</key>
+            <string>com.hoangtien.locketca</string>
+            <key>PayloadType</key>
+            <string>com.apple.security.root</string>
+            <key>PayloadUUID</key>
+            <string>1A3E2055-6F44-4822-B123-CD351C283F99</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>Locket Gold System Profile</string>
+    <key>PayloadIdentifier</key>
+    <string>com.hoangtien.locketprofile</string>
+    <key>PayloadRemovalDisallowed</key>
+    <false/>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>F5C91807-6B1B-4E65-A672-01A031A9F438</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>
