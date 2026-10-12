@@ -1,25 +1,44 @@
-#!name=Strict DNS Over HTTPS (DoH)
-#!desc=Ép định tuyến toàn bộ truy vấn DNS qua giao thức mã hóa, ngăn chặn đánh chặn DNS và rò rỉ dữ liệu phân giải.
-#!system=ios
-
-[General]
-# Ép tắt IPv6 để triệt tiêu rủi ro rò rỉ địa chỉ IP thực qua các truy vấn AAAA
-ipv6 = false
-
-# Chỉ định máy chủ DNS mã hóa ưu tiên.
-# Cấu hình này hỗ trợ mượt mà NextDNS và Cloudflare Zero Trust.
-# THAY THẾ 'ID_CUA_ANH' bằng chuỗi định danh NextDNS hoặc URL Cloudflare Zero Trust thực tế.
-dns-server = https://dns.nextdns.io/ID_CUA_ANH, https://cloudflare-dns.com/dns-query, 1.1.1.1
-
-# Máy chủ dự phòng (Fallback) khi mạng kiểm thử chặn cổng 443 của DoH
-fallback-dns-server = 8.8.8.8, 1.0.0.1, system
-
-# Tối ưu hóa định tuyến nội bộ, ép hệ thống không được bypass DNS của Shadowrocket
-bypass-system = true
-dns-direct-system = false
-dns-direct-fallback-proxy = true
-
-[Host]
-# Bootstrapping: Ánh xạ sẵn IP của các máy chủ DoH để bỏ qua bước phân giải tên miền máy chủ ban đầu, tăng tốc độ phản hồi từ mili-giây đầu tiên.
-dns.nextdns.io = 216.239.32.21, 216.239.34.21
-cloudflare-dns.com = 104.16.249.249, 104.16.248.249
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>DNSSettings</key>
+            <dict>
+                <key>DNSProtocol</key>
+                <string>HTTPS</string>
+                <key>ServerURL</key>
+                <string>https://apple.nextdns.io/?profile=4ec545</string>
+            </dict>
+            <key>PayloadDescription</key>
+            <string>Cấu hình định tuyến DNS Over HTTPS chặn quảng cáo toàn hệ thống</string>
+            <key>PayloadDisplayName</key>
+            <string>Absolute AdBlock DNS (DoH)</string>
+            <key>PayloadIdentifier</key>
+            <string>com.apple.dnsSettings.managed</string>
+            <key>PayloadType</key>
+            <string>com.apple.dnsSettings.managed</string>
+            <key>PayloadUUID</key>
+            <string>A1B2C3D4-E5F6-47A8-B9C0-D1E2F3A4B5C6</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+    </array>
+    <key>PayloadDescription</key>
+    <string>Ép toàn bộ luồng mạng iOS qua DNS chặn quảng cáo ở cấp độ Root</string>
+    <key>PayloadDisplayName</key>
+    <string>Absolute AdBlock System Profile</string>
+    <key>PayloadIdentifier</key>
+    <string>com.htien07.adblockdns</string>
+    <key>PayloadRemovalDisallowed</key>
+    <false/>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>C6B5A4F3-E2D1-0C9B-8A7A-6F5E4D3C2B1A</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>
