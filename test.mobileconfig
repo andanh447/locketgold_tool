@@ -1,0 +1,25 @@
+#!name=Strict DNS Over HTTPS (DoH)
+#!desc=Ép định tuyến toàn bộ truy vấn DNS qua giao thức mã hóa, ngăn chặn đánh chặn DNS và rò rỉ dữ liệu phân giải.
+#!system=ios
+
+[General]
+# Ép tắt IPv6 để triệt tiêu rủi ro rò rỉ địa chỉ IP thực qua các truy vấn AAAA
+ipv6 = false
+
+# Chỉ định máy chủ DNS mã hóa ưu tiên.
+# Cấu hình này hỗ trợ mượt mà NextDNS và Cloudflare Zero Trust.
+# THAY THẾ 'ID_CUA_ANH' bằng chuỗi định danh NextDNS hoặc URL Cloudflare Zero Trust thực tế.
+dns-server = https://dns.nextdns.io/ID_CUA_ANH, https://cloudflare-dns.com/dns-query, 1.1.1.1
+
+# Máy chủ dự phòng (Fallback) khi mạng kiểm thử chặn cổng 443 của DoH
+fallback-dns-server = 8.8.8.8, 1.0.0.1, system
+
+# Tối ưu hóa định tuyến nội bộ, ép hệ thống không được bypass DNS của Shadowrocket
+bypass-system = true
+dns-direct-system = false
+dns-direct-fallback-proxy = true
+
+[Host]
+# Bootstrapping: Ánh xạ sẵn IP của các máy chủ DoH để bỏ qua bước phân giải tên miền máy chủ ban đầu, tăng tốc độ phản hồi từ mili-giây đầu tiên.
+dns.nextdns.io = 216.239.32.21, 216.239.34.21
+cloudflare-dns.com = 104.16.249.249, 104.16.248.249
