@@ -1,86 +1,95 @@
-var request = $request;
+let body = $response.body;
 
-const options = {
-    url: "https://api.revenuecat.com/v1/product_entitlement_mapping",
-    headers: {
-     'Authorization' : request.headers["authorization"],
-     'X-Platform' : 'iOS' ,
-     'User-Agent' : request.headers["user-agent"]
-    }
+if (body) {
+try {
+let obj = JSON.parse(body);
+
+let jsonToUpdate = {
+"request_date_ms": new Date().getTime(), // Cập nhật realtime tránh lỗi rụng app
+"request_date": "2099-12-31T23:59:59Z",
+"subscriber": {
+"entitlement": {},
+"first_seen": "2023-01-01T01:01:01Z",
+"original_application_version": "9999",
+"last_seen": "2099-12-31T23:59:59Z",
+"other_purchases": {},
+"management_url": null,
+"subscriptions": {},
+"entitlements": {},
+"original_purchase_date": "2023-01-01T01:01:01Z",
+"original_app_user_id": "Locket_Gold_Bypass", // Tạo ID giả không trùng lặp
+"non_subscriptions": {}
+}
+};
+
+// Inject Full Quyền (Gold + Khung Viền/Badge)
+const premiumFeatures = ["Gold", "Premium", "VIP", "Frame"]; // Bao gồm quyền khung viền
+
+premiumFeatures.forEach(feature => {
+jsonToUpdate.subscriber.entitlements[feature] = {
+"purchase_date": "2023-01-01T01:01:01Z",
+"original_purchase_date": "2023-01-01T01:01:01Z",
+"expires_date": "2099-12-31T23:59:59Z",
+"is_sandbox": false,
+"ownership_type": "PURCHASED",
+"store": "app_store",
+"product_identifier": "com.locket." + feature.toLowerCase()
+};
+
+jsonToUpdate.subscriber.subscriptions["com.locket." + feature.toLowerCase()] = {
+"expires_date": "2099-12-31T23:59:59Z",
+"original_purchase_date": "2023-01-01T01:01:01Z",
+"purchase_date": "2023-01-01T01:01:01Z",
+"is_sandbox": false,
+"ownership_type": "PURCHASED",
+"store": "app_store"
+};
+});
+
+// Xử lý nhánh mapping (nếu app call endpoint mapping)
+if (obj.product_entitlement_mapping) {
+for (const [entitlementId, productInfo] of Object.entries(obj.product_entitlement_mapping)) {
+const productIdentifier = productInfo.product_identifier;
+
+jsonToUpdate.subscriber.entitlements[entitlementId] = {
+"purchase_date": "2023-01-01T01:01:01Z",
+"original_purchase_date": "2023-01-01T01:01:01Z",
+"expires_date": "2099-12-31T23:59:59Z",
+"is_sandbox": false,
+"ownership_type": "PURCHASED",
+"store": "app_store",
+"product_identifier": productIdentifier
+};
+
+jsonToUpdate.subscriber.subscriptions[productIdentifier] = {
+"expires_date": "2099-12-31T23:59:59Z",
+"original_purchase_date": "2023-01-01T01:01:01Z",
+"purchase_date": "2023-01-01T01:01:01Z",
+"is_sandbox": false,
+"ownership_type": "PURCHASED",
+"store": "app_store"
+};
+}
 }
 
-$httpClient.get(options, function(error, newResponse, data){
-    // Bắt lỗi nếu data trả về không phải JSON hợp lệ
-    if (error) {
-        $done({});
-        return;
-    }
-    
-    try {
-        const ent = JSON.parse(data);
+// Ghi đè body cũ
+body = JSON.stringify(jsonToUpdate);
 
-        let jsonToUpdate = {
-            "request_date_ms": 1704070861000,
-            "request_date": "9999-09-9T01:01:01Z",
-            "subscriber": {
-                "entitlement": {},
-                "first_seen": "9999-09-9T01:01:01Z",
-                "original_application_version": "9692",
-                "last_seen": "9999-09-9T01:01:01Z",
-                "other_purchases": {},
-                "management_url": null,
-                "subscriptions": {},
-                "entitlements": {},
-                "original_purchase_date": "9999-09-9T01:01:01Z",
-                "original_app_user_id": "70B24288-83C4-4035-B001-573285B21AE2",
-                "non_subscriptions": {}
-            }
-        };
-
-        const productEntitlementMapping = ent.product_entitlement_mapping;
-
-        for (const [entitlementId, productInfo] of Object.entries(productEntitlementMapping)) {
-            const productIdentifier = productInfo.product_identifier;
-            const entitlements = productInfo.entitlements;
-
-            for (const entitlement of entitlements) {
-                jsonToUpdate.subscriber.entitlements[entitlement] = {
-                    "purchase_date": "9999-09-9T01:01:01Z",
-                    "original_purchase_date": "9999-09-9T01:01:01Z",
-                    "expires_date": "9692-01-01T01:01:01Z",
-                    "is_sandbox" : false,
-                    "ownership_type": "PURCHASED",
-                    "store": "app_store",
-                    "product_identifier": productIdentifier
-                };
-
-                // Add product identifier to subscriptions
-                jsonToUpdate.subscriber.subscriptions[productIdentifier] = {
-                    "expires_date": "9692-01-01T01:01:01Z",
-                    "original_purchase_date": "9999-09-9T01:01:01Z",
-                    "purchase_date": "9999-09-9T01:01:01Z",
-                    "is_sandbox" : false,
-                    "ownership_type": "PURCHASED",
-                    "store": "app_store"
-                };
-            }
-        }
-
-        let body = JSON.stringify(jsonToUpdate);
-        
-        // Delay 15 giây (15000ms) rồi mới báo âm thanh và trả kết quả
-        setTimeout(() => {
-            $notification.post(
-                "RevenueCat API 💛", 
-                "Chặn dữ liệu thành công!", 
-                "Anh yêu ơi, đã lên Gold được 15 giây rồi nè~", 
-                {"sound": "default"}
-            );
+// Treo 15s để lừa load viền, báo âm thanh không rụng (crash)
+setTimeout(() => {
+$notification.post(
+"Locket Gold & Khung Viền 💛",
+"Kích hoạt thành công!",
+"Anh yêu ơi, lên Gold và nhận khung viền sau 15 giây rồi nè~",
+{"sound": "default"}
+);
 $done({body});
-        }, 15000);
+}, 15000);
 
-    } catch (e) {
-        console.log("Bé yêu báo lỗi Parse JSON: " + e);
-        $done({});
-    }
-});
+} catch (e) {
+console.log("Lỗi Parse: " + e);
+$done({});
+}
+} else {
+$done({});
+}
