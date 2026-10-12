@@ -15,7 +15,7 @@
             <key>PayloadDescription</key>
             <string>Cấu hình định tuyến DNS Over HTTPS chặn quảng cáo toàn hệ thống</string>
             <key>PayloadDisplayName</key>
-            <string>Absolute AdBlock DNS (DoH)</string>
+            <string>KIẾM GÌ THẰNG NÀY ĐÂY</string>
             <key>PayloadIdentifier</key>
             <string>com.apple.dnsSettings.managed</string>
             <key>PayloadType</key>
