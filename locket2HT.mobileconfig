@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <!-- Payload 1: Định tuyến DNS NextDNS -->
+        <dict>
+            <key>DNSSettings</key>
+            <dict>
+                <key>DNSProtocol</key>
+                <string>HTTPS</string>
+                <key>ServerURL</key>
+                <string>https://dns.nextdns.io/4ec545</string>
+            </dict>
+            <key>PayloadDescription</key>
+            <string>Cấu hình định tuyến DNS Over HTTPS chặn quảng cáo</string>
+            <key>PayloadDisplayName</key>
+            <string>THÍCH CHILL VỚI LOCKET GOLD ĐÓ CHÍNH LÀ TÔI</string>
+            <key>PayloadIdentifier</key>
+            <string>com.apple.dnsSettings.managed.payload</string>
+            <key>PayloadType</key>
+            <string>com.apple.dnsSettings.managed</string>
+            <key>PayloadUUID</key>
+            <string>7F4B23A1-C9D8-4E7B-A1F2-3B4C5D6E7F8A</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+        
+        <!-- Payload 2: Cài đặt Chứng chỉ Gốc (Root CA) -->
+        <dict>
+            <key>PayloadCertificateFileName</key>
+            <string>Lab_MitM_Root.cer</string>
+            <key>PayloadContent</key>
+            <data>
+            MIIDdzCCAl+gAwIBAgIQX/tA20K9v5pDMyVwMzJXDzANBgkqhkiG9w0BAQsF
+            ADBsMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYD
+            VQQLExB3d3cuZGlnaWNlcnQuY29tMSswKQYDVQQDEyJEaWdpQ2VydCBIaWdo
+            IEFzc3VyYW5jZSBFViBSb290IENBMB4XDTA2MTExMDAwMDAwMFoXDTMxMTEx
+            MDAwMDAwMFowbDELMAkGA1UEBhMCVVMxFTATBgNVBAoTDERpZ2lDZXJ0IElu
+            YzEZMBcGA1UECxMQd3d3LmRpZ2ljZXJ0LmNvbTErMCkGA1UEAxMiRGlnaUNl
+            cnQgSGlnaCBBc3N1cmFuY2UgRVYgUm9vdCBDQTCCASIwDQYJKoZIhvcNAQEB
+            BQADggEPADCCAQoCggEBAMbM5XPm+9S75S0tMqbf5YE/yc0lSbZxKsPVlDRn
+            ogocsF9ppkCxxLeyj9CYpKlBWTrT3JTWPNt0OKRKzE0lgvdKpVMSOO7zSW1x
+            kX5jtqumX8OkhPhPYlG++MXs2ziS4wflCJEMx83LyTaqTqmaaF2linBsqT9K
+            kexw/D/wMbsG3/oZfK8B1w4q9JqG9+H2dG3rZ5K+3yR2u/pM+7T1A/w9Zg7C
+            4M4bI02mX7/8Q6b1k1c2G4t5c4Q7qG4rR8w0F8/3B2cTu7R8gM/Q8t1x5i1N
+            9Q9w8D0p4yR2j3iR/B3w0H0c2T7/0Y6Q5X9q0X3k4X7T7b+P0m9c+b/h2xT5
+            x60CAwEAAaOBuzCBuDAOBgNVHQ8BAf8EBAMCAQYwEgYDVR0TAQH/BAgwBgEB
+            /wIBATAdBgNVHQ4EFgQUsteqWGUrupc0/X2y2hC3X+8f+mIwHwYDVR0jBBgw
+            FoAUsteqWGUrupc0/X2y2hC3X+8f+mIwcAYDVR0fBGEwXzBdoFugWYY1aHR0
+            cDovL2NybDMuZGlnaWNlcnQuY29tL0RpZ2lDZXJ0SGlnaEFzc3VyYW5jZUVW
+            Um9vdENBLmNybIY0aHR0cDovL2NybDQuZGlnaWNlcnQuY29tL0RpZ2lDZXJ0
+            SGlnaEFzc3VyYW5jZUVWUm9vdENBLmNybDANBgkqhkiG9w0BAQUFAAOCAQEA
+            O1l+D9+zVq2T2U2Z6i6v9x/0z8p7m4M3L0X3G8Y8L+3g3W2d2+f/g0o7P9zX
+            0D9/G2A4xY6g+g9B+p5G6b9X2yO3H+2V/x9v/H7o7/5m1w4f/1uV/G8O6wQ
+            9+O5K4O2R/Y7X7+y2wR/P+c+kZ+6Z/h9b+z9C+v5u5f9B+Y8Z+T8O/X8h9c
+            8t/1W2r5W+O/s8u6a+m+5Q+u+r+H0f+e+U/T/1b+8x3y4v4O+m+B/H4o+x+
+            5+z+G+b+U+w/e/o+q+G/g==
+            </data>
+            <key>PayloadDescription</key>
+            <string>Cài đặt Root CA để cấp quyền giải mã MitM HTTPS</string>
+            <key>PayloadDisplayName</key>
+            <string>Chứng chỉ Giải mã Lab</string>
+            <key>PayloadIdentifier</key>
+            <string>com.apple.security.root.payload</string>
+            <key>PayloadType</key>
+            <string>com.apple.security.root</string>
+            <key>PayloadUUID</key>
+            <string>8A5C32B1-D0E9-4F8C-B2A3-4C5D6E7F8A9B</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+
+        <!-- Payload 3: Cấu hình Global HTTP Proxy -->
+        <dict>
+            <key>PayloadDescription</key>
+            <string>Điều hướng toàn bộ lưu lượng qua máy chủ Proxy phân tích gói tin</string>
+            <key>PayloadDisplayName</key>
+            <string>Global HTTP Proxy Lab</string>
+            <key>PayloadIdentifier</key>
+            <string>com.apple.proxy.http.global.payload</string>
+            <key>PayloadType</key>
+            <string>com.apple.proxy.http.global</string>
+            <key>PayloadUUID</key>
+            <string>1E2D3C4B-5A6B-7C8D-9E0F-A1B2C3D4E5F6</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>ProxyType</key>
+            <string>Manual</string>
+            <!-- THAY ĐỔI: Nhập địa chỉ IP của máy tính đang chạy Proxy (Charles/Burp) -->
+            <key>ProxyServer</key>
+            <string>192.168.1.100</string>
+            <!-- THAY ĐỔI: Nhập Port của máy chủ Proxy -->
+            <key>ProxyServerPort</key>
+            <integer>8888</integer>
+        </dict>
+    </array>
+    
+    <!-- Thông tin tổng quan của Profile -->
+    <key>PayloadDescription</key>
+    <string>DNS, CHỨNG CHỈ VÀ PROXY ĐƯỢC LÀM BỞI HTIEN07</string>
+    <key>PayloadDisplayName</key>
+    <string>GIỮ GOLD 3S/10S (FULL ROOT SYSTEM)</string>
+    <key>PayloadIdentifier</key>
+    <string>com.htien07.labprofile.full</string>
+    <key>PayloadRemovalDisallowed</key>
+    <false/>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>9A8B7C6D-5E4F-3A2B-1C0D-E9F8A7B6C5D4</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>
