@@ -2,6 +2,15 @@
 #!name=locket gold with ĐHT
 #!desc=Crack By andanh447 (HT)
 
+[Rule]
+# Đảm bảo các kết nối của Locket đi trực tiếp để tốc độ tải video không bị nghẽn bởi Proxy
+DOMAIN-SUFFIX,locketcamera.com,DIRECT
+DOMAIN-SUFFIX,firebasestorage.googleapis.com,DIRECT
+DOMAIN,api.revenuecat.com,DIRECT
+DOMAIN,firebaseremoteconfig.googleapis.com,DIRECT
+
+FINAL,DIRECT
+
 [Script]
 # ~ By ĐHT VIPPRO
 # ～ Egern transfer to Shadowrocket & Surge & LanceX
@@ -10,4 +19,4 @@ revenuecat = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(r
 deleteHeader = type=http-request, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/deleteheader.js, timeout=60
 
 [MITM]
-hostname = %APPEND% api.revenuecat.com
+hostname = %APPEND%, api.revenuecat.com,firebaseremoteconfig.googleapis.com
