@@ -1,0 +1,5 @@
+[Script]
+CapCutPro = type=http-response,pattern=^https?:\/\/(api|edit)\.(capcut|jianying)\.com\/.*(user\/profile|vip\/info|config).*$,requires-body=1,max-size=0,script-path=capcut_pro.js
+
+[MITM]
+hostname = api.capcut.com, edit.capcut.com, *.jianying.com
