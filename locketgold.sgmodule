@@ -14,7 +14,7 @@ FINAL,DIRECT
 [Script]
 # ~ By ĐHT VIPPRO
 # ～ Egern transfer to Shadowrocket & Surge & LanceX
-revenuecat = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket_30s.js, requires-body=true, max-size=-1, timeout=60
+revenuecat = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$),script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locketHT.js, requires-body=true, max-size=-1, timeout=60
 
 deleteHeader = type=http-request, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/deleteheader.js, timeout=60
 
