@@ -55,8 +55,8 @@ if (ua.includes("Locket")) {
             ],
             primary_button_title: "Done",
             campaign: "locket_gold_NMS",
-            start_at: "9999-09-09T00:00:00",
-            end_at: "9999-09-09T23:59:59",
+            start_at: "2020-01-01T00:00:00",
+            end_at: "2099-12-31T23:59:59",
             use_local_time_zone: true
         }),
         android_subscribe_gold_button_enabled: "false",
