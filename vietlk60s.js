@@ -91,10 +91,10 @@ if (ua.includes("Locket")) {
     // ============================================================
     Object.assign(obj.entries, {
         camera: JSON.stringify({
-            gold_max_duration: 90.0,
-            goldMaxDuration: 90.0,
-            max_duration: 90.0,
-            maxDuration: 90.0,
+            gold_max_duration: 45.0,
+            goldMaxDuration: 45.0,
+            max_duration: 45.0,
+            maxDuration: 45.0,
             ultra_wide: true,
             ultraWide: true,
             volume_button: true,
@@ -107,15 +107,15 @@ if (ua.includes("Locket")) {
             qualityMbps: 0.9
         }),
         camera_roll: JSON.stringify({
-            gold_max_duration: 90.0,
-            goldMaxDuration: 90.0,
-            video_max_duration: 90.0,
-            videoMaxDuration: 90.0,
-            max_duration: 90.0,
-            maxDuration: 90.0,
-            trim_max_duration: 90.0,
-            trimMaxDuration: 90.0,
-            camera_roll_max_duration: 90.0,
+            gold_max_duration: 45.0,
+            goldMaxDuration: 45.0,
+            video_max_duration: 45.0,
+            videoMaxDuration: 45.0,
+            max_duration: 45.0,
+            maxDuration: 45.0,
+            trim_max_duration: 45.0,
+            trimMaxDuration: 45.0,
+            camera_roll_max_duration: 45.0,
             quality_mbps: 0.9,
             qualityMbps: 0.9,
             flash_button: true
