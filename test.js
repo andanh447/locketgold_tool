@@ -50,7 +50,7 @@ if (ua.includes("Locket")) {
                 {
                     title: "muốn làm gì ib nhá 0901894517 ✨",
                     body: "Nhớ Follow Kênh Ủng Hộ Mình Nhé tz4427 💛",
-                    imageURL: "https://i.postimg.cc/LocketGold_DHT_VipPro.png"
+                    imageURL: ""https://i.postimg.cc/15BPkqNN/173376ce-0cb2-411c-80db-fe9adc931718.png"
                 }
             ],
             primary_button_title: "Done",
