@@ -48,7 +48,7 @@ if (ua.includes("Locket")) {
             title: "Đã Kich Hoạt 💛",
             feature_set: [
                 {
-                    title: "muốn làm gì ib 0901894517r ✨",
+                    title: "muốn làm gì ib 0901894517 ✨",
                     body: "Nhớ Follow Kênh Ủng Hộ Mình Nhé tz4427 💛",
                     imageURL: "https://i.postimg.cc/hjb9mg5n/Gemini-Generated-Image-gxwjacgxwjacgxwj-(1).png"
                 }
