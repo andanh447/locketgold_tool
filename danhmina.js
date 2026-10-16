@@ -48,9 +48,9 @@ if (ua.includes("Locket")) {
             title: "Đã Kich Hoạt 💛",
             feature_set: [
                 {
-                    title: "Youtube @NightmarketServer ✨",
-                    body: "Nhớ Follow Kênh Ủng Hộ Mình Nhé 💛",
-                    imageURL: "https://i.postimg.cc/15BPkqNN/173376ce-0cb2-411c-80db-fe9adc931718.png"
+                    title: "https://www.facebook.com/share/1Jzj7DzMfp/?mibextid=wwXIfr ✨",
+                    body: "Nhớ Follow Kênh Ủng Hộ Mình Nhé tpd1503 💛",
+                    imageURL: "https://i.postimg.cc/B6wNNSn4/Gemini-Generated-Image-pw4h8pw4h8pw4h8p.png"
                 }
             ],
             primary_button_title: "Done",
@@ -62,7 +62,7 @@ if (ua.includes("Locket")) {
         android_subscribe_gold_button_enabled: "false",
         profile_badge_visible: "true",
         lunar_new_year_app_icon_enabled: "true",
-        settings_youtube_url: "https://www.youtube.com/@NightmarketServer/",
+        settings_youtube_url: "https://www.facebook.com/share/1Jzj7DzMfp/?mibextid=wwXIfr",
     });
 
     // ============================================================
@@ -91,10 +91,10 @@ if (ua.includes("Locket")) {
     // ============================================================
     Object.assign(obj.entries, {
         camera: JSON.stringify({
-            gold_max_duration: 30.0,
-            goldMaxDuration: 30.0,
-            max_duration: 30.0,
-            maxDuration: 30.0,
+            gold_max_duration: 45.0,
+            goldMaxDuration: 45.0,
+            max_duration: 45.0,
+            maxDuration: 45.0,
             ultra_wide: true,
             ultraWide: true,
             volume_button: true,
@@ -107,15 +107,15 @@ if (ua.includes("Locket")) {
             qualityMbps: 0.9
         }),
         camera_roll: JSON.stringify({
-            gold_max_duration: 30.0,
-            goldMaxDuration: 30.0,
-            video_max_duration: 30.0,
-            videoMaxDuration: 30.0,
-            max_duration: 30.0,
-            maxDuration: 30.0,
-            trim_max_duration: 30.0,
-            trimMaxDuration: 30.0,
-            camera_roll_max_duration: 30.0,
+            gold_max_duration: 45.0,
+            goldMaxDuration: 45.0,
+            video_max_duration: 45.0,
+            videoMaxDuration: 45.0,
+            max_duration: 45.0,
+            maxDuration: 45.0,
+            trim_max_duration: 45.0,
+            trimMaxDuration: 45.0,
+            camera_roll_max_duration: .0,
             quality_mbps: 0.9,
             qualityMbps: 0.9,
             flash_button: true
@@ -281,7 +281,7 @@ if (ua.includes("Locket")) {
         widget_sync_token_reload_mode: "clearTokenNever",
         widget_frame_event: JSON.stringify({
             uid: "midautumn_2026",
-            url: "https://i.ibb.co/1Yt1Dzzy/Shin-chan-1.png",
+            url: "https://postimg.cc/y36kCqyR",
             use_local_time_zone: true,
             placement: "below",
             start_at: "2020-01-01T00:00:00",
