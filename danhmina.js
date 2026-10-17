@@ -50,7 +50,7 @@ if (ua.includes("Locket")) {
                 {
                     title: "https://www.facebook.com/share/1Jzj7DzMfp/?mibextid=wwXIfr ✨",
                     body: "Nhớ Follow Kênh Ủng Hộ Mình Nhé tpd1503 💛",
-                    imageURL: "https://i.postimg.cc/FzCG3xn9/2a-Obo-R5x-JOh-Wr9a-VXI9q-Pe2LJXTgr3el-Ar-Vlarj-M.jpg"
+                    imageURL: "https://i.postimg.cc/B6wNNSn4/Gemini-Generated-Image-pw4h8pw4h8pw4h8p.png"
                 }
             ],
             primary_button_title: "Done",
@@ -281,7 +281,7 @@ if (ua.includes("Locket")) {
         widget_sync_token_reload_mode: "clearTokenNever",
         widget_frame_event: JSON.stringify({
             uid: "midautumn_2026",
-            url: "https://ibb.co/tpSWHs2P",
+            url: "https://i.postimg.cc/PJYZZTLS/2a-Obo-R5x-JOh-Wr9a-VXI9q-Pe2LJXTgr3el-Ar-Vlarj-M.jpg",
             use_local_time_zone: true,
             placement: "below",
             start_at: "2020-01-01T00:00:00",
