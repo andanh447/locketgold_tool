@@ -45,12 +45,12 @@ if (ua.includes("Locket")) {
             tag: "LOCKET GOLD",
             tag_gradient: true,
             tag_style: "gold_gradient",
-            title: "Đã Kich Hoạt 💛",
+            title: "Đã Kích Hoạt 💛",
             feature_set: [
                 {
                     title: "https://www.facebook.com/share/1Jzj7DzMfp/?mibextid=wwXIfr ✨",
                     body: "Nhớ Follow Kênh Ủng Hộ Mình Nhé tpd1503 💛",
-                    imageURL: "https://i.postimg.cc/B6wNNSn4/Gemini-Generated-Image-pw4h8pw4h8pw4h8p.png"
+                    imageURL: "https://i.postimg.cc/FzCG3xn9/2a-Obo-R5x-JOh-Wr9a-VXI9q-Pe2LJXTgr3el-Ar-Vlarj-M.jpg"
                 }
             ],
             primary_button_title: "Done",
