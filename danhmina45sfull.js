@@ -49,8 +49,8 @@ if (ua.includes("Locket")) {
             feature_set: [
                 {
                     title: "https://www.facebook.com/share/1Jzj7DzMfp/?mibextid=wwXIfr ✨",
-                    body: "Nhớ Follow Kênh Ủng Hộ Mình Nhé tpd1503 💛",
-                    imageURL: "https://i.postimg.cc/B6wNNSn4/Gemini-Generated-Image-pw4h8pw4h8pw4h8p.png"
+                    body: "Tao là bá khí nhất mang tên danh (tpd1503) 💛",
+                    imageURL: "https://i.postimg.cc/KzGjtwzn/IMG-8211.jpg"
                 }
             ],
             primary_button_title: "Done",
@@ -103,8 +103,8 @@ if (ua.includes("Locket")) {
             telephoto: true,
             srgb: true,
             lanczos: true,
-            quality_mbps: 0.9,
-            qualityMbps: 0.9
+            quality_mbps: 1.2,
+            qualityMbps: 1.2
         }),
         camera_roll: JSON.stringify({
             gold_max_duration: 45.0,
@@ -115,9 +115,9 @@ if (ua.includes("Locket")) {
             maxDuration: 45.0,
             trim_max_duration: 45.0,
             trimMaxDuration: 45.0,
-            camera_roll_max_duration: 0.9,
-            quality_mbps: 0.9,
-            qualityMbps: 0.9,
+            camera_roll_max_duration: 1.2,
+            quality_mbps: 1.2,
+            qualityMbps: 1.2,
             flash_button: true
         }),
         live_photos: JSON.stringify({
@@ -163,16 +163,16 @@ if (ua.includes("Locket")) {
         trim_max_duration: "45.0",
         gold_max_duration: "45.0",
         goldMaxDuration: "45.0",
-        video_quality_mbps: "0.9",
+        video_quality_mbps: "1.2",
         video_sound_enabled: "true",
         microphone_enabled: "true",
         camera_microphone_enabled: "true",
         audio_session_deactivation_enabled: "true",
         zoom_enabled: "true",
         upload_main: "false",
-        upload_main_image_quality: "0.9",
+        upload_main_image_quality: "1.2",
         upload_main_image_size: "1440",
-        upload_thumbnail_image_quality: "0.9",
+        upload_thumbnail_image_quality: "1.2",
         upload_thumbnail_image_size: "1020"
     });
 
