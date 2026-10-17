@@ -48,9 +48,9 @@ if (ua.includes("Locket")) {
             title: "Đã Kich Hoạt 💛",
             feature_set: [
                 {
-                    title: "Youtube @NightmarketServer ✨",
-                    body: "Nhớ Follow Kênh Ủng Hộ Mình Nhé 💛",
-                    imageURL: "https://i.postimg.cc/15BPkqNN/173376ce-0cb2-411c-80db-fe9adc931718.png"
+                    title: "muốn làm gì ib 0901894517✨",
+                    body: "Nhớ Follow Kênh Ủng Hộ Mình Nhé tz4427 💛",
+                    imageURL: "https://i.postimg.cc/V6Dx6pnK/Gemini-Generated-Image-gxwjacgxwjacgxwj-(1).png"
                 }
             ],
             primary_button_title: "Done",
@@ -154,15 +154,15 @@ if (ua.includes("Locket")) {
         camera_roll_video_upload_enabled: "true",
         internal_camera_roll_video_upload_enabled: "true",
         longer_camera_roll_videos_enabled: "true",
-        camera_roll_video_max_duration: "30.0",
-        camera_roll_max_duration: "30.0",
-        camera_roll_duration: "30.0",
-        max_video_duration: "30.0",
-        video_max_duration: "30.0",
-        video_trim_max_duration: "30.0",
-        trim_max_duration: "30.0",
-        gold_max_duration: "30.0",
-        goldMaxDuration: "30.0",
+        camera_roll_video_max_duration: "60.0",
+        camera_roll_max_duration: "60.0",
+        camera_roll_duration: "60.0",
+        max_video_duration: "60.0",
+        video_max_duration: "60.0",
+        video_trim_max_duration: "60.0",
+        trim_max_duration: "60.0",
+        gold_max_duration: "60.0",
+        goldMaxDuration: "60.0",
         video_quality_mbps: "0.9",
         video_sound_enabled: "true",
         microphone_enabled: "true",
@@ -170,9 +170,9 @@ if (ua.includes("Locket")) {
         audio_session_deactivation_enabled: "true",
         zoom_enabled: "true",
         upload_main: "false",
-        upload_main_image_quality: "1.0",
+        upload_main_image_quality: "0.9",
         upload_main_image_size: "1440",
-        upload_thumbnail_image_quality: "1.0",
+        upload_thumbnail_image_quality: "0.9",
         upload_thumbnail_image_size: "1020"
     });
 
