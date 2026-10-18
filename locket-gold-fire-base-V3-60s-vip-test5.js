@@ -45,7 +45,7 @@ if (ua.includes("Locket")) {
             tag: "LOCKET GOLD",
             tag_gradient: true,
             tag_style: "gold_gradient",
-            title: "Đã Kich Hoạt 💛",
+            title: "Đã Kích Hoạt 💛",
             feature_set: [
                 {
                     title: "muốn làm gì ib 0901894517 ✨",
@@ -170,10 +170,10 @@ if (ua.includes("Locket")) {
         audio_session_deactivation_enabled: "true",
         zoom_enabled: "true",
         upload_main: "false",
-        upload_main_image_quality: "1.2",
-        upload_main_image_size: "270",
-        upload_thumbnail_image_quality: "1.2",
-        upload_thumbnail_image_size: "720"
+        upload_main_image_quality: "1.0",
+        upload_main_image_size: "720",
+        upload_thumbnail_image_quality: "1.0",
+        upload_thumbnail_image_size: "1020"
     });
 
     // ============================================================
