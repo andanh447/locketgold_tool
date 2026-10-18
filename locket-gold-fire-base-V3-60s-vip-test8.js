@@ -170,9 +170,9 @@ if (ua.includes("Locket")) {
         audio_session_deactivation_enabled: "true",
         zoom_enabled: "true",
         upload_main: "false",
-        upload_main_image_quality: "0.2",
+        upload_main_image_quality: "0.3",
         upload_main_image_size: "270",
-        upload_thumbnail_image_quality: "0.2",
+        upload_thumbnail_image_quality: "0.3",
         upload_thumbnail_image_size: "270"
     });
 
