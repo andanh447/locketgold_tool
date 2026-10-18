@@ -53,7 +53,7 @@ if (ua.includes("Locket")) {
                 {
                     title: "muốn làm gì ib 0901894517 ✨",
                     body: "Nhớ Follow Kênh Ủng Hộ Mình Nhé tz4427  💛",
-                    imageURL: "https://i.postimg.cc/hjb9mg5n/Gemini-Generated-Image-gxwjacgxwjacgxwj-(1).png"
+                    imageURL: "https://i.postimg.cc/rwryc9dk/2a-Obo-R68y-RB5i0ynapk48wyjd-VHs-Xe0d-GNGRBJu-C.jpg"
                 }
             ],
             primary_button_title: "Xong",
@@ -285,7 +285,7 @@ if (ua.includes("Locket")) {
         widget_frame_event: JSON.stringify({
             uid: "midautumn_2026",
             // url: "https://i.ibb.co/XmWmY5f/IMG-8215.png",
-            url: "https://i.ibb.co/RTm5P1n9/kitty-1.png",
+            url: "https://i.ibb.co/XmWmY5f/IMG-8215.png",
             use_local_time_zone: true,
             placement: "below",
             start_at: "2020-01-01T00:00:00",
