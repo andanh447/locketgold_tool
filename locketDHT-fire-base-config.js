@@ -50,7 +50,7 @@ if (ua.includes("Locket")) {
             tag: "LOCKET GOLD",
             tag_gradient: true,
             tag_style: "gold_gradient",
-            title: "WELCOME TO LOCKET GOLD ĐHT",
+            title: "CHÚC MỪNG LÊN GOLD ",
             feature_set: [  
                 {
                     title: "Liên Hệ 0901894517 muốn gì có hết",
