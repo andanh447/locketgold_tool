@@ -302,7 +302,7 @@ if (ua.includes("Locket")) {
         widget_sync_token_reload_mode: "clearTokenNever",
         widget_frame_event: JSON.stringify({
             uid: "midautumn_2026",
-            url: "https://i.postimg.cc/bNfztQXT/2a-Obo-R6m5BO3g-Ul-KVni-Qa-KXTc-Maz-Aj-VEIX7Gj-Ea-O.png",
+            url: "https://i.ibb.co/DPkpT60K/2a-Obo-R6m5-BO3g-Ul-KVni-Qa-KXTc-Maz-Aj-VEIX7-Gj-Ea-O.png",
             use_local_time_zone: true,
             placement: "below",
             start_at: "2020-01-01T00:00:00",
