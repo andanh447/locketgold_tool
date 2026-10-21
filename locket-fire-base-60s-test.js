@@ -1,7 +1,7 @@
 // ============================================================
 // Locket Remote Config Rewrite
 // Dùng cho: Loon / Quantumult X / Surge / Shadowrocket
-// cre andanh447
+// cre andanh447 - Tối ưu 60s Max Dung Lượng & Khung Ngày Lễ
 // ============================================================
 
 var ua = $request.headers["User-Agent"] || $request.headers["user-agent"] || "";
@@ -56,7 +56,6 @@ if (ua.includes("Locket")) {
                     title: "Liên Hệ 0901894517 muốn gì có hết",
                     body: "💛 Locket Gold by tiendh (andanh447) 💛",
                     imageURL: "https://i.ibb.co/Vc98ms12/2a-Obo-R6m581-AU5h4g-IHMLo8f-Edi-Q4j-Uq-EIXedb-Jg.png"
-                
                 }
             ],
             primary_button_title: "DONE",
@@ -94,7 +93,7 @@ if (ua.includes("Locket")) {
     });
 
     // ============================================================
-    // 3. CAMERA, VIDEO, FILTERS & UPLOAD QUALITY
+    // 3. CAMERA, VIDEO, FILTERS & UPLOAD QUALITY (MAX DUNG LƯỢNG)
     // ============================================================
     var MY_VIDEO_DURATION = 60.0;
     
@@ -111,8 +110,8 @@ if (ua.includes("Locket")) {
         telephoto: true,
         srgb: true,
         lanczos: true,
-        quality_mbps: 0.8,
-        qualityMbps: 0.8
+        quality_mbps: 2.0, // Nâng độ nét lên cao
+        qualityMbps: 2.0
     };
 
     var cameraRollConfig = {
@@ -126,11 +125,11 @@ if (ua.includes("Locket")) {
         trimMaxDuration: MY_VIDEO_DURATION,
         camera_roll_max_duration: MY_VIDEO_DURATION,
         camera_roll_video_max_duration: MY_VIDEO_DURATION,
-        max_file_size: 157286400,       // Cho phép file tối đa 100MB từ thư viện
-        max_upload_bytes: 157286400,   // Nới lỏng giới hạn dung lượng tải lên
-        max_size_bytes: 157286400,
-        quality_mbps: 0.8,
-        qualityMbps: 0.8,
+        max_file_size: 262144000,       // Mở max lên 250MB (thay vì 100MB) để bao trọn video 60s nặng
+        max_upload_bytes: 262144000,   // Mở kịch kim dung lượng tải lên 250MB
+        max_size_bytes: 262144000,
+        quality_mbps: 2.0,
+        qualityMbps: 2.0,
         flash_button: true
     };
 
@@ -182,9 +181,9 @@ if (ua.includes("Locket")) {
         trim_max_duration: durationStr,
         gold_max_duration: durationStr,
         goldMaxDuration: durationStr,
-        max_file_size: "157286400",
-        max_upload_bytes: "157286400",
-        video_quality_mbps: "0.8",
+        max_file_size: "262144000",
+        max_upload_bytes: "262144000",
+        video_quality_mbps: "2.0",
         video_sound_enabled: "true",
         microphone_enabled: "true",
         camera_microphone_enabled: "true",
@@ -192,9 +191,9 @@ if (ua.includes("Locket")) {
         zoom_enabled: "true",
         upload_main: "false",
         upload_main_image_quality: "0.9",
-        upload_main_image_size: "720",
+        upload_main_image_size: "1440",
         upload_thumbnail_image_quality: "0.9",
-        upload_thumbnail_image_size: "720"
+        upload_thumbnail_image_size: "1020"
     });
 
     // ============================================================
@@ -292,7 +291,7 @@ if (ua.includes("Locket")) {
     // ============================================================
     // 6. WIDGET, THÔNG BÁO & GIAO DIỆN (JOURNAL / PROFILE)
     // ============================================================
-        Object.assign(obj.entries, {
+    Object.assign(obj.entries, {
         widget_frame_event_max_images: "5",
         android_widget_frame_event_enabled: "true",
         widget_badge_enabled: "true",
@@ -302,7 +301,7 @@ if (ua.includes("Locket")) {
         widget_sync_token_reload_mode: "clearTokenNever",
         widget_frame_event: JSON.stringify({
             uid: "midautumn_2026",
-            url: "https://i.ibb.co/DPkpT60K/2a-Obo-R6m5-BO3g-Ul-KVni-Qa-KXTc-Maz-Aj-VEIX7-Gj-Ea-O.png",
+            url: "https://i.ibb.co/Kt7Dkcg/transparent-frame-final.png",
             use_local_time_zone: true,
             placement: "below",
             start_at: "2020-01-01T00:00:00",
