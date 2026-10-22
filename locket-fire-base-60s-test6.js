@@ -1,7 +1,7 @@
 // ============================================================
 // Locket Remote Config Rewrite
 // Dùng cho: Loon / Quantumult X / Surge / Shadowrocket
-// cre andanh447 - Tối ưu V5: 60s chuẩn (0.6 Mbps) & Đổi mã Khung
+// cre andanh447 - Bản Final Fix Đăng 60s & Hiện Khung
 // ============================================================
 
 var ua = $request.headers["User-Agent"] || $request.headers["user-agent"] || "";
@@ -93,11 +93,9 @@ if (ua.includes("Locket")) {
     });
 
     // ============================================================
-    // 3. CAMERA, VIDEO, FILTERS & UPLOAD QUALITY (FIX LỖI UP 60S)
+    // 3. CAMERA, VIDEO, FILTERS & UPLOAD QUALITY
     // ============================================================
-    var MY_VIDEO_DURATION = 60.0; // Quay full vòng 60s
-    var BITRATE = 0.6;            // Nén cực nhẹ để 12 Pro Max nén phát ăn ngay, ko tràn RAM
-    var MAX_SIZE = 262144000;     // Mở cổng 250MB đón video
+    var MY_VIDEO_DURATION = 60.0;
     
     var cameraConfig = {
         gold_max_duration: MY_VIDEO_DURATION,
@@ -112,8 +110,8 @@ if (ua.includes("Locket")) {
         telephoto: true,
         srgb: true,
         lanczos: true,
-        quality_mbps: BITRATE,
-        qualityMbps: BITRATE
+        quality_mbps: 0.5, // Nén cực độ để đăng trót lọt 60s
+        qualityMbps: 0.5
     };
 
     var cameraRollConfig = {
@@ -127,11 +125,11 @@ if (ua.includes("Locket")) {
         trimMaxDuration: MY_VIDEO_DURATION,
         camera_roll_max_duration: MY_VIDEO_DURATION,
         camera_roll_video_max_duration: MY_VIDEO_DURATION,
-        max_file_size: MAX_SIZE,       
-        max_upload_bytes: MAX_SIZE,   
-        max_size_bytes: MAX_SIZE,
-        quality_mbps: BITRATE,
-        qualityMbps: BITRATE,
+        max_file_size: 524288000,       // Mở max cổng Server lên 500MB
+        max_upload_bytes: 524288000,   
+        max_size_bytes: 524288000,
+        quality_mbps: 0.5,
+        qualityMbps: 0.5,
         flash_button: true
     };
 
@@ -183,9 +181,9 @@ if (ua.includes("Locket")) {
         trim_max_duration: durationStr,
         gold_max_duration: durationStr,
         goldMaxDuration: durationStr,
-        max_file_size: MAX_SIZE.toString(),
-        max_upload_bytes: MAX_SIZE.toString(),
-        video_quality_mbps: BITRATE.toString(),
+        max_file_size: "524288000",
+        max_upload_bytes: "524288000",
+        video_quality_mbps: "0.5",
         video_sound_enabled: "true",
         microphone_enabled: "true",
         camera_microphone_enabled: "true",
@@ -291,7 +289,7 @@ if (ua.includes("Locket")) {
     });
 
     // ============================================================
-    // 6. WIDGET, THÔNG BÁO & GIAO DIỆN (ĐỔI MÃ KHUNG VƯỢT CACHE)
+    // 6. WIDGET, THÔNG BÁO & GIAO DIỆN (JOURNAL / PROFILE)
     // ============================================================
         Object.assign(obj.entries, {
         widget_frame_event_max_images: "5",
@@ -301,17 +299,14 @@ if (ua.includes("Locket")) {
         widget_stale_state_enabled: "false",
         widget_last_sent_indicator: "false",
         widget_sync_token_reload_mode: "clearTokenNever",
-        
-        // BÉ ĐỔI UID MỚI TINH KHÔNG ĐỤNG HÀNG ĐỂ ÉP HIỆN KHUNG NÀY:
         widget_frame_event: JSON.stringify({
-            uid: "super_vip_frame_60s_v1",
+            uid: "vip_frame_tet_2026", // Đã đổi mã Khung mới tinh để trị bệnh tàng hình
             url: "https://i.ibb.co/DPkpT60K/2a-Obo-R6m5-BO3g-Ul-KVni-Qa-KXTc-Maz-Aj-VEIX7-Gj-Ea-O.png",
             use_local_time_zone: true,
             placement: "below",
             start_at: "2020-01-01T00:00:00",
             end_at: "2099-12-31T23:59:59"
         }),
-        
         live_activity_onboarding: "true",
         live_activity_onboarding_variant: "friending",
         register_live_activity_push_to_start_token: "true",
@@ -350,6 +345,16 @@ if (ua.includes("Locket")) {
         widget_stale_state_enabled: "false",
         widget_last_sent_indicator: "false",
         widget_sync_token_reload_mode: "clearTokenNever",
+
+        // Chốt chặn ép hiện Khung Ngày Lễ cho 12 Pro Max:
+        widget_frame_event: JSON.stringify({
+            uid: "vip_frame_tet_2026", 
+            url: "https://i.ibb.co/DPkpT60K/2a-Obo-R6m5-BO3g-Ul-KVni-Qa-KXTc-Maz-Aj-VEIX7-Gj-Ea-O.png",
+            use_local_time_zone: true,
+            placement: "below",
+            start_at: "2020-01-01T00:00:00",
+            end_at: "2099-12-31T23:59:59"
+        }),
         
         // Kích hoạt tính năng Custom Widget Frame trong Locket Gold
         custom_widget_frames: "enabled",
