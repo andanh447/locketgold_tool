@@ -6,6 +6,17 @@
 #!howtouse=shadowrocket ĐHT
 #Shadowrocket Configuration - ALL IN Đ.H.T (htienz07)
 
+[Rule]
+AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
+DOMAIN,gdmf.apple.com,REJECT
+DOMAIN,crl.apple.com,REJECT
+DOMAIN,appledid.apple.com,REJECT
+DOMAIN,certs.apple.com,REJECT
+DOMAIN,valid.apple.com,REJECT
+DOMAIN,ppq.apple.com,REJECT
+DOMAIN,ocsp2.apple.com,REJECT
+DOMAIN,ocsp.apple.com,REJECT
 
 [Header Rewrite]
 ^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del x-revenuecat-etag
