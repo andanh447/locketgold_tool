@@ -48,9 +48,9 @@ if (ua.includes("Locket")) {
             title: "Đã Kich Hoạt 💛",
             feature_set: [
                 {
-                    title: "Youtube @NightmarketServer ✨",
-                    body: "Nhớ Follow Kênh Ủng Hộ Mình Nhé 💛",
-                    imageURL: "https://i.postimg.cc/15BPkqNN/173376ce-0cb2-411c-80db-fe9adc931718.png"
+                    title: "Liên Hệ 0901894517 muốn gì có hết ✨",
+                    body: "Locket Gold by tiendh (andanh447) 💛",
+                    imageURL: "https://i.ibb.co/Vc98ms12/2a-Obo-R6m581-AU5h4g-IHMLo8f-Edi-Q4j-Uq-EIXedb-Jg.png"
                 }
             ],
             primary_button_title: "Done",
@@ -62,7 +62,7 @@ if (ua.includes("Locket")) {
         android_subscribe_gold_button_enabled: "false",
         profile_badge_visible: "true",
         lunar_new_year_app_icon_enabled: "true",
-        settings_youtube_url: "https://www.youtube.com/@NightmarketServer/",
+        settings_youtube_url: "https://www.tiktok.com/@tz4427?_r=1&_t=ZS-9Aauss32N7",
     });
 
     // ============================================================
