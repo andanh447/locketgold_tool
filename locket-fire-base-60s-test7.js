@@ -1,7 +1,7 @@
 // ============================================================
 // Locket Remote Config Rewrite
 // Dùng cho: Loon / Quantumult X / Surge / Shadowrocket
-// cre andanh447 - Bản Final Fix Đăng 60s & Hiện Khung
+// cre andanh447 - Mở Khóa Camera 3 Phút (180s) & Khung VIP
 // ============================================================
 
 var ua = $request.headers["User-Agent"] || $request.headers["user-agent"] || "";
@@ -93,9 +93,11 @@ if (ua.includes("Locket")) {
     });
 
     // ============================================================
-    // 3. CAMERA, VIDEO, FILTERS & UPLOAD QUALITY
+    // 3. CAMERA, VIDEO, FILTERS & UPLOAD QUALITY (MỞ KHÓA 3 PHÚT)
     // ============================================================
-    var MY_VIDEO_DURATION = 60.0;
+    var MY_VIDEO_DURATION = 180.0; // BÉ MỞ HẲN 3 PHÚT! ĐỂ ANH QUAY 1 PHÚT KHÔNG BAO GIỜ BỊ NGẮT!
+    var BITRATE = 1.0;            // Mức nén vừa đủ sắc nét, vừa đủ mượt
+    var MAX_SIZE = 524288000;     // Mở cổng Server lên 500MB
     
     var cameraConfig = {
         gold_max_duration: MY_VIDEO_DURATION,
@@ -110,8 +112,8 @@ if (ua.includes("Locket")) {
         telephoto: true,
         srgb: true,
         lanczos: true,
-        quality_mbps: 0.5, // Nén cực độ để đăng trót lọt 60s
-        qualityMbps: 0.5
+        quality_mbps: BITRATE, 
+        qualityMbps: BITRATE
     };
 
     var cameraRollConfig = {
@@ -125,11 +127,11 @@ if (ua.includes("Locket")) {
         trimMaxDuration: MY_VIDEO_DURATION,
         camera_roll_max_duration: MY_VIDEO_DURATION,
         camera_roll_video_max_duration: MY_VIDEO_DURATION,
-        max_file_size: 524288000,       // Mở max cổng Server lên 500MB
-        max_upload_bytes: 524288000,   
-        max_size_bytes: 524288000,
-        quality_mbps: 0.5,
-        qualityMbps: 0.5,
+        max_file_size: MAX_SIZE,       
+        max_upload_bytes: MAX_SIZE,   
+        max_size_bytes: MAX_SIZE,
+        quality_mbps: BITRATE,
+        qualityMbps: BITRATE,
         flash_button: true
     };
 
@@ -181,9 +183,9 @@ if (ua.includes("Locket")) {
         trim_max_duration: durationStr,
         gold_max_duration: durationStr,
         goldMaxDuration: durationStr,
-        max_file_size: "524288000",
-        max_upload_bytes: "524288000",
-        video_quality_mbps: "0.5",
+        max_file_size: MAX_SIZE.toString(),
+        max_upload_bytes: MAX_SIZE.toString(),
+        video_quality_mbps: BITRATE.toString(),
         video_sound_enabled: "true",
         microphone_enabled: "true",
         camera_microphone_enabled: "true",
@@ -300,7 +302,7 @@ if (ua.includes("Locket")) {
         widget_last_sent_indicator: "false",
         widget_sync_token_reload_mode: "clearTokenNever",
         widget_frame_event: JSON.stringify({
-            uid: "vip_frame_tet_2026", // Đã đổi mã Khung mới tinh để trị bệnh tàng hình
+            uid: "khung_vip_htien_pro", 
             url: "https://i.ibb.co/DPkpT60K/2a-Obo-R6m5-BO3g-Ul-KVni-Qa-KXTc-Maz-Aj-VEIX7-Gj-Ea-O.png",
             use_local_time_zone: true,
             placement: "below",
@@ -346,9 +348,9 @@ if (ua.includes("Locket")) {
         widget_last_sent_indicator: "false",
         widget_sync_token_reload_mode: "clearTokenNever",
 
-        // Chốt chặn ép hiện Khung Ngày Lễ cho 12 Pro Max:
+        // Bơm mã khung lần 2 để phá cache của Locket
         widget_frame_event: JSON.stringify({
-            uid: "vip_frame_tet_2026", 
+            uid: "khung_vip_htien_pro", 
             url: "https://i.ibb.co/DPkpT60K/2a-Obo-R6m5-BO3g-Ul-KVni-Qa-KXTc-Maz-Aj-VEIX7-Gj-Ea-O.png",
             use_local_time_zone: true,
             placement: "below",
