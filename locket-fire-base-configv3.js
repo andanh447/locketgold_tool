@@ -2,7 +2,7 @@
 // Locket Remote Config Rewrite
 // Endpoint: firebaseremoteconfig.googleapis.com
 // Dùng cho: Loon / Quantumult X / Surge / Shadowrocket
-// Tiktok: @tz4427
+// Tác giả: @andanh447
 // Vui lòng khi chia sẽ hoặc lấy về, làm ơn để nguồn giúp mình. Mình cảm ơn
 // ============================================================
 
@@ -52,15 +52,15 @@ if (ua.includes("Locket")) {
             tag: "LOCKET GOLD ALL FEATURES",
             tag_gradient: true,
             tag_style: "gold_gradient",
-            title: "Lên  Gold Xịn rồi đó 😎",
+            title: "Lên Locket Gold rồi đó 😎",
             feature_set: [
                 {
-                    title: "muốn làm gì liên hệ 0901894517 ✨",
-                    body: "ai quý ủng hộ 1 theo dõi tz4427 💛",
+                    title: "Liên Hệ 0901894517 muốn gì có hết ✨",
+                    body: " Locket Gold by tiendh (andanh447) 💛",
                     imageURL: "https://i.ibb.co/Vc98ms12/2a-Obo-R6m581-AU5h4g-IHMLo8f-Edi-Q4j-Uq-EIXedb-Jg.png"
                 }
             ],
-            primary_button_title: "done rồi nhá!",
+            primary_button_title: "Xong rồi nhé!",
             campaign: "locket_gold_welcome_v3",
             start_at: "2020-01-01T00:00:00",
             end_at: "2099-12-31T23:59:59",
@@ -69,8 +69,8 @@ if (ua.includes("Locket")) {
         android_subscribe_gold_button_enabled: "false",
         profile_badge_visible: "true",
         lunar_new_year_app_icon_enabled: "true",
-        settings_facebook_url: "https://www.facebook.com/share/19rbZj2UYL/",
-        settings_tiktok_url: "https://www.tiktok.com/@tz4427?_r=1&_t=ZS-9Aauss32N7"
+        settings_instagram_url: "https://www.instagram.com/khongphaidinhtien_chinh_chu?psln=Z3h2cXVlbDRnOXNk&utm_source=qr",
+        settings_tiktok_url: "https://www.tiktok.com/@tz4427?_r=1&_t=ZS-9AlIH0CJNDe"
     });
 
     // ============================================================
