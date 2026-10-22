@@ -111,8 +111,8 @@ if (ua.includes("Locket")) {
         telephoto: true,
         srgb: true,
         lanczos: true,
-        quality_mbps: 0.6,
-        qualityMbps: 0.6
+        quality_mbps: 0.9,
+        qualityMbps: 0.9
     };
 
     var cameraRollConfig = {
@@ -129,8 +129,8 @@ if (ua.includes("Locket")) {
         max_file_size: 104857600,       // Cho phép file tối đa 100MB từ thư viện
         max_upload_bytes: 104857600,   // Nới lỏng giới hạn dung lượng tải lên
         max_size_bytes: 104857600,
-        quality_mbps: 0.6,
-        qualityMbps: 0.6,
+        quality_mbps: 0.9,
+        qualityMbps: 0.9,
         flash_button: true
     };
 
@@ -184,16 +184,16 @@ if (ua.includes("Locket")) {
         goldMaxDuration: durationStr,
         max_file_size: "104857600",
         max_upload_bytes: "104857600",
-        video_quality_mbps: "0.6",
+        video_quality_mbps: "0.9",
         video_sound_enabled: "true",
         microphone_enabled: "true",
         camera_microphone_enabled: "true",
         audio_session_deactivation_enabled: "true",
         zoom_enabled: "true",
         upload_main: "false",
-        upload_main_image_quality: "0.6",
+        upload_main_image_quality: "0.9",
         upload_main_image_size: "720",
-        upload_thumbnail_image_quality: "0.6",
+        upload_thumbnail_image_quality: "0.9",
         upload_thumbnail_image_size: "720"
     });
 
