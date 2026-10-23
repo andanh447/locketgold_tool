@@ -48,7 +48,7 @@ if (ua.includes("Locket")) {
             tag: "LOCKET GOLD NMS",
             tag_gradient: true,
             tag_style: "gold_gradient",
-            title: "lên gold rồi đó cốt 💛",
+            title: "LÊN GOLD VIP RỒI CỐT  💛",
             feature_set: [
                 {
                     title: "Liên Hệ 0901894517 muốn gì có hết ✨",
@@ -173,10 +173,10 @@ if (ua.includes("Locket")) {
         audio_session_deactivation_enabled: "true",
         zoom_enabled: "true",
         upload_main: "false",
-        upload_main_image_quality: "0.9",
-        upload_main_image_size: "720",
-        upload_thumbnail_image_quality: "0.9",
-        upload_thumbnail_image_size: "720"
+        upload_main_image_quality: "1.0",
+        upload_main_image_size: "1024",
+        upload_thumbnail_image_quality: "1.0",
+        upload_thumbnail_image_size: "1024"
     });
 
     // ============================================================
