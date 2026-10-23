@@ -45,14 +45,14 @@ if (ua.includes("Locket")) {
             profile_banner: true
         }),
         feature_discovery_popup_config: JSON.stringify({
-            tag: "LOCKET GOLD NMS",
+            tag: "LOCKET GOLD DANH💛MINA",
             tag_gradient: true,
             tag_style: "gold_gradient",
-            title: "Đã Kich Hoạt 💛",
+            title: " LÊN GOLD VIP RÔI NHÁ 💛",
             feature_set: [
                 {
-                    title: "Liên Hệ danh muốn gì có hết ✨",
-                    body: "Locket Gold by danh💛 💛",
+                    title: "Liên Hệ DANH cái gì cũng có ✨",
+                    body: "Locket Gold by phuongdanh 💛",
                     imageURL: "https://i.ibb.co/tpw794RY/2a-Obo-R68y-RB5i0ynapk48wyjd-VHs-Xe0d-GNGRBJu-C.png"
                 }
             ],
@@ -106,8 +106,8 @@ if (ua.includes("Locket")) {
             telephoto: true,
             srgb: true,
             lanczos: true,
-            quality_mbps: 0.9,
-            qualityMbps: 0.9
+            quality_mbps: 0.6,
+            qualityMbps: 0.6
         }),
         camera_roll: JSON.stringify({
             gold_max_duration: 30.0,
@@ -119,8 +119,8 @@ if (ua.includes("Locket")) {
             trim_max_duration: 30.0,
             trimMaxDuration: 30.0,
             camera_roll_max_duration: 30.0,
-            quality_mbps: 0.9,
-            qualityMbps: 0.9,
+            quality_mbps: 0.6,
+            qualityMbps: 0.6,
             flash_button: true
         }),
         live_photos: JSON.stringify({
@@ -166,7 +166,7 @@ if (ua.includes("Locket")) {
         trim_max_duration: "30.0",
         gold_max_duration: "30.0",
         goldMaxDuration: "30.0",
-        video_quality_mbps: "0.9",
+        video_quality_mbps: "0.6",
         video_sound_enabled: "true",
         microphone_enabled: "true",
         camera_microphone_enabled: "true",
@@ -174,9 +174,9 @@ if (ua.includes("Locket")) {
         zoom_enabled: "true",
         upload_main: "false",
         upload_main_image_quality: "1.0",
-        upload_main_image_size: "1440",
+        upload_main_image_size: "1024",
         upload_thumbnail_image_quality: "1.0",
-        upload_thumbnail_image_size: "1020"
+        upload_thumbnail_image_size: "1024"
     });
 
     // ============================================================
