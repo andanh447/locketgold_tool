@@ -53,7 +53,7 @@ if (ua.includes("Locket")) {
                 {
                     title: "LOVE HONEY ✨",
                     body: "Locket Gold by Tiendz 💛",
-                    imageURL: "https://i.ibb.co/Tqqf44Sr/gh-iu.png"
+                    imageURL: "https://i.ibb.co/HLPbfx8s/couple.png"
                 }
             ],
             primary_button_title: "Xong",
