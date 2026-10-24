@@ -7,8 +7,6 @@
 user-agent = Locket/1.0.0 (iPhone; iOS 26.3; Scale/3.00)
 
 [Rule]
-AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
-AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
 DOMAIN,gdmf.apple.com,REJECT
 DOMAIN,crl.apple.com,REJECT
 DOMAIN,appledid.apple.com,REJECT
