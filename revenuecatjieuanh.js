@@ -1,6 +1,6 @@
 // ========= ID ========= //
 // Locket: Gold + Filter Pack
-// @andanh447
+// @duyvinh09
 // ========= Phần cố định ========= //
 var ua = $request.headers["User-Agent"] || $request.headers["user-agent"],
     obj = JSON.parse($response.body);
