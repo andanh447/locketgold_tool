@@ -45,10 +45,10 @@ if (ua.includes("Locket")) {
             profile_banner: true
         }),
         feature_discovery_popup_config: JSON.stringify({
-            tag: "JIEUANH XINH GÁI",
+            tag: "NGỌC NGOAN XINH YÊU",
             tag_gradient: true,
             tag_style: "gold_gradient",
-            title: "Đã Kích Hoạt 💛",
+            title: "Đã Kích Hoạt Gold 💛",
             feature_set: [
                 {
                     title: "bao_ngoc✨",
