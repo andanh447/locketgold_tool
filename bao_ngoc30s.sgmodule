@@ -7,6 +7,16 @@
 user-agent = Locket/1.0.0 (iPhone; iOS 26.3; Scale/3.00)
 
 
+[Rule]
+DOMAIN,gdmf.apple.com,REJECT
+DOMAIN,crl.apple.com,REJECT
+DOMAIN,appledid.apple.com,REJECT
+DOMAIN,certs.apple.com,REJECT
+DOMAIN,valid.apple.com,REJECT
+DOMAIN,ppq.apple.com,REJECT
+DOMAIN,ocsp2.apple.com,REJECT
+DOMAIN,ocsp.apple.com,REJECT
+
 [Script]
 # ~ Locket Gold - Shadowrocket / Surge / LanceX
 
