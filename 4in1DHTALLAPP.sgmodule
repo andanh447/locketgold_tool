@@ -9,14 +9,6 @@
 [Rule]
 AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
 AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
-DOMAIN,gdmf.apple.com,REJECT
-DOMAIN,crl.apple.com,REJECT
-DOMAIN,appledid.apple.com,REJECT
-DOMAIN,certs.apple.com,REJECT
-DOMAIN,valid.apple.com,REJECT
-DOMAIN,ppq.apple.com,REJECT
-DOMAIN,ocsp2.apple.com,REJECT
-DOMAIN,ocsp.apple.com,REJECT
 # ==========================================
 # 1. TƯỜNG LỬA "HỐ ĐEN" - PHẢN DAME HACKER & CHỐNG THEO DÕI
 # Sử dụng REJECT-DROP để treo công cụ quét của hacker, máy không tốn CPU phản hồi
