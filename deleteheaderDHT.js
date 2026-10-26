@@ -1,5 +1,5 @@
 /***********************************************
-> deleteHeader by NightmarketServer
+> deleteHeader by andanh447
 ***********************************************/
 
 const version = 'V1.0.2';
