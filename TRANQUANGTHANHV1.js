@@ -51,7 +51,7 @@ if (ua.includes("Locket")) {
             title: "KÍCH HOẠT THÀNH CÔNG 💛",
             feature_set: [
                 {
-                    title: " LIÊN HỆ ZL: 0901894517 ✨",
+                    title: "LIÊN HỆ ZL:0848130763 ✨",
                     body: "BOTtele:@shoppremium_vn2026_bot 💛",
                     imageURL: "https://i.ibb.co/9mzHK9ZL/tranquangthanh.png"
                 }
