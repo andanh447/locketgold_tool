@@ -5,13 +5,10 @@
 #!moduleUrl=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/ALLin1DHT.sgmodule
 #!howtouse=Shadowrocket ĐHT
 
-# ==========================================
-# CẤU HÌNH TỐI ƯU & CHẶN QUẢNG CÁO
-# ==========================================
+
 [Rule]
 AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
 AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
-[Rule]
 # ==========================================
 # 1. TƯỜNG LỬA "HỐ ĐEN" - PHẢN DAME HACKER & CHỐNG THEO DÕI
 # Sử dụng REJECT-DROP để treo công cụ quét của hacker, máy không tốn CPU phản hồi
@@ -69,11 +66,29 @@ DOMAIN-SUFFIX,adjust.com,REJECT-DROP
 DOMAIN-SUFFIX,rayjump.com,REJECT-DROP
 DOMAIN-SUFFIX,criteo.com,REJECT-DROP
 DOMAIN-KEYWORD,adsystem,REJECT-DROP
+# Chặn các domain quảng cáo và theo dõi phổ biến
+DOMAIN-SUFFIX,googlesyndication.com,REJECT
+DOMAIN-SUFFIX,googleadservices.com,REJECT
+DOMAIN-SUFFIX,admob.com,REJECT
+DOMAIN-SUFFIX,doubleclick.net,REJECT
+DOMAIN-SUFFIX,facebook.com/tr,REJECT
+DOMAIN-SUFFIX,ads.mopub.com,REJECT
+DOMAIN-SUFFIX,unityads.unity3d.com,REJECT
+DOMAIN-SUFFIX,adjust.com,REJECT
+DOMAIN-SUFFIX,appsflyer.com,REJECT
+DOMAIN-SUFFIX,branch.io,REJECT
+DOMAIN-SUFFIX,crashlytics.com,REJECT
 
-# ==========================================
-# 4. QUY TẮC CUỐI: CÁC KẾT NỐI KHÁC VÀO PROXY
-# ==========================================
-FINAL,PROXY
+# Chặn các tên miền quảng cáo chung
+DOMAIN-KEYWORD,adservice,REJECT
+DOMAIN-KEYWORD,admob,REJECT
+DOMAIN-KEYWORD,analytics,REJECT
+DOMAIN-KEYWORD,telemetry,REJECT
+DOMAIN-KEYWORD,tracking,REJECT
+
+# Quy tắc chuyển hướng cơ bản cho phần còn lại (tùy chọn theo ý anh)
+FINAL,DIRECT
+
 
 [Header Rewrite]
 ^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del x-revenuecat-etag
