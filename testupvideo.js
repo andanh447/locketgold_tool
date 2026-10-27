@@ -27,8 +27,7 @@ if (ua.includes("Locket")) {
             video: "enabled",
             custom_widget_frames: "enabled",
             streak_recovery: "enabled"
-            ai_lens: "enabled",
-            lens_carousel_v2: "enabled"
+            
         }),
         upsell_features: JSON.stringify({
             app_icon_picker: true,
@@ -95,10 +94,6 @@ if (ua.includes("Locket")) {
     // 3. CAMERA, VIDEO, FILTERS & UPLOAD QUALITY
     // ============================================================
     Object.assign(obj.entries, {
-        ai_lens_enabled: "true",
-        lens_carousel_enabled: "true",
-        lens_carousel_v2_enabled: "true",
-        show_lens_button: "true",
         camera: JSON.stringify({
             gold_max_duration: 30.0,
             goldMaxDuration: 30.0,
@@ -116,15 +111,15 @@ if (ua.includes("Locket")) {
             qualityMbps: 0.4
         }),
         camera_roll: JSON.stringify({
-            gold_max_duration: 30.0,
-            goldMaxDuration: 30.0,
-            video_max_duration: 30.0,
-            videoMaxDuration: 30.0,
-            max_duration: 30.0,
-            maxDuration: 30.0,
-            trim_max_duration: 30.0,
-            trimMaxDuration: 30.0,
-            camera_roll_max_duration: 30.0,
+            gold_max_duration: 90.0,
+            goldMaxDuration: 90.0,
+            video_max_duration: 90.0,
+            videoMaxDuration: 90.0,
+            max_duration: 90.0,
+            maxDuration: 90.0,
+            trim_max_duration: 90.0,
+            trimMaxDuration: 90.0,
+            camera_roll_max_duration: 90.0,
             quality_mbps: 0.4,
             qualityMbps: 0.4,
             flash_button: true
@@ -163,15 +158,15 @@ if (ua.includes("Locket")) {
         camera_roll_video_upload_enabled: "true",
         internal_camera_roll_video_upload_enabled: "true",
         longer_camera_roll_videos_enabled: "true",
-        camera_roll_video_max_duration: "30.0",
-        camera_roll_max_duration: "30.0",
-        camera_roll_duration: "30.0",
-        max_video_duration: "30.0",
-        video_max_duration: "30.0",
-        video_trim_max_duration: "30.0",
-        trim_max_duration: "30.0",
-        gold_max_duration: "30.0",
-        goldMaxDuration: "30.0",
+        camera_roll_video_max_duration: "90.0",
+        camera_roll_max_duration: "90.0",
+        camera_roll_duration: "90.0",
+        max_video_duration: "90.0",
+        video_max_duration: "90.0",
+        video_trim_max_duration: "90.0",
+        trim_max_duration: "90.0",
+        gold_max_duration: "90.0",
+        goldMaxDuration: "90.0",
         video_quality_mbps: "0.4",
         video_sound_enabled: "true",
         microphone_enabled: "true",
