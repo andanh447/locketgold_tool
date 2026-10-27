@@ -139,7 +139,8 @@ iTunes = type=http-response, pattern=^https?:\/\/buy\.itunes\.apple\.com\/verify
 bazaart = type=http-response,pattern=https://buy.itunes.apple.com/verifyReceipt,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/bazzat.js
 
 # Spotify ĐHT 
-spotify = type=http-response,pattern=^https:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify.js,argument=appid=此处填入APPID&securityKey=此处填入密钥
+spotify-json = type=http-request,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/,requires-body=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify-jsonHT.js
+spotify-proto = type=http-response,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify_protoHT.js,script-update-interval=0
 
 # MOJO
 MOJO = type=http-response,pattern=https:\/\/api\.revenuecat\.com\/v1\/(receipts|subscribers)\/*,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScrpty/main/mojo.js
