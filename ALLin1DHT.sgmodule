@@ -107,22 +107,32 @@ http-request ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:4
 # General Video Ad request
 (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
 
-# ==========================================
-# MODULE VIP / PREMIUM TỔNG HỢP
-# ==========================================
 [Script]
-# --- BỘ MODULE GỐC CỦA ĐHT ---
-# Sub-Store
+#Sub-Store
+#hostname = sub.store
 Sub-Store Core=type=http-request,pattern=^https?:\/\/sub\.store\/((download)|api\/(preview|sync|(utils\/node-info))),script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-1.min.js,requires-body=true,timeout=120
 Sub-Store Simple=type=http-request,pattern=^https?:\/\/sub\.store,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-0.min.js,requires-body=true
 Sub-Store Sync=type=cron,cronexp=0 0 * * *,wake-system=1,timeout=120,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/cron-sync-artifacts.min.js
+#************************************#
 
-# Youtube Premium
+#Youtube Premium (Search|Play Page|Short Video ||| PiP|Background Play)
+#hostname = *.googlevideo.com, youtubei.googleapis.com
 youtube.request = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch),requires-body=1,max-size=-1,binary-body-mode=1,engine=jsc,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Youtube.respones.js
 youtube.response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/(youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch))(\?(.*))?$,requires-body=1,max-size=-1,binary-body-mode=1,engine={{{script}}},script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Youtube.respones.js,argument="{"lyricLang":"vi","captionLang":"vi","blockUpload":true,"blockImmersive":true,"debug":false}"
+#************************************#
 
-# SoundCloudGo+
+#SoundCloudGo+
+#hostname= api-mobile.soundcloud.com
 SoundCloudGo+=type=http-response,pattern=https://api-mobile.soundcloud.com/configuration/ios,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Soundcloudpremium.js
+#************************************#
+
+# ===== Spotify iOS15 (app2smile) =====
+#!name=Spotify(iOS15)
+#!desc=部分解锁premium,建议重新登录,音质不能设置为超高
+# 1. 搜索界面 歌单/歌曲可以随意切换完全播放
+# 2. 音乐库已点赞歌曲随意切换完全播放
+spotify-json = type=http-request,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/,requires-body=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify-jsonHT.js
+spotify-proto = type=http-response,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify_protoHT.js,script-update-interval=0
 
 # LocketGold (ĐHT)
 revenuecat = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/revenuecatDHT.js, requires-body=true, max-size=-1, timeout=60
@@ -131,71 +141,37 @@ deleteHeader = type=http-request, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(
 
 locket_rc = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locketHT.js, requires-body=true, max-size=-1, timeout=60
 
-# RevenueCatVip Tổng hợp
-RevenueCatVip = type=http-response, pattern=^https:\/\/api\.(revenuecat|rc-backup)\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/revenuecat.js, requires-body=true, max-size=-1, timeout=60
+#ilovepdf
+ILovePDF=type=http-response,pattern=https://service.ilovepdf.com/v1/user,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/ilovepdf.js
 
-# iTunes Bazzat
-iTunes = type=http-response, pattern=^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/itunes.js, requires-body=true, max-size=-1, timeout=60
-bazaart = type=http-response,pattern=https://buy.itunes.apple.com/verifyReceipt,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/bazzat.js
+#Mojo
+MOJO会员解锁=type=http-response,pattern=https://api.revenuecat.com/v1/(receipts|subscribers)/*,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/mojo.js
 
-# Spotify ĐHT 
-spotify-json = type=http-request,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/,requires-body=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify-jsonHT.js
-spotify-proto = type=http-response,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify_protoHT.js,script-update-interval=0
+#PhotoshopEpress
+PhotoshopExpress=type=http-response,pattern=^https:\/\/lcs-mobile-cops\.adobe\.io\/mobile_profile,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/PhotoshopEpress.js
 
-# MOJO
-MOJO = type=http-response,pattern=https:\/\/api\.revenuecat\.com\/v1\/(receipts|subscribers)\/*,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScrpty/main/mojo.js
+@Piccollage解锁
+Piccollage解锁=type=http-response,pattern=https://piccollage.com/api/graphql,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/picColage.js
 
-# Clica
-Clica = type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/(subscribers\/[^\/]+$|receipts$),requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/ClicaVip.js
+#Picsart 
+Picsart=type=http-response,pattern=https:\/\/api\.(picsart|meiease)\.c(n|om)\/users\/show\/me\.json,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/picsart.js
 
-# Smallpdf
-Smallpdf = type=http-response,pattern=https:\/\/pro\.smallpdf\.com\/pro\/account,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScrpty/main/smallpdf.js
+#Smallpdf
+Smallpdf解锁=type=http-response,pattern=https://pro.smallpdf.com/pro/account,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/smaillpdf.js
 
-# Photomath
-Photomath = type=http-response,pattern=https:\/\/lapi\.photomath\.net\/v4\/me,requires-body=1,script-path=https://raw.githubusercontent.com/deezertidal/private/master/js-backup/Crack/poh.js
+#Tokcam
+TOKCAM=type=http-response,pattern=^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Tokcam.js,requires-body=1
 
-# Piccollage
-Piccollage = type=http-response,pattern=https:\/\/piccollage\.com\/api\/graphql,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScrpty/main/picCollage.js
+#AlightMotion
+#hostname = us-central1-alight-creative.cloudfunctions.net
+AlightMotion = type=http-response,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/alightmotion.js,pattern=^https:\/\/us-central1-alight-creative\.cloudfunctions\.net\/getAccountStatusAndLicenses,max-size=131072,requires-body=true,timeout=10,enable=true
+#************************************#
 
-# Pixelance
-Pixelance = type=http-response,pattern=^https:\/\/iap\.etm\.tech\/receipts,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Pixelance.js
+#Truecaller
+#hostname = premium*.truecaller.com
+Truecaller = type=http-response,pattern=^https:\/\/premium-[^.]+\.truecaller\.com\/v\d+\/(subscriptions\/status|products\/apple)(\?.*)?$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Truecaller.js
+#************************************#
 
-# 1blocker
-1blocker = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/v1\/subscribers,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/1blocker.js
 
-# ILovePDF
-ILovePDF = type=http-response,pattern=https:\/\/service\.ilovepdf\.com\/v1\/user,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScript/main/lovePdf.js
-
-# Chic
-Chic = type=http-response,pattern=^https:\/\/api-sub\.meitu\.com\/v2\/user\/vip_info\.json,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/ChicHTVIP.js
-
-# PhotoshopExpress
-PhotoshopExpress = type=http-response,pattern=^https:\/\/lcs-mobile-cops\.adobe\.io\/mobile_profile,requires-body=1,script-path=https://raw.githubusercontent.com/litieyin/AD_VIP/main/Script/photoshop.js
-
-# SODA
-yueh=type=http-response,pattern=^http:\/\/yueh\.app168\.cc\/(first|panda|jiaopian|emoji|manghe)\/iap\/check\.php$,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/yueh.js
-
-# TouchRetouch
-TouchRetouch=type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/(receipts|subscribers\/(\$RCAnonymousID%3A\w{32}))$,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/TouchRetouch.js
-
-# VSCO
-VSCO=type=http-request,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/subscribers\/,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/vsco.js
-VSCO3=type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/subscribers\/,requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/vsco.js
-
-# Truecaller
-Truecaller = type=http-response,pattern=^https:\/\/premium-(.+)\.truecaller\.com\/v\d\/(subscriptions|products\/apple),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/TruecallerHT.js
-
-# Kinemaster
-Kinemaster = type=http-response,pattern=^https:\/\/api-account\.kinemasters\.com\/v\d\/user\/subscribe$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/kinemaster.js
-
-# CamScanner
-Camscanner = type=http-response,pattern=https:\/\/(api|api-cs.*)\.intsig\.net\/purchase\/cs\/query_prop,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/CamscannerHT.js
-
-# AlightMotion
-AlightMotion = type=http-response,pattern=^https:\/\/us-central1-alight-creative\.cloudfunctions\.net\/getAccountStatusAndLicenses,requires-body=true,max-size=131072,timeout=10,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/alightmotionHT.js
-
-# ==========================================
-# CẤP QUYỀN GIẢI MÃ SSL / MITM
-# ==========================================
 [MITM]
-hostname = %APPEND%, *.googlevideo.com, -redirector*.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, sub.store, api.revenuecat.com,firebaseremoteconfig.googleapis.com,api.locketcam.com, buy.itunes.apple.com, api-mobile.soundcloud.com, pi-mobile.soundcloud.com, spclient.wg.spotify.com, pro.smallpdf.com, lapi.photomath.net, piccollage.com, iap.etm.tech, service.ilovepdf.com, api-sub.meitu.com, lcs-mobile-cops.adobe.io, yueh.app168.cc, premium*.truecaller.com, api-account.kinemasters.com, ap*.intsig.net, us-central1-alight-creative.cloudfunctions.net, api.picsart.com, api.mr.pixocial.com, newbeee-api.beautyplus.com, *spclient.spotify.com
+hostname = %APPEND%, api.revenuecat.com, firebaseremoteconfig.googleapis.com,api.locketcam.com, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, sub.store, api-mobile.soundcloud.com, spclient.wg.spotify.com, *spclient.spotify.com,service.ilovepdf.com,lcs-mobile-cops.adobe.io,api.picsart.c*, api.meiease.c*,piccollage.com,pro.smallpdf.com, buy.itunes.apple.com,us-central1-alight-creative.cloudfunctions.net,premium*.truecaller.com
