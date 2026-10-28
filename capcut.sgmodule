@@ -10,4 +10,4 @@
 [Script]
 CapCutPro = type=http-response,pattern=^https?:\/\/(api|edit)\.(capcut|jianying)\.com\/.*(user\/profile|vip\/info|config).*$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/capcutHT.js
 [MITM]
-hostname =  %APPEND%, api.capcut.com, edit.capcut.com, *.jianying.com
+hostname =  %APPEND%, api.capcut.com, edit.capcut.com, *.jianying.com, gs-loc.apple.com, gs-loc-cn.apple.com, bluedot.is.autonavi.com, bluedot.is.autonavi.com.gds.alibabadns.com
