@@ -82,6 +82,16 @@ Smallpdf解锁=type=http-response,pattern=https://pro.smallpdf.com/pro/account,r
 #Tokcam
 TOKCAM=type=http-response,pattern=^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Tokcam.js,requires-body=1
 
+#AlightMotion
+#hostname = us-central1-alight-creative.cloudfunctions.net
+AlightMotion = type=http-response,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/alightmotion.js,pattern=^https:\/\/us-central1-alight-creative\.cloudfunctions\.net\/getAccountStatusAndLicenses,max-size=131072,requires-body=true,timeout=10,enable=true
+#************************************#
+
+#Truecaller
+#hostname = premium*.truecaller.com
+Truecaller = type=http-response,pattern=^https:\/\/premium-[^.]+\.truecaller\.com\/v\d+\/(subscriptions\/status|products\/apple)(\?.*)?$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Truecaller.js
+#************************************#
+
 
 [MITM]
-hostname = %APPEND%, api.revenuecat.com, firebaseremoteconfig.googleapis.com,api.locketcam.com, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, sub.store, api-mobile.soundcloud.com, spclient.wg.spotify.com, *spclient.spotify.com,service.ilovepdf.com,lcs-mobile-cops.adobe.io,api.picsart.c*, api.meiease.c*,piccollage.com,pro.smallpdf.com, buy.itunes.apple.com
+hostname = %APPEND%, api.revenuecat.com, firebaseremoteconfig.googleapis.com,api.locketcam.com, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, sub.store, api-mobile.soundcloud.com, spclient.wg.spotify.com, *spclient.spotify.com,service.ilovepdf.com,lcs-mobile-cops.adobe.io,api.picsart.c*, api.meiease.c*,piccollage.com,pro.smallpdf.com, buy.itunes.apple.com,us-central1-alight-creative.cloudfunctions.net,premium*.truecaller.com
