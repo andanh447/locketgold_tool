@@ -45,15 +45,15 @@ if (ua.includes("Locket")) {
             profile_banner: true
         }),
         feature_discovery_popup_config: JSON.stringify({
-            tag: "LOCKET GOLD ĐHT",
+            tag: "locket gold mxywn ",
             tag_gradient: true,
             tag_style: "gold_gradient",
             title: "LÊN GOLD VIP RỒI CỐT  💛",
             feature_set: [
                 {
-                    title: "Liên Hệ 0901894517 muốn gì có hết ✨",
-                    body: "Locket Gold by tiendh (andanh447) 💛",
-                    imageURL: "https://i.ibb.co/Vc98ms12/2a-Obo-R6m581-AU5h4g-IHMLo8f-Edi-Q4j-Uq-EIXedb-Jg.png"
+                    title: "thì liên hệ 035212761 nếu cần thiệt  ✨",
+                    body: "add locket taohoccgioi 💛",
+                    imageURL: "https://i.ibb.co/rfxwXsQ1/myxuyen.png"
                 }
             ],
             primary_button_title: "Xong",
