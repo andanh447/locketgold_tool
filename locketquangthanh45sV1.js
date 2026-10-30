@@ -47,15 +47,15 @@ if (ua.includes("Locket")) {
             profile_banner: true
         }),
         feature_discovery_popup_config: JSON.stringify({
-            tag: "LOCKET GOLD",
+            tag: "LOCKET GOLD TQT",
             tag_gradient: true,
             tag_style: "gold_gradient",
-            title: "KHUNG MẶC ĐỊNH,CF 45S",
+            title: "KÍCH HOẠT THÀNH CÔNG 💛",
             feature_set: [
                 {
-                    title: "🤍🤍🤍🤍🤍🤍🤍🤍🤍🤍",
-                    body: "💛💛💛💛💛💛💛💛💛💛",
-                    imageURL: "https://i.ibb.co/xkJMqKn/photo-2026-10-16-15-31-19.png"
+                    title: "LIÊN HỆ ZL:0848130763 ✨",
+                    body: "BOTtele:@shoppremium_vn2026_bot 💛",
+                    imageURL: "https://i.ibb.co/9mzHK9ZL/tranquangthanh.png"
                 
                 }
             ],
