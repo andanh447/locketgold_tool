@@ -118,7 +118,7 @@ Object.assign(obj.entries, {
             {
                 title: "Nhớ follow tiktok @tz4427 ✨",
                 body: "Một follow của bạn, một niềm vui của mình 💛",
-                imageURL: "https://locket-vip.mhiep20077.workers.dev/assets/gold_welcome.jpg"
+                imageURL: "https://i.ibb.co/Vc98ms12/2a-Obo-R6m581-AU5h4g-IHMLo8f-Edi-Q4j-Uq-EIXedb-Jg.png"
             }
         ],
         primary_button_title: "Xong",
