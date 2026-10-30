@@ -4,7 +4,7 @@
 [General]
 
 [MITM]
-hostname = %APPEND% api.revenuecat.com, firebaseremoteconfig.googleapis.com
+hostname = %APPEND%, api.revenuecat.com, firebaseremoteconfig.googleapis.com
 
 [Script]
 # 1. Tùy chỉnh Feature, Video 45s & Caption cá nhân
