@@ -110,15 +110,15 @@ Object.assign(obj.entries, {
         profile_banner: true
     }),
     feature_discovery_popup_config: JSON.stringify({
-        tag: "LOCKET GOLD",
+        tag: "LOCKET GOLD ĐHT",
         tag_gradient: true,
         tag_style: "gold_gradient",
-        title: "Lên LocketGold rồi đó 😎",
+        title: "Lên LocketGold rồi đó 🤫 😎",
         feature_set: [
             {
-                title: "Nhớ follow tiktok @ltocamz ✨",
+                title: "Nhớ follow tiktok @tz4427 ✨",
                 body: "Một follow của bạn, một niềm vui của mình 💛",
-                imageURL: "https://locket-vip.mhiep20077.workers.dev/assets/gold_welcome.jpg"
+                imageURL: "https://i.ibb.co/Vc98ms12/2a-Obo-R6m581-AU5h4g-IHMLo8f-Edi-Q4j-Uq-EIXedb-Jg.png"
             }
         ],
         primary_button_title: "Xong",
@@ -158,7 +158,7 @@ Object.assign(obj.entries, {
 // ============================================================
 // 3. CAMERA, VIDEO, FILTERS & UPLOAD QUALITY
 // ============================================================
-var MY_VIDEO_DURATION = 45.0;
+var MY_VIDEO_DURATION = 60.0;
 var MAX_DURATION = MY_VIDEO_DURATION;
 var QUALITY_MBPS = 0.6;
 var durationStr = MY_VIDEO_DURATION.toString();
@@ -378,7 +378,7 @@ Object.assign(obj.entries, {
 
     widget_frame_event: JSON.stringify({
         uid: "shinchan_2026",
-        url: "https://i.ibb.co/1Yt1Dzzy/Shin-chan-1.png",
+        url: "https://i.ibb.co/m5vH9GMg/ben-10-1.png",
         use_local_time_zone: true,
         placement: "below",
         start_at: "2020-01-01T00:00:00",
