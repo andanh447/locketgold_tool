@@ -528,7 +528,7 @@ Object.assign(obj.entries, {
     ]),
     overlay_items: JSON.stringify([
         {
-                "section": "🎨 General",
+                "section": "🎨 Hoàng Tiến",
                 "items": [
                         {
                                 "overlay_id": "caption:standard",
@@ -1426,10 +1426,10 @@ Object.assign(obj.entries, {
                 ]
         },
         {
-                "section": "🎨 Decorative by MinhHiep08",
+                "section": "🎨 Decorative by andanh447",
                 "items": [
                         {
-                                "overlay_id": "caption:MinhHiep08",
+                                "overlay_id": "caption:andanh447",
                                 "source": "remote",
                                 "caption": {
                                         "background": {
