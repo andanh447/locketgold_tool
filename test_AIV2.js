@@ -2,7 +2,7 @@
 // Locket Remote Config Rewrite
 // Endpoint: firebaseremoteconfig.googleapis.com
 // Dùng cho: Loon / Quantumult X / Surge / Shadowrocket
-// Locket Gold & AI Stickers Unlocker VIP (Upload Fixed)
+// Locket Gold & AI Stickers Full + Custom Captions (Upload Fixed)
 // ============================================================
 
 var ua = (typeof $request !== "undefined" && $request && $request.headers) ? ($request.headers["User-Agent"] || $request.headers["user-agent"] || "") : "";
@@ -115,8 +115,10 @@ Object.assign(obj.entries, {
     stickers_enabled: "true",
     ai_stickers_enabled: "true",
     custom_stickers_enabled: "true",
+    generative_ai_stickers_enabled: "true",
     sticker_picker_enabled: "true",
     require_gold_for_stickers: "false",
+    sticker_rate_limit: "9999",
 
     paywall_presentation_config: JSON.stringify({
         uid: "paywall_testflight",
@@ -466,6 +468,7 @@ Object.assign(obj.entries, {
     activity_bar_enabled: "true",
     journal_activity_bar_enabled: "true",
 
+    // BẬT ĐỊA CHỈ (location: true) VÀ FOCUS NỘI DUNG ẢNH (focus_animation: true)
     journal_settings: JSON.stringify({
         debug_menu_enabled: false,
         focus_animation: true,
@@ -490,10 +493,10 @@ Object.assign(obj.entries, {
 });
 
 // ============================================================
-// 7. HỆ THỐNG CDN, CACHE & STORAGE ĐẦY ĐỦ
+// 7. HỆ THỐNG CDN, CACHE & STORAGE (FIX UPLOAD)
 // ============================================================
 Object.assign(obj.entries, {
-    // Đã loại bỏ AI DNS override để đảm bảo gọi thẳng API AI gốc của Locket, fix lỗi Upload/Post ảnh
+    // KHÔNG OVERRIDE DOMAIN AI/AR ĐỂ APP GỌI ĐÚNG API CỦA LOCKET KHI TẠO STICKER
     cdn_domain_replacements: JSON.stringify({
         "firebasestorage.googleapis.com": "cdn.locketcamera.com"
     }),
@@ -534,7 +537,7 @@ Object.assign(obj.entries, {
 });
 
 // ============================================================
-// 8. OVERLAY & CUSTOM CAPTIONS
+// 8. OVERLAY & CUSTOM CAPTIONS (GIỮ NGUYÊN 100% CỦA ĐHT)
 // ============================================================
 Object.assign(obj.entries, {
     overlay_navigator_enabled: "true",
