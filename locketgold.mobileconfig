@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <!-- 1. KHỐI CẤU HÌNH LÕI DNS -->
+            <key>DNSSettings</key>
+            <dict>
+                <key>DNSProtocol</key>
+                <string>HTTPS</string>
+                <key>ServerURL</key>
+                <string>https://dns.uplocket.io.vn/dns-query</string>
+            </dict>
+            
+            <!-- 2. THÔNG TIN HIỂN THỊ CỦA KHỐI (Nằm trong Cài đặt iOS) -->
+            <key>PayloadDescription</key>
+            <string>Định tuyến Locket qua Custom DNS</string>
+            <key>PayloadDisplayName</key>
+            <string>Locket VIP DNS Settings</string>
+            <key>PayloadIdentifier</key>
+            <string>com.apple.dnsSettings.managed.locket</string>
+            <key>PayloadType</key>
+            <string>com.apple.dnsSettings.managed</string>
+            <key>PayloadUUID</key>
+            <string>12345678-ABCD-EFGH-IJKL-9876543210AB</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+    </array>
+    
+    <!-- 3. THÔNG TIN PROFILE TỔNG (Hiển thị lúc vừa bấm tải về) -->
+    <key>PayloadDescription</key>
+    <string>Cấu hình DNS chặn quảng cáo và mở khóa Locket Gold</string>
+    <key>PayloadDisplayName</key>
+    <string>Locket Gold System DNS</string>
+    <key>PayloadIdentifier</key>
+    <string>com.htien07.locket.dns</string>
+    <key>PayloadOrganization</key>
+    <string>Đinh Hoàng Tiến Server</string>
+    <key>PayloadRemovalDisallowed</key>
+    <false/> <!-- Cho phép người dùng tự xóa file trong cài đặt -->
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>87654321-DCBA-HGFE-LKJI-BA0123456789</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>
