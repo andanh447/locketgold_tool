@@ -4,21 +4,21 @@
 <dict>
     <key>PayloadContent</key>
     <array>
-        <!-- KHỐI 1: CẤU HÌNH DNS BẺ LÁI LOCKET VỀ MÁY CHỦ CỦA ANH -->
+        <!-- KHỐI 1: DNS ĐỊNH TUYẾN -->
         <dict>
             <key>DNSSettings</key>
             <dict>
                 <key>DNSProtocol</key>
                 <string>HTTPS</string>
                 <key>ServerURL</key>
-                <string>https://dns.dhtien.vn/dns-query</string> <!-- Sửa thành DNS ảo của anh -->
+                <string>https://dns.dhtien.vn/dns-query</string>
             </dict>
             <key>PayloadDescription</key>
-            <string>Định tuyến Locket qua Server ĐHT</string>
+            <string>Định tuyến Locket qua Server VIP</string>
             <key>PayloadDisplayName</key>
-            <string>Locket DoH Routing</string>
+            <string>Locket VIP DoH</string>
             <key>PayloadIdentifier</key>
-            <string>com.dhtien.dns.routing</string>
+            <string>com.dhtien.dns</string>
             <key>PayloadType</key>
             <string>com.apple.dnsSettings.managed</string>
             <key>PayloadUUID</key>
@@ -29,21 +29,20 @@
             <false/>
         </dict>
         
-        <!-- KHỐI 2: CHỨNG CHỈ GỐC (ROOT CA) ĐỂ MITM KHÔNG BỊ LỖI SSL HANDSHAKE -->
+        <!-- KHỐI 2: CHỨNG CHỈ GỐC 100 NĂM -->
         <dict>
             <key>PayloadCertificateFileName</key>
-            <string>DHTien_MITM_RootCA.crt</string>
+            <string>DHTien_100Y_RootCA.crt</string>
             <key>PayloadContent</key>
             <data>
             MIIDdTCCAl2gAwIBAgILBAAAAAABRE7wQkcwDQYJKoZIhvcNAQELBQAwVzELMAkG
             A1UEBhMCVk4xEDAOBgNVBAgMB1ZpZXROYW0xEDAOBgNVBAcMB1ZpZXROYW0xFDAS
-            BgNVBAoMC0hUaWVuIFNlcnZlcjERMA8GA1UEAwwISFRpZW4gQ0EwHhcNMjMxMTAx
-            ... (Anh sẽ thay đoạn Base64 này bằng mã Base64 từ file .crt của máy chủ anh) ...
+            (XÓA DÒNG NÀY VÀ DÁN ĐOẠN MÃ BASE64 ANH VỪA COPY TỪ VPS VÀO ĐÂY)
             </data>
             <key>PayloadDescription</key>
-            <string>Chứng chỉ giải mã HTTPS tiêm Code Filter</string>
+            <string>Chứng chỉ giải mã Locket hạn 100 năm</string>
             <key>PayloadDisplayName</key>
-            <string>HTien MITM Root CA</string>
+            <string>HTien Ultimate Root CA</string>
             <key>PayloadIdentifier</key>
             <string>com.dhtien.security.root</string>
             <key>PayloadType</key>
@@ -55,17 +54,16 @@
         </dict>
     </array>
     
-    <!-- THÔNG TIN TỔNG QUAN HIỂN THỊ KHI NGƯỜI DÙNG CÀI ĐẶT -->
     <key>PayloadDescription</key>
-    <string>Mở khóa Locket Gold tự động toàn hệ thống (Bao gồm Filter & AI)</string>
+    <string>Hệ thống tự động đồng bộ Gold, AI Stickers &amp; Video qua GitHub (Zero-Maintenance)</string>
     <key>PayloadDisplayName</key>
-    <string>Locket Gold Auto (HTien07)</string>
+    <string>Locket VIP Lifetime (ĐHTien)</string>
     <key>PayloadIdentifier</key>
-    <string>com.dhtien.locket.autounlock</string>
+    <string>com.dhtien.locket.lifetime</string>
     <key>PayloadOrganization</key>
     <string>Đinh Hoàng Tiến (chill)</string>
     <key>PayloadRemovalDisallowed</key>
-<false/>
+    <false/>
     <key>PayloadType</key>
     <string>Configuration</string>
     <key>PayloadUUID</key>
