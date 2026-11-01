@@ -82,8 +82,8 @@ revenuecat = type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/.+\/(r
 locket_rc = type=http-response,pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locketfirebaseconfig45s.js,requires-body=true,max-size=-1,timeout=60
 
 # Locket AI Filter & Community VIP Network (Độc quyền andanh447)
-locket_filter_req = type=http-request,pattern=^https:\/\/api\.locketcamera\.com\/.+,max-size=-1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/test_AIV3.js?v=20261101_0845,timeout=60
-locket_filter_resp = type=http-response,pattern=^https:\/\/api\.locketcamera\.com\/.+,requires-body=true,max-size=-1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/test_AIV3.js?v=20261101_0845,timeout=60
+locket_filter_req = type=http-request,pattern=^https:\/\/api\.locketcamera\.com\/.+,max-size=-1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/test_AIV4.js?v=20261101_0845,timeout=60
+locket_filter_resp = type=http-response,pattern=^https:\/\/api\.locketcamera\.com\/.+,requires-body=true,max-size=-1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/test_AIV4.js?v=20261101_0845,timeout=60
 
 # Spotify Rules - iPad Mode (bỏ ép shuffle, chọn bài tự do)
 spotify-json = type=http-request,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(?::443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/,requires-body=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify_json_V1.js
