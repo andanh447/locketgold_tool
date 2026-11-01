@@ -7,6 +7,30 @@
 #!arguments-desc=- Ẩn nút Upload (+): [true, false] (Mặc định: false để giữ nút Upload)\n- Ẩn nút chọn đoạn nhạc: [true, false]\n- Ẩn nút Shorts: [true, false]\n- Dịch phụ đề: [vi, en, off]\n- Bật Debug: [true, false]
 
 [Rule]
+# === MỞ ĐƯỜNG TẢI FILTER LOCKET & BẢO LƯU ĐĂNG NHẬP ===
+DOMAIN-SUFFIX,cdn.locketcamera.com,DIRECT
+DOMAIN-SUFFIX,firebasestorage.googleapis.com,DIRECT
+DOMAIN-SUFFIX,storage.googleapis.com,DIRECT
+DOMAIN-SUFFIX,locket.cam,DIRECT
+DOMAIN-SUFFIX,locketcamera.com,DIRECT
+DOMAIN-SUFFIX,identitytoolkit.googleapis.com,DIRECT
+DOMAIN-SUFFIX,securetoken.googleapis.com,DIRECT
+
+# === CẮT ĐỨT KIỂM TRA BẢN QUYỀN LOCKET & SOUNDCLOUD ===
+DOMAIN-SUFFIX,app-measurement.com,REJECT
+DOMAIN-SUFFIX,crashlytics.com,REJECT
+DOMAIN-SUFFIX,analytics.tiktok.com,REJECT
+DOMAIN-SUFFIX,graph.facebook.com,REJECT
+DOMAIN-SUFFIX,ad.soundcloud.com,REJECT
+DOMAIN-SUFFIX,api-mobi.soundcloud.com,REJECT
+
+# === ÉP SPOTIFY CHUYỂN BÀI & CẮT QUẢNG CÁO ===
+DOMAIN-SUFFIX,audio2.spotify.com,REJECT
+DOMAIN-SUFFIX,ads-fa.spotify.com,REJECT
+DOMAIN-SUFFIX,adeventtracker.spotify.com,REJECT
+DOMAIN-KEYWORD,ad-logic,REJECT
+
+
 # Chặn QUIC/UDP cho Locket & Spotify
 AND,((DOMAIN,firebaseremoteconfig.googleapis.com),(PROTOCOL,UDP)),REJECT
 AND,((DOMAIN,api.revenuecat.com),(PROTOCOL,UDP)),REJECT
