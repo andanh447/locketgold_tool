@@ -4,47 +4,72 @@
 <dict>
     <key>PayloadContent</key>
     <array>
+        <!-- KHỐI 1: CẤU HÌNH DNS BẺ LÁI LOCKET VỀ MÁY CHỦ CỦA ANH -->
         <dict>
-            <!-- 1. KHỐI CẤU HÌNH LÕI DNS -->
             <key>DNSSettings</key>
             <dict>
                 <key>DNSProtocol</key>
                 <string>HTTPS</string>
                 <key>ServerURL</key>
-                <string>https://dns.uplocket.io.vn/dns-query</string>
+                <string>https://dns.dhtien.vn/dns-query</string> <!-- Sửa thành DNS ảo của anh -->
             </dict>
-            
-            <!-- 2. THÔNG TIN HIỂN THỊ CỦA KHỐI (Nằm trong Cài đặt iOS) -->
             <key>PayloadDescription</key>
-            <string>Định tuyến Locket qua Custom DNS</string>
+            <string>Định tuyến Locket qua Server ĐHT</string>
             <key>PayloadDisplayName</key>
-            <string>Locket VIP DNS Settings</string>
+            <string>Locket DoH Routing</string>
             <key>PayloadIdentifier</key>
-            <string>com.apple.dnsSettings.managed.locket</string>
+            <string>com.dhtien.dns.routing</string>
             <key>PayloadType</key>
             <string>com.apple.dnsSettings.managed</string>
             <key>PayloadUUID</key>
-            <string>12345678-ABCD-EFGH-IJKL-9876543210AB</string>
+            <string>1A2B3C4D-5678-90AB-CDEF-111111111111</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>ProhibitDisablement</key>
+            <false/>
+        </dict>
+        
+        <!-- KHỐI 2: CHỨNG CHỈ GỐC (ROOT CA) ĐỂ MITM KHÔNG BỊ LỖI SSL HANDSHAKE -->
+        <dict>
+            <key>PayloadCertificateFileName</key>
+            <string>DHTien_MITM_RootCA.crt</string>
+            <key>PayloadContent</key>
+            <data>
+            MIIDdTCCAl2gAwIBAgILBAAAAAABRE7wQkcwDQYJKoZIhvcNAQELBQAwVzELMAkG
+            A1UEBhMCVk4xEDAOBgNVBAgMB1ZpZXROYW0xEDAOBgNVBAcMB1ZpZXROYW0xFDAS
+            BgNVBAoMC0hUaWVuIFNlcnZlcjERMA8GA1UEAwwISFRpZW4gQ0EwHhcNMjMxMTAx
+            ... (Anh sẽ thay đoạn Base64 này bằng mã Base64 từ file .crt của máy chủ anh) ...
+            </data>
+            <key>PayloadDescription</key>
+            <string>Chứng chỉ giải mã HTTPS tiêm Code Filter</string>
+            <key>PayloadDisplayName</key>
+            <string>HTien MITM Root CA</string>
+            <key>PayloadIdentifier</key>
+            <string>com.dhtien.security.root</string>
+            <key>PayloadType</key>
+            <string>com.apple.security.root</string>
+            <key>PayloadUUID</key>
+            <string>2B3C4D5E-6789-0ABC-DEF1-222222222222</string>
             <key>PayloadVersion</key>
             <integer>1</integer>
         </dict>
     </array>
     
-    <!-- 3. THÔNG TIN PROFILE TỔNG (Hiển thị lúc vừa bấm tải về) -->
+    <!-- THÔNG TIN TỔNG QUAN HIỂN THỊ KHI NGƯỜI DÙNG CÀI ĐẶT -->
     <key>PayloadDescription</key>
-    <string>Cấu hình DNS chặn quảng cáo và mở khóa Locket Gold</string>
+    <string>Mở khóa Locket Gold tự động toàn hệ thống (Bao gồm Filter & AI)</string>
     <key>PayloadDisplayName</key>
-    <string>Locket Gold System DNS</string>
+    <string>Locket Gold Auto (HTien07)</string>
     <key>PayloadIdentifier</key>
-    <string>com.htien07.locket.dns</string>
+    <string>com.dhtien.locket.autounlock</string>
     <key>PayloadOrganization</key>
-    <string>Đinh Hoàng Tiến Server</string>
+    <string>Đinh Hoàng Tiến (chill)</string>
     <key>PayloadRemovalDisallowed</key>
-    <false/> <!-- Cho phép người dùng tự xóa file trong cài đặt -->
+<false/>
     <key>PayloadType</key>
     <string>Configuration</string>
     <key>PayloadUUID</key>
-    <string>87654321-DCBA-HGFE-LKJI-BA0123456789</string>
+    <string>3C4D5E6F-7890-ABCD-EF12-333333333333</string>
     <key>PayloadVersion</key>
     <integer>1</integer>
 </dict>
