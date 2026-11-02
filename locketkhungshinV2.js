@@ -378,7 +378,7 @@ Object.assign(obj.entries, {
 
     widget_frame_event: JSON.stringify({
         uid: "shinchan_2026",
-        url: "https://i.ibb.co/m5vH9GMg/ben-10-1.png",
+        url: "https://i.ibb.co/HpH3cp18/2a-Obo-R9r-Jm-Snkzsux2vxzo2m-VOy-EVM5-TFU01-V4r2.png",
         use_local_time_zone: true,
         placement: "below",
         start_at: "2020-01-01T00:00:00",
