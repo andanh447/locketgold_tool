@@ -160,7 +160,7 @@ Object.assign(obj.entries, {
 // ============================================================
 var MY_VIDEO_DURATION = 60.0;
 var MAX_DURATION = MY_VIDEO_DURATION;
-var QUALITY_MBPS = 0.6;
+var QUALITY_MBPS = 0.2;
 var durationStr = MY_VIDEO_DURATION.toString();
 var MAX_SIZE_BYTES = 104857600; // 100MB
 
@@ -177,8 +177,8 @@ var cameraConfig = {
     telephoto: true,
     srgb: true,
     lanczos: true,
-    quality_mbps: 0.6,
-    qualityMbps: 0.6
+    quality_mbps: 0.2,
+    qualityMbps: 0.2
 };
 
 var cameraRollConfig = {
@@ -195,8 +195,8 @@ var cameraRollConfig = {
     max_file_size: MAX_SIZE_BYTES,
     max_upload_bytes: MAX_SIZE_BYTES,
     max_size_bytes: MAX_SIZE_BYTES,
-    quality_mbps: 0.6,
-    qualityMbps: 0.6,
+    quality_mbps: 0.2,
+    qualityMbps: 0.2,
     flash_button: true
 };
 
@@ -250,7 +250,7 @@ Object.assign(obj.entries, {
     goldMaxDuration: durationStr,
     max_file_size: MAX_SIZE_BYTES.toString(),
     max_upload_bytes: MAX_SIZE_BYTES.toString(),
-    video_quality_mbps: "0.6",
+    video_quality_mbps: "0.2",
     video_sound_enabled: "true",
     microphone_enabled: "true",
     camera_microphone_enabled: "true",
@@ -528,7 +528,7 @@ Object.assign(obj.entries, {
     ]),
     overlay_items: JSON.stringify([
         {
-                "section": "🎨 General",
+                "section": "🎨 Hoangtien07",
                 "items": [
                         {
                                 "overlay_id": "caption:standard",
@@ -1426,10 +1426,10 @@ Object.assign(obj.entries, {
                 ]
         },
         {
-                "section": "🎨 Decorative by MinhHiep08",
+                "section": "🎨 Decorative by andanh447",
                 "items": [
                         {
-                                "overlay_id": "caption:MinhHiep08",
+                                "overlay_id": "caption:andanh447",
                                 "source": "remote",
                                 "caption": {
                                         "background": {
@@ -1440,7 +1440,7 @@ Object.assign(obj.entries, {
                                                 ]
                                         },
                                         "max_lines": 1,
-                                        "text": "💻 MinhHiep08",
+                                        "text": "💻andanh447",
                                         "text_color": "#183153",
                                         "type": "static_content"
                                 }
