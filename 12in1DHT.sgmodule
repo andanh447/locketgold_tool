@@ -10,9 +10,47 @@
 [Rule]
 AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
 AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
-
+[Rule]
+# Chặn QUIC/UDP cho Locket, Spotify & YouTube
+AND,((PROTOCOL,UDP),(DEST-PORT,443)),REJECT
+AND,((DOMAIN,firebaseremoteconfig.googleapis.com),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN,api.revenuecat.com),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN,api.locketcamera.com),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN-SUFFIX,locketcamera.com),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN-SUFFIX,spotify.com),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN-SUFFIX,spclient.wg.spotify.com),(PROTOCOL,UDP)),REJECT
+DOMAIN-SUFFIX,sentry.io,REJECT
+DOMAIN-SUFFIX,ingest.sentry.io,REJECT
 
 [Header Rewrite]
+# 1. Xóa Cache / ETag trên RevenueCat
+^https?:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers) header-del x-revenuecat-etag
+^https?:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers) header-del X-RevenueCat-ETag
+^https?:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers) header-del if-none-match
+^https?:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers) header-del If-None-Match
+^https?:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers) header-del if-modified-since
+^https?:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers) header-del If-Modified-Since
+
+# 2. Xóa Cache / ETag trên Firebase Remote Config (Ép Google luôn trả về HTTP 200)
+^https?:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+ header-del if-none-match
+^https?:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+ header-del If-None-Match
+^https?:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+ header-del if-modified-since
+^https?:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+ header-del If-Modified-Since
+^https?:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+ header-del x-goog-if-none-match
+
+# 3. Xóa Cache / ETag trên Locket Camera API (Tránh trả về 304 Not Modified khiến script không chạy)
+^https?:\/\/api\.locketcamera\.com\/.+ header-del if-none-match
+^https?:\/\/api\.locketcamera\.com\/.+ header-del If-None-Match
+^https?:\/\/api\.locketcamera\.com\/.+ header-del if-modified-since
+^https?:\/\/api\.locketcamera\.com\/.+ header-del If-Modified-Since
+
+# 4. Spotify Rules - Xóa Cache & ETag trên Spotify bootstrap & customize
+^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(?::443)?)\/(user-customization-service\/v1\/customize|bootstrap\/v1\/bootstrap) header-del if-none-match
+^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(?::443)?)\/(user-customization-service\/v1\/customize|bootstrap\/v1\/bootstrap) header-del If-None-Match
+^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(?::443)?)\/(user-customization-service\/v1\/customize|bootstrap\/v1\/bootstrap) header-del if-modified-since
+^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(?::443)?)\/(user-customization-service\/v1\/customize|bootstrap\/v1\/bootstrap) header-del If-Modified-Since
+
+
 ^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del x-revenuecat-etag
 ^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del X-RevenueCat-ETag
 http-request ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del if-none-match
@@ -56,6 +94,15 @@ deleteHeader = type=http-request, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(
 
 locket_rc = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket60sbyHTV1.js, requires-body=true, max-size=-1, timeout=60
 
+#spotify
+# 2025.6.27 部分解锁premium,音质不能设置为超高(建议登录后再打开脚本,重启app等待脚本生效)
+# 仓库地址 https://github.com/app2smile/rules
+# 功能: 1.去除播放广告 2.歌手/专辑列表正常展示 3.去除随机播放
+hostname = spclient.wg.spotify.com, *spclient.spotify.com
+^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ url script-request-header https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify_qx_header.js
+^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$ url script-response-body https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify-protoV2.js
+^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/ url script-request-header https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify-jsonV2.js
+
 #ilovepdf
 ILovePDF=type=http-response,pattern=https://service.ilovepdf.com/v1/user,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/ilovepdf.js
 
@@ -68,8 +115,8 @@ PhotoshopExpress=type=http-response,pattern=^https:\/\/lcs-mobile-cops\.adobe\.i
 @Piccollage解锁
 Piccollage解锁=type=http-response,pattern=https://piccollage.com/api/graphql,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/picColage.js
 
-#Picsart 
-Picsart=type=http-response,pattern=https:\/\/api\.(picsart|meiease)\.c(n|om)\/users\/show\/me\.json,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/picsart.js
+#1blocker
+1blocker= type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/v1\/subscribers,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/1blocker.js
 
 #Smallpdf
 Smallpdf解锁=type=http-response,pattern=https://pro.smallpdf.com/pro/account,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/smaillpdf.js
