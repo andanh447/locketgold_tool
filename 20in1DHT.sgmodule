@@ -10,7 +10,6 @@
 [Rule]
 AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
 AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
-[Rule]
 # Chặn QUIC/UDP cho Locket, Spotify & YouTube
 AND,((PROTOCOL,UDP),(DEST-PORT,443)),REJECT
 AND,((DOMAIN,firebaseremoteconfig.googleapis.com),(PROTOCOL,UDP)),REJECT
@@ -92,7 +91,7 @@ revenuecat = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(r
 
 deleteHeader = type=http-request, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/deleteheaderDHT.js, timeout=60
 
-locket_rc = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket60sbyHTV1.js, requires-body=true, max-size=-1, timeout=60
+locket_rc = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket30sbyDHT.js, requires-body=true, max-size=-1, timeout=60
 
 #spotify
 # 2025.6.27 部分解锁premium,音质不能设置为超高(建议登录后再打开脚本,重启app等待脚本生效)
@@ -134,6 +133,24 @@ AlightMotion = type=http-response,script-path=https://raw.githubusercontent.com/
 Truecaller = type=http-response,pattern=^https:\/\/premium-[^.]+\.truecaller\.com\/v\d+\/(subscriptions\/status|products\/apple)(\?.*)?$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Truecaller.js
 #************************************#
 
+#adguard
+AdGuard=type=http-response,pattern=^https?:\/\/mobile-api\.adguard\.org\/api\/.+\/ios_validate_receipt,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/adguard.js
+
+#Meitu
+美图秀秀=type=http-response,pattern=^https?:\/\/(h5|api)\.xiuxiu\.meitu\.com\/v\d\/(h\d\/vip|vip|user)\/,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/meitu.js
+
+#aloha
+AlohaVPN浏览器=type=http-response,pattern=https://api.alohaprofile.com/v1/profile_info,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/aloha.js
+
+#Toonme
+ToonMe=type=http-response,pattern=^https?:\/\/purchases\.ws\.pho\.to\/api\/v2\/apple\/verifyReceipt,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/toonme.js
+
+#deppfaker
+deepfaker=type=http-response,pattern=^https:\/\/api\.deepfaker\.app\/api\/v1\/account\/update-profile,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/deepfaker.js
+
+#usage
+Usage=type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/v1\/subscribers.+,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/usage.js
+
 
 [MITM]
-hostname = %APPEND%, api.revenuecat.com, firebaseremoteconfig.googleapis.com,api.locketcam.com, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, sub.store, api-mobile.soundcloud.com, service.ilovepdf.com,lcs-mobile-cops.adobe.io,api.picsart.c*, api.meiease.c*,piccollage.com,pro.smallpdf.com, buy.itunes.apple.com,us-central1-alight-creative.cloudfunctions.net,premium*.truecaller.com
+hostname = %APPEND%,sub.store, api.revenuecat.com, firebaseremoteconfig.googleapis.com,api.locketcam.com, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, sub.store, api-mobile.soundcloud.com, service.ilovepdf.com,lcs-mobile-cops.adobe.io,api.picsart.c*, api.meiease.c*,piccollage.com,pro.smallpdf.com, buy.itunes.apple.com,us-central1-alight-creative.cloudfunctions.net,premium*.truecaller.com, mobile-api.adguard.org,h5.xiuxiu.meitu.com,api.xiuxiu.meitu.com,api.alohaprofile.com,purchases.ws.pho.to,api.deepfaker.app
