@@ -20,6 +20,52 @@ AND,((DOMAIN-SUFFIX,spotify.com),(PROTOCOL,UDP)),REJECT
 AND,((DOMAIN-SUFFIX,spclient.wg.spotify.com),(PROTOCOL,UDP)),REJECT
 DOMAIN-SUFFIX,sentry.io,REJECT
 DOMAIN-SUFFIX,ingest.sentry.io,REJECT
+# ==========================================
+# 🛡️ 1. TƯỜNG LỬA CHỐNG THEO DÕI & ĐÁNH CẮP DỮ LIỆU (Phản công)
+# Khóa mõm các máy chủ ngầm đo lường, theo dõi thao tác vuốt/chạm của anh
+# ==========================================
+DOMAIN-SUFFIX,appsflyer.com,REJECT
+DOMAIN-SUFFIX,kochava.com,REJECT
+DOMAIN-SUFFIX,adjust.com,REJECT
+DOMAIN-SUFFIX,branch.io,REJECT
+DOMAIN-SUFFIX,segment.com,REJECT
+DOMAIN-SUFFIX,crashlytics.com,REJECT
+DOMAIN-SUFFIX,mixpanel.com,REJECT
+DOMAIN-SUFFIX,flurry.com,REJECT
+DOMAIN-SUFFIX,scorecardresearch.com,REJECT
+DOMAIN-SUFFIX,app-measurement.com,REJECT
+DOMAIN-SUFFIX,analytics.google.com,REJECT
+DOMAIN-SUFFIX,rayjump.com,REJECT
+
+# ==========================================
+# ⚔️ 2. DIỆT SẠCH QUẢNG CÁO GAME & ỨNG DỤNG (Tuyệt đối không lag)
+# ==========================================
+DOMAIN-SUFFIX,applovin.com,REJECT
+DOMAIN-SUFFIX,applvn.com,REJECT
+DOMAIN-SUFFIX,unityads.unity3d.com,REJECT
+DOMAIN-SUFFIX,vungle.com,REJECT
+DOMAIN-SUFFIX,supersonicads.com,REJECT
+DOMAIN-SUFFIX,chartboost.com,REJECT
+DOMAIN-SUFFIX,adcolony.com,REJECT
+DOMAIN-SUFFIX,inmobi.com,REJECT
+DOMAIN-SUFFIX,voodoo-ads.io,REJECT
+DOMAIN-SUFFIX,byte-push.com,REJECT
+DOMAIN-SUFFIX,ironsrc.com,REJECT
+
+# ==========================================
+# 💣 3. QUÉT SẠCH QUẢNG CÁO HIỂN THỊ & POP-UP WEB
+# Chặn rác khi lướt Safari hoặc đọc báo trong app
+# ==========================================
+DOMAIN-SUFFIX,googleadservices.com,REJECT
+DOMAIN-SUFFIX,doubleclick.net,REJECT
+DOMAIN-SUFFIX,criteo.com,REJECT
+DOMAIN-SUFFIX,rubiconproject.com,REJECT
+DOMAIN-SUFFIX,pubmatic.com,REJECT
+DOMAIN-SUFFIX,outbrain.com,REJECT
+DOMAIN-SUFFIX,taboola.com,REJECT
+DOMAIN-SUFFIX,adzerk.net,REJECT
+DOMAIN-SUFFIX,moatads.com,REJECT
+DOMAIN-SUFFIX,adform.net,REJECT
 
 
 [URL Rewrite]
