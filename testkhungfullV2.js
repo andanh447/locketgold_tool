@@ -26,7 +26,7 @@ obj.entries.cache_ttl_seconds = "0";
 obj.entries.client_cache_ttl_sec = "0";
 
 // ============================================================
-// 1. CẤU HÌNH GOLD, FEATURE GATES & PAYWALL
+// 1. CẤU HÌNH GOLD, FEATURE GATES & PAYWALL (Đã thêm cờ UI mới)
 // ============================================================
 Object.assign(obj.entries, {
     feature_gates: JSON.stringify({
@@ -42,21 +42,12 @@ Object.assign(obj.entries, {
         remove_ads: "enabled",
         video: "enabled",
         custom_widget_frames: "enabled",
+        widget_frames_v2: "enabled",
+        advanced_widget_frames: "enabled",
+        remote_widget_frames: "enabled",
         streak_recovery: "enabled",
         camera_filters: "enabled",
-        camera_filter: "enabled",
-        filter: "enabled",
-        filters: "enabled",
-        holiday_effects: "enabled",
-        holiday_filters: "enabled",
-        holiday_filter: "enabled",
-        ar_filters: "enabled",
-        ai_filters: "enabled",
-        ai_filter: "enabled",
-        photo_filters: "enabled",
-        face_filters: "enabled",
-        profile_cover: "enabled",
-        profile_cover_photo: "enabled",
+        // ... (các cờ cũ giữ nguyên)
         profile_customization: "enabled"
     }),
     upsell_features: JSON.stringify({
@@ -67,14 +58,7 @@ Object.assign(obj.entries, {
         remove_ads: false,
         custom_widget_frames: false,
         filter: false,
-        filters: false,
-        camera_filter: false,
-        camera_filters: false,
-        holiday_filter: false,
-        holiday_filters: false,
-        holiday_effects: false,
-        ai_filter: false,
-        ai_filters: false
+        filters: false
     }),
     country_code: "US",
     region_code: "US",
@@ -364,143 +348,132 @@ Object.assign(obj.entries, {
     rollcall_tap_to_tag_enabled: "false"
 });
 // ============================================================
-// 6. WIDGET SỰ KIỆN MỚI, KHUNG HOÀNG GIA & KHUNG CUSTOM (OVERRIDE)
+// 6. WIDGET SỰ KIỆN MỚI & KHUNG CUSTOM (Bao vây URL Keys)
 // ============================================================
 Object.assign(obj.entries, {
-    widget_frame_event_max_images: "10",
-    android_widget_frame_event_enabled: "true",
-    widget_badge_enabled: "true",
-    widget_badge_v2: "true",
-    widget_stale_state_enabled: "false",
-    widget_last_sent_indicator: "false",
-    widget_sync_token_reload_mode: "clearTokenNever",
-
+    // Kích hoạt toàn bộ cờ giao diện Khung nâng cao
+    widget_frames_v2_enabled: "true",
+    advanced_widget_frames_enabled: "true",
+    remote_widget_frames_enabled: "true",
     custom_widget_frames: "enabled",
     custom_widget_frames_enabled: "true",
+    widget_badge_enabled: "true",
+    widget_badge_v2: "true",
 
-    // BẮT ĐẦU ĐÁNH TRÁO KHUNG MÀU MẶC ĐỊNH THÀNH KHUNG CUSTOM
     widget_frames_config: JSON.stringify({
         enabled: true,
         allow_custom_frames: true,
         unlock_all_styles: true,
-        default_style: "neon_pink", // Mặc định chọn ô màu Hồng Neon (Shin V2)
+        default_style: "shin_v2",
         styles: [
             {
-                id: "neon_pink", // Ô màu Hồng
-                name: "✏️ Shin Bút Chì V2",
+                id: "shin_v2",
+                name: "Shin Bút Chì V2",
                 border_style: "custom",
-                overlay_asset: "https://i.ibb.co/HpH3cp18/2a-Obo-R9r-Jm-Snkzsux2vxzo2m-VOy-EVM5-TFU01-V4r2.png"
+                overlay_asset: "https://i.ibb.co/HpH3cp18/2a-Obo-R9r-Jm-Snkzsux2vxzo2m-VOy-EVM5-TFU01-V4r2.png",
+                overlay_url: "https://i.ibb.co/HpH3cp18/2a-Obo-R9r-Jm-Snkzsux2vxzo2m-VOy-EVM5-TFU01-V4r2.png",
+                image_url: "https://i.ibb.co/HpH3cp18/2a-Obo-R9r-Jm-Snkzsux2vxzo2m-VOy-EVM5-TFU01-V4r2.png",
+                thumbnail_url: "https://i.ibb.co/HpH3cp18/2a-Obo-R9r-Jm-Snkzsux2vxzo2m-VOy-EVM5-TFU01-V4r2.png"
             },
             {
-                id: "neon_orange", // Ô màu Cam
-                name: "✏️ Shin Bút Chì V3",
+                id: "shin_v3",
+                name: "Shin Bút Chì V3",
                 border_style: "custom",
-                overlay_asset: "https://i.ibb.co/kVjXSFvY/2a-Obo-R9r-Jmf0-IWio-Ucl-NWd-Ez1m-EGMBi-WW8-Hn-Xc24.png"
+                overlay_asset: "https://i.ibb.co/kVjXSFvY/2a-Obo-R9r-Jmf0-IWio-Ucl-NWd-Ez1m-EGMBi-WW8-Hn-Xc24.png",
+                overlay_url: "https://i.ibb.co/kVjXSFvY/2a-Obo-R9r-Jmf0-IWio-Ucl-NWd-Ez1m-EGMBi-WW8-Hn-Xc24.png",
+                image_url: "https://i.ibb.co/kVjXSFvY/2a-Obo-R9r-Jmf0-IWio-Ucl-NWd-Ez1m-EGMBi-WW8-Hn-Xc24.png",
+                thumbnail_url: "https://i.ibb.co/kVjXSFvY/2a-Obo-R9r-Jmf0-IWio-Ucl-NWd-Ez1m-EGMBi-WW8-Hn-Xc24.png"
             },
             {
-                id: "neon_yellow", // Ô màu Vàng
-                name: "✏️ Shin V4",
+                id: "shin_v4",
+                name: "Shin V4",
                 border_style: "custom",
-                overlay_asset: "https://i.ibb.co/mrQrBmQ1/2a-Obo-R9r-Jmq1r-PJKvy-N3j-LZt-Hc-Hdg9-Mq-Bcs9-Xsci.png"
+                overlay_asset: "https://i.ibb.co/mrQrBmQ1/2a-Obo-R9r-Jmq1r-PJKvy-N3j-LZt-Hc-Hdg9-Mq-Bcs9-Xsci.png",
+                overlay_url: "https://i.ibb.co/mrQrBmQ1/2a-Obo-R9r-Jmq1r-PJKvy-N3j-LZt-Hc-Hdg9-Mq-Bcs9-Xsci.png",
+                image_url: "https://i.ibb.co/mrQrBmQ1/2a-Obo-R9r-Jmq1r-PJKvy-N3j-LZt-Hc-Hdg9-Mq-Bcs9-Xsci.png",
+                thumbnail_url: "https://i.ibb.co/mrQrBmQ1/2a-Obo-R9r-Jmq1r-PJKvy-N3j-LZt-Hc-Hdg9-Mq-Bcs9-Xsci.png"
             },
             {
-                id: "neon_green", // Ô màu Xanh Lá
-                name: "🎀 Hello Kitty x Shin",
+                id: "hello_kitty_shin",
+                name: "Hello Kitty",
                 border_style: "custom",
-                overlay_asset: "https://i.ibb.co/kg3wbrzy/a2c7d720-f81f-4b0b-ab64-c59f99f967ed.png"
+                overlay_asset: "https://i.ibb.co/kg3wbrzy/a2c7d720-f81f-4b0b-ab64-c59f99f967ed.png",
+                overlay_url: "https://i.ibb.co/kg3wbrzy/a2c7d720-f81f-4b0b-ab64-c59f99f967ed.png",
+                image_url: "https://i.ibb.co/kg3wbrzy/a2c7d720-f81f-4b0b-ab64-c59f99f967ed.png",
+                thumbnail_url: "https://i.ibb.co/kg3wbrzy/a2c7d720-f81f-4b0b-ab64-c59f99f967ed.png"
             },
             {
-                id: "neon_blue", // Ô màu Xanh Dương
-                name: "🐱 Doraemon & Shin",
+                id: "doraemon_shin",
+                name: "Doraemon",
                 border_style: "custom",
-                overlay_asset: "https://i.ibb.co/Lz7HgGgp/2a-Obo-RA5-NBhien68z5z-Zc8-BIa8ze0vp-Lw5-X92f-BI.png"
+                overlay_asset: "https://i.ibb.co/Lz7HgGgp/2a-Obo-RA5-NBhien68z5z-Zc8-BIa8ze0vp-Lw5-X92f-BI.png",
+                overlay_url: "https://i.ibb.co/Lz7HgGgp/2a-Obo-RA5-NBhien68z5z-Zc8-BIa8ze0vp-Lw5-X92f-BI.png",
+                image_url: "https://i.ibb.co/Lz7HgGgp/2a-Obo-RA5-NBhien68z5z-Zc8-BIa8ze0vp-Lw5-X92f-BI.png",
+                thumbnail_url: "https://i.ibb.co/Lz7HgGgp/2a-Obo-RA5-NBhien68z5z-Zc8-BIa8ze0vp-Lw5-X92f-BI.png"
             },
             {
-                id: "neon_purple", // Ô màu Tím
-                name: "🥰 Siêu Cute Shin V5",
+                id: "shin_cute_v5",
+                name: "Shin Cute",
                 border_style: "custom",
-                overlay_asset: "https://i.ibb.co/1BKhs0v/2a-Obo-RA5-NBd-Mdaa472y-Mui-OS6-Iwyv-SH9-SEDNJCCm.png"
+                overlay_asset: "https://i.ibb.co/1BKhs0v/2a-Obo-RA5-NBd-Mdaa472y-Mui-OS6-Iwyv-SH9-SEDNJCCm.png",
+                overlay_url: "https://i.ibb.co/1BKhs0v/2a-Obo-RA5-NBd-Mdaa472y-Mui-OS6-Iwyv-SH9-SEDNJCCm.png",
+                image_url: "https://i.ibb.co/1BKhs0v/2a-Obo-RA5-NBd-Mdaa472y-Mui-OS6-Iwyv-SH9-SEDNJCCm.png",
+                thumbnail_url: "https://i.ibb.co/1BKhs0v/2a-Obo-RA5-NBd-Mdaa472y-Mui-OS6-Iwyv-SH9-SEDNJCCm.png"
             },
             {
-                id: "pastel_pink", // Ô Pastel Hồng
-                name: "🌌 Galaxy Shin V6",
+                id: "shin_galaxy_v6",
+                name: "Galaxy",
                 border_style: "custom",
-                overlay_asset: "https://i.ibb.co/BKLXj3Z4/2a-Obo-RA5-NBT0-Qfzz-EEDw3j-Jk-X3-Sxr-DH5wb0pxpq4.png"
+                overlay_asset: "https://i.ibb.co/BKLXj3Z4/2a-Obo-RA5-NBT0-Qfzz-EEDw3j-Jk-X3-Sxr-DH5wb0pxpq4.png",
+                overlay_url: "https://i.ibb.co/BKLXj3Z4/2a-Obo-RA5-NBT0-Qfzz-EEDw3j-Jk-X3-Sxr-DH5wb0pxpq4.png",
+                image_url: "https://i.ibb.co/BKLXj3Z4/2a-Obo-RA5-NBT0-Qfzz-EEDw3j-Jk-X3-Sxr-DH5wb0pxpq4.png",
+                thumbnail_url: "https://i.ibb.co/BKLXj3Z4/2a-Obo-RA5-NBT0-Qfzz-EEDw3j-Jk-X3-Sxr-DH5wb0pxpq4.png"
             },
             {
-                id: "pastel_orange", // Ô Pastel Cam
-                name: "🍊 Cam Vàng Shin V7",
+                id: "shin_orange_v7",
+                name: "Cam Vàng",
                 border_style: "custom",
-                overlay_asset: "https://i.ibb.co/dwnvfTcm/2a-Obo-RA5-NBSj-Ov-PKhm6b9-N0i-Kb-QBJJ1w-N13-Ba-Y6-K.png"
+                overlay_asset: "https://i.ibb.co/dwnvfTcm/2a-Obo-RA5-NBSj-Ov-PKhm6b9-N0i-Kb-QBJJ1w-N13-Ba-Y6-K.png",
+                overlay_url: "https://i.ibb.co/dwnvfTcm/2a-Obo-RA5-NBSj-Ov-PKhm6b9-N0i-Kb-QBJJ1w-N13-Ba-Y6-K.png",
+                image_url: "https://i.ibb.co/dwnvfTcm/2a-Obo-RA5-NBSj-Ov-PKhm6b9-N0i-Kb-QBJJ1w-N13-Ba-Y6-K.png",
+                thumbnail_url: "https://i.ibb.co/dwnvfTcm/2a-Obo-RA5-NBSj-Ov-PKhm6b9-N0i-Kb-QBJJ1w-N13-Ba-Y6-K.png"
             },
             {
-                id: "pastel_yellow", // Ô Pastel Vàng
-                name: "💙 Xanh Hồng Shin V8",
+                id: "shin_bluepink_v8",
+                name: "Xanh Hồng",
                 border_style: "custom",
-                overlay_asset: "https://i.ibb.co/7d7r22Yw/2a-Obo-RA5-NBRA63k-AZT8x-Nt5pvgjsd-Lxuw-Ga-OQCq8.png"
+                overlay_asset: "https://i.ibb.co/7d7r22Yw/2a-Obo-RA5-NBRA63k-AZT8x-Nt5pvgjsd-Lxuw-Ga-OQCq8.png",
+                overlay_url: "https://i.ibb.co/7d7r22Yw/2a-Obo-RA5-NBRA63k-AZT8x-Nt5pvgjsd-Lxuw-Ga-OQCq8.png",
+                image_url: "https://i.ibb.co/7d7r22Yw/2a-Obo-RA5-NBRA63k-AZT8x-Nt5pvgjsd-Lxuw-Ga-OQCq8.png",
+                thumbnail_url: "https://i.ibb.co/7d7r22Yw/2a-Obo-RA5-NBRA63k-AZT8x-Nt5pvgjsd-Lxuw-Ga-OQCq8.png"
             },
             {
-                id: "pastel_green", // Ô Pastel Xanh Lá
-                name: "🌈 Cầu Vồng Nhạt Shin V9",
+                id: "shin_rainbow_light_v9",
+                name: "Cầu Vồng 1",
                 border_style: "custom",
-                overlay_asset: "https://i.ibb.co/wNr8WcyN/2a-Obo-RA5-NBd-Mdaa472y-Mui-Ickpq-BGa-JFgz-U7-MUoi.png"
+                overlay_asset: "https://i.ibb.co/wNr8WcyN/2a-Obo-RA5-NBd-Mdaa472y-Mui-Ickpq-BGa-JFgz-U7-MUoi.png",
+                overlay_url: "https://i.ibb.co/wNr8WcyN/2a-Obo-RA5-NBd-Mdaa472y-Mui-Ickpq-BGa-JFgz-U7-MUoi.png",
+                image_url: "https://i.ibb.co/wNr8WcyN/2a-Obo-RA5-NBd-Mdaa472y-Mui-Ickpq-BGa-JFgz-U7-MUoi.png",
+                thumbnail_url: "https://i.ibb.co/wNr8WcyN/2a-Obo-RA5-NBd-Mdaa472y-Mui-Ickpq-BGa-JFgz-U7-MUoi.png"
             },
             {
-                id: "pastel_blue", // Ô Pastel Xanh Dương
-                name: "🌈 Cầu Vồng Đậm Shin V10",
+                id: "shin_rainbow_dark_v10",
+                name: "Cầu Vồng 2",
                 border_style: "custom",
-                overlay_asset: "https://i.ibb.co/gbpx3wxb/2a-Obo-RA5-NBRA63k-AZT8x-Nt6-Meg-Qb-Bcpl-Hyhawu-Aa.png"
+                overlay_asset: "https://i.ibb.co/gbpx3wxb/2a-Obo-RA5-NBRA63k-AZT8x-Nt6-Meg-Qb-Bcpl-Hyhawu-Aa.png",
+                overlay_url: "https://i.ibb.co/gbpx3wxb/2a-Obo-RA5-NBRA63k-AZT8x-Nt6-Meg-Qb-Bcpl-Hyhawu-Aa.png",
+                image_url: "https://i.ibb.co/gbpx3wxb/2a-Obo-RA5-NBRA63k-AZT8x-Nt6-Meg-Qb-Bcpl-Hyhawu-Aa.png",
+                thumbnail_url: "https://i.ibb.co/gbpx3wxb/2a-Obo-RA5-NBRA63k-AZT8x-Nt6-Meg-Qb-Bcpl-Hyhawu-Aa.png"
             }
         ]
     }),
 
     widget_frame_styles: JSON.stringify([
-        "neon_pink", "neon_orange", "neon_yellow", "neon_green", "neon_blue", 
-        "neon_purple", "pastel_pink", "pastel_orange", "pastel_yellow", 
-        "pastel_green", "pastel_blue"
-    ]),
-
-    seasonal_frames_config: JSON.stringify({
-        enabled: true,
-        auto_rotate: false,
-        override_default: true,
-        current_season_theme: "neon_pink"
-    }),
-
-    live_activity_onboarding: "true",
-    live_activity_onboarding_variant: "friending",
-    register_live_activity_push_to_start_token: "true",
-    live_activity_remove_stale_start_token: "true",
-    notification_preferences_live_activities: "true",
-    notification_preferences: "true",
-    notification_reply_body_visible: "true",
-    prompt_notification_permissions_after_friending: "true",
-    activity_bar_enabled: "true",
-    journal_activity_bar_enabled: "true",
-
-    journal_settings: JSON.stringify({
-        debug_menu_enabled: false,
-        focus_animation: true,
-        compact_header: true,
-        friends_button: true,
-        reverse_scroll_direction: false,
-        streak_visualization: true,
-        streak_visualization_style: "gradient",
-        streak_header_minimum_count: 0,
-        streak_visualization_minimum_count: 2,
-        overlay_indicators: {
-            location: true,
-            music: true,
-            static_content: true,
-            weather: true
-        }
-    }),
-
-    qr_code_config: JSON.stringify({ profile_enabled: true, scanning_enabled: true }),
-    custom_profile_pics: "true",
-    profile_menu_v2_enabled: "true"
+        "shin_v2", "shin_v3", "shin_v4", "hello_kitty_shin", "doraemon_shin", 
+        "shin_cute_v5", "shin_galaxy_v6", "shin_orange_v7", "shin_bluepink_v8", 
+        "shin_rainbow_light_v9", "shin_rainbow_dark_v10"
+    ])
 });
-
 
 // ============================================================
 // 7. HỆ THỐNG CDN, CACHE & STORAGE ĐẦY ĐỦ
