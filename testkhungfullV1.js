@@ -363,9 +363,8 @@ Object.assign(obj.entries, {
     rollcall_confirm_skip_tagging: "false",
     rollcall_tap_to_tag_enabled: "false"
 });
-
 // ============================================================
-// 6. WIDGET SỰ KIỆN MỚI, KHUNG HOÀNG GIA & KHUNG CUSTOM
+// 6. WIDGET SỰ KIỆN MỚI, KHUNG HOÀNG GIA & KHUNG CUSTOM (OVERRIDE)
 // ============================================================
 Object.assign(obj.entries, {
     widget_frame_event_max_images: "10",
@@ -376,125 +375,96 @@ Object.assign(obj.entries, {
     widget_last_sent_indicator: "false",
     widget_sync_token_reload_mode: "clearTokenNever",
 
-    widget_frame_event: JSON.stringify({
-        uid: "shinchan_2026",
-        url: "https://i.ibb.co/m5vH9GMg/ben-10-1.png",
-        use_local_time_zone: true,
-        placement: "below",
-        start_at: "2020-01-01T00:00:00",
-        end_at: "2099-12-31T23:59:59"
-    }),
-
     custom_widget_frames: "enabled",
     custom_widget_frames_enabled: "true",
 
-    // CHÈN CÁC KHUNG ANH YÊU CẦU VÀO ĐÂY
+    // BẮT ĐẦU ĐÁNH TRÁO KHUNG MÀU MẶC ĐỊNH THÀNH KHUNG CUSTOM
     widget_frames_config: JSON.stringify({
         enabled: true,
         allow_custom_frames: true,
         unlock_all_styles: true,
-        default_style: "shin_v2",
+        default_style: "neon_pink", // Mặc định chọn ô màu Hồng Neon (Shin V2)
         styles: [
             {
-                id: "shin_v2",
+                id: "neon_pink", // Ô màu Hồng
                 name: "✏️ Shin Bút Chì V2",
                 border_style: "custom",
                 overlay_asset: "https://i.ibb.co/HpH3cp18/2a-Obo-R9r-Jm-Snkzsux2vxzo2m-VOy-EVM5-TFU01-V4r2.png"
             },
             {
-                id: "shin_v3",
+                id: "neon_orange", // Ô màu Cam
                 name: "✏️ Shin Bút Chì V3",
                 border_style: "custom",
                 overlay_asset: "https://i.ibb.co/kVjXSFvY/2a-Obo-R9r-Jmf0-IWio-Ucl-NWd-Ez1m-EGMBi-WW8-Hn-Xc24.png"
             },
             {
-                id: "shin_v4",
+                id: "neon_yellow", // Ô màu Vàng
                 name: "✏️ Shin V4",
                 border_style: "custom",
                 overlay_asset: "https://i.ibb.co/mrQrBmQ1/2a-Obo-R9r-Jmq1r-PJKvy-N3j-LZt-Hc-Hdg9-Mq-Bcs9-Xsci.png"
             },
             {
-                id: "hello_kitty_shin",
+                id: "neon_green", // Ô màu Xanh Lá
                 name: "🎀 Hello Kitty x Shin",
                 border_style: "custom",
                 overlay_asset: "https://i.ibb.co/kg3wbrzy/a2c7d720-f81f-4b0b-ab64-c59f99f967ed.png"
             },
             {
-                id: "doraemon_shin",
+                id: "neon_blue", // Ô màu Xanh Dương
                 name: "🐱 Doraemon & Shin",
                 border_style: "custom",
                 overlay_asset: "https://i.ibb.co/Lz7HgGgp/2a-Obo-RA5-NBhien68z5z-Zc8-BIa8ze0vp-Lw5-X92f-BI.png"
             },
             {
-                id: "shin_cute_v5",
+                id: "neon_purple", // Ô màu Tím
                 name: "🥰 Siêu Cute Shin V5",
                 border_style: "custom",
                 overlay_asset: "https://i.ibb.co/1BKhs0v/2a-Obo-RA5-NBd-Mdaa472y-Mui-OS6-Iwyv-SH9-SEDNJCCm.png"
             },
             {
-                id: "shin_galaxy_v6",
+                id: "pastel_pink", // Ô Pastel Hồng
                 name: "🌌 Galaxy Shin V6",
                 border_style: "custom",
                 overlay_asset: "https://i.ibb.co/BKLXj3Z4/2a-Obo-RA5-NBT0-Qfzz-EEDw3j-Jk-X3-Sxr-DH5wb0pxpq4.png"
             },
             {
-                id: "shin_orange_v7",
+                id: "pastel_orange", // Ô Pastel Cam
                 name: "🍊 Cam Vàng Shin V7",
                 border_style: "custom",
                 overlay_asset: "https://i.ibb.co/dwnvfTcm/2a-Obo-RA5-NBSj-Ov-PKhm6b9-N0i-Kb-QBJJ1w-N13-Ba-Y6-K.png"
             },
             {
-                id: "shin_bluepink_v8",
+                id: "pastel_yellow", // Ô Pastel Vàng
                 name: "💙 Xanh Hồng Shin V8",
                 border_style: "custom",
                 overlay_asset: "https://i.ibb.co/7d7r22Yw/2a-Obo-RA5-NBRA63k-AZT8x-Nt5pvgjsd-Lxuw-Ga-OQCq8.png"
             },
             {
-                id: "shin_rainbow_light_v9",
+                id: "pastel_green", // Ô Pastel Xanh Lá
                 name: "🌈 Cầu Vồng Nhạt Shin V9",
                 border_style: "custom",
                 overlay_asset: "https://i.ibb.co/wNr8WcyN/2a-Obo-RA5-NBd-Mdaa472y-Mui-Ickpq-BGa-JFgz-U7-MUoi.png"
             },
             {
-                id: "shin_rainbow_dark_v10",
+                id: "pastel_blue", // Ô Pastel Xanh Dương
                 name: "🌈 Cầu Vồng Đậm Shin V10",
                 border_style: "custom",
                 overlay_asset: "https://i.ibb.co/gbpx3wxb/2a-Obo-RA5-NBRA63k-AZT8x-Nt6-Meg-Qb-Bcpl-Hyhawu-Aa.png"
-            },
-            {
-                id: "royal_gold_vip",
-                name: "👑 VIP Royal Gold",
-                border_style: "ornate_gold",
-                crown_badge: true,
-                badge_text: "VIP",
-                corner_radius: 28.0,
-                glow_effect: true,
-                glow_color: "#FFD700",
-                overlay_asset: "royal_crown_frame"
             }
         ]
     }),
 
     widget_frame_styles: JSON.stringify([
-        "shin_v2",
-        "shin_v3",
-        "shin_v4",
-        "hello_kitty_shin",
-        "doraemon_shin",
-        "shin_cute_v5",
-        "shin_galaxy_v6",
-        "shin_orange_v7",
-        "shin_bluepink_v8",
-        "shin_rainbow_light_v9",
-        "shin_rainbow_dark_v10",
-        "royal_gold_vip"
+        "neon_pink", "neon_orange", "neon_yellow", "neon_green", "neon_blue", 
+        "neon_purple", "pastel_pink", "pastel_orange", "pastel_yellow", 
+        "pastel_green", "pastel_blue"
     ]),
 
     seasonal_frames_config: JSON.stringify({
         enabled: true,
         auto_rotate: false,
         override_default: true,
-        current_season_theme: "shin_v2"
+        current_season_theme: "neon_pink"
     }),
 
     live_activity_onboarding: "true",
