@@ -110,18 +110,14 @@ Object.assign(obj.entries, {
         profile_banner: true
     }),
     feature_discovery_popup_config: JSON.stringify({
-        tag: "LOCKET GOLD Quang Anh",
+        tag: "LOCKET GOLD quang anh",
         tag_gradient: true,
         tag_style: "gold_gradient",
-        title: "Lên LocketGold rồi đó quang anh 🤫 😎",
+        title: "Lên Gold rồi đó 🤫 😎",
         feature_set: [
             {
-                title: "Ngày hôm đó
-anh đã nói với mọi người rằng mình đã hết yêu em.
-Nhưng hình như người không tin câu đó nhất, lại chính là an ✨",
-                body: "Anh muốn yêu một ai đó
-Nhưng anh làm việc từ thứ 2 đến thứ 7
-Chủ nhật vừa mở mắt ra thì đã là đầu giờ chiều dọn dẹp cho đến tối rồi lại chuẩn bị cho thứ 2 💛",
+                title: "quang anh locket gold ✨",
+                body: "quang anh locket gold 60 giây  💛",
                 imageURL: "https://i.ibb.co/ynpz9Tqn/quang-anh.png"
             }
         ],
