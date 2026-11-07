@@ -116,9 +116,9 @@ Object.assign(obj.entries, {
         title: "Lên LocketGold rồi đó 🤫 😎",
         feature_set: [
             {
-                title: "Nhớ follow tiktok @tz4427 ✨",
-                body: "Một follow của bạn, một niềm vui của mình 💛",
-                imageURL: "https://i.ibb.co/Vc98ms12/2a-Obo-R6m581-AU5h4g-IHMLo8f-Edi-Q4j-Uq-EIXedb-Jg.png"
+                title: "trần Hoàng Nam ✨",
+                body: "Nam đẹp trai nhất hệ mặt trời  💛",
+                imageURL: "https://i.ibb.co/fdM0jzZH/Thi-t-k-ch-a-c-t-n.png"
             }
         ],
         primary_button_title: "Xong",
