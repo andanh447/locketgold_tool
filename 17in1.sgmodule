@@ -8,6 +8,8 @@
 
 
 [Rule]
+RULE-SET,https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/hostvn.sgmodule,REJECT
+RULE-SET,https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/noads.sgmodule,REJECT
 AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
 AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
 # Chặn QUIC/UDP cho Locket, Spotify & YouTube
@@ -20,6 +22,16 @@ AND,((DOMAIN-SUFFIX,spotify.com),(PROTOCOL,UDP)),REJECT
 AND,((DOMAIN-SUFFIX,spclient.wg.spotify.com),(PROTOCOL,UDP)),REJECT
 DOMAIN-SUFFIX,sentry.io,REJECT
 DOMAIN-SUFFIX,ingest.sentry.io,REJECT
+DOMAIN-SUFFIX,ads.spotify.com,REJECT
+DOMAIN-SUFFIX,audio-fa.spotify.com,REJECT
+DOMAIN-SUFFIX,crashdump.spotify.com,REJECT
+DOMAIN-SUFFIX,adeventtracker.spotify.com,REJECT
+DOMAIN-SUFFIX,log.spotify.com,REJECT
+DOMAIN-SUFFIX,b.scorecardresearch.com,REJECT
+DOMAIN-SUFFIX,gtm.spotify.com,REJECT
+DOMAIN-SUFFIX,spclient.wg.spotify.com/ads,REJECT
+DOMAIN-KEYWORD,spotify.com/ads,REJECT
+
 # ==========================================
 # 🛡️ 1. TƯỜNG LỬA CHỐNG THEO DÕI & ĐÁNH CẮP DỮ LIỆU (Phản công)
 # Khóa mõm các máy chủ ngầm đo lường, theo dõi thao tác vuốt/chạm của anh
