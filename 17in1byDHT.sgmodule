@@ -65,6 +65,14 @@ locket_rc = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googlea
 locket_filter_req = type=http-request,pattern=^https:\/\/api\.locketcamera\.com\/.+,max-size=-1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locketfilter_andanh447.js?v=20261101_0845,timeout=60
 locket_filter_resp = type=http-response,pattern=^https:\/\/api\.locketcamera\.com\/.+,requires-body=true,max-size=-1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locketfilter_andanh447.js?v=20261101_0845,timeout=60
 
+revenuecat = type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers),script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/revenuecatNEW.js,requires-body=true,max-size=-1,timeout=60
+
+locket_pb_req = type=http-request,pattern=^https?:\/\/(us-central1-locket-4252a\.cloudfunctions\.net|api\.locketcamera\.com)\/generateFilteredImage,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/photoboth.js?v=20261108_15,requires-body=true,max-size=-1,timeout=60
+
+locket_change_profile = type=http-request,pattern=^https:\/\/api\.locketcamera\.com\/changeProfileInfo,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/andanh447filterUnclock.js?v=20261108_15,timeout=60
+locket_filter_resp = type=http-response,pattern=^https?:\/\/api\.locketcamera\.com\/.+,requires-body=true,max-size=-1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/andanh447filterUnclock.js?v=20261108_15,timeout=60
+
+
 #spotify
 spotify-json = type=http-request,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/,requires-body=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify-jsonV2.js
 spotify-proto = type=http-response,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify-protoV2.js,script-update-interval=0
@@ -114,4 +122,4 @@ Spark Mail=type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/(rec
 
 
 [MITM]
-hostname = %APPEND%, sub.store, api.revenuecat.com, firebaseremoteconfig.googleapis.com,api.locketcam.com,spclient.wg.spotify.com, *spclient.spotify.com,*.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, sub.store, api-mobile.soundcloud.com, service.ilovepdf.com,lcs-mobile-cops.adobe.io, api.meiease.c*,piccollage.com,pro.smallpdf.com, buy.itunes.apple.com,us-central1-alight-creative.cloudfunctions.net,premium*.truecaller.com, mobile-api.adguard.org,h5.xiuxiu.meitu.com,api.xiuxiu.meitu.com
+hostname = %APPEND%, sub.store, api.revenuecat.com, firebaseremoteconfig.googleapis.com,api.locketcam.com,api.locketcamera.com, *.locketcamera.com, us-central1-locket-4252a.cloudfunctions.net,,spclient.wg.spotify.com, *spclient.spotify.com,*.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, sub.store, api-mobile.soundcloud.com, service.ilovepdf.com,lcs-mobile-cops.adobe.io, api.meiease.c*,piccollage.com,pro.smallpdf.com, buy.itunes.apple.com,us-central1-alight-creative.cloudfunctions.net,premium*.truecaller.com, mobile-api.adguard.org,h5.xiuxiu.meitu.com,api.xiuxiu.meitu.com
