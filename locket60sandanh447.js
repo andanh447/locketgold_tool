@@ -160,9 +160,9 @@ Object.assign(obj.entries, {
 // ============================================================
 var MY_VIDEO_DURATION = 60.0;
 var MAX_DURATION = MY_VIDEO_DURATION;
-var QUALITY_MBPS = 0.6;
+var QUALITY_MBPS = 1.0;
 var durationStr = MY_VIDEO_DURATION.toString();
-var MAX_SIZE_BYTES = 314572800; // 150MB
+var MAX_SIZE_BYTES = 314572800; // 300MB
 
 var cameraConfig = {
     gold_max_duration: MY_VIDEO_DURATION,
@@ -177,8 +177,8 @@ var cameraConfig = {
     telephoto: true,
     srgb: true,
     lanczos: true,
-    quality_mbps: 0.6,
-    qualityMbps: 0.6
+    quality_mbps: 1.0,
+    qualityMbps: 1.0
 };
 
 var cameraRollConfig = {
@@ -195,8 +195,8 @@ var cameraRollConfig = {
     max_file_size: MAX_SIZE_BYTES,
     max_upload_bytes: MAX_SIZE_BYTES,
     max_size_bytes: MAX_SIZE_BYTES,
-    quality_mbps: 0.6,
-    qualityMbps: 0.6,
+    quality_mbps: 1.0,
+    qualityMbps: 1.0,
     flash_button: true
 };
 
@@ -250,7 +250,7 @@ Object.assign(obj.entries, {
     goldMaxDuration: durationStr,
     max_file_size: MAX_SIZE_BYTES.toString(),
     max_upload_bytes: MAX_SIZE_BYTES.toString(),
-    video_quality_mbps: "0.6",
+    video_quality_mbps: "1.0",
     video_sound_enabled: "true",
     microphone_enabled: "true",
     camera_microphone_enabled: "true",
