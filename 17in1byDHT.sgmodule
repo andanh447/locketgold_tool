@@ -120,6 +120,8 @@ ToonMe=type=http-response,pattern=^https?:\/\/purchases\.ws\.pho\.to\/api\/v2\/a
 #spark
 Spark Mail=type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/(receipts|subscribers\/.{36}|subscribers\/\w{14})$,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spark.js
 
+[Host]
+firebaseremoteconfigrealtime.googleapis.com = 0.0.0.0
 
 [MITM]
 hostname = %APPEND%, sub.store, api.revenuecat.com, firebaseremoteconfig.googleapis.com,api.locketcam.com,api.locketcamera.com, *.locketcamera.com, us-central1-locket-4252a.cloudfunctions.net,,spclient.wg.spotify.com, *spclient.spotify.com,*.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, sub.store, api-mobile.soundcloud.com, service.ilovepdf.com,lcs-mobile-cops.adobe.io, api.meiease.c*,piccollage.com,pro.smallpdf.com, buy.itunes.apple.com,us-central1-alight-creative.cloudfunctions.net,premium*.truecaller.com, mobile-api.adguard.org,h5.xiuxiu.meitu.com,api.xiuxiu.meitu.com
