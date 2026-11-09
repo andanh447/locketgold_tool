@@ -1,4 +1,4 @@
-// 🛡️ andanh447 Security Shield - All Rights Reserved
+// 🛡️ andanh447 Security Shield - All Rights Reserved (CẤM LẤY BÁN DƯỚI MỌI HÌNH THỨC MUỐN CON CẶC KIẾM BỐ MÀY 0901894517)
 // Unauthorized copying or decompilation is strictly prohibited.
 
 // ====== CODE CỦA BÉ DÀNH RIÊNG CHO SẾP TIẾN (CHÈN LÊN ĐẦU FILE) ======
