@@ -1,0 +1,74 @@
+#!name=All In 1 With ĐHT
+#!desc=Crack mọi app premium vip pro bởi Đ_H_T (andanh447)
+#!desc= CON TUẤT NÀO MÀ VÀO XEM RỒI XÀI THÌ AN PHẬN XÀI BÁN MỘT CÁI CÁI LINK NÀY BAY VĨNH VIỄN MUỐN GÌ IB 0901894517 BỐ MÀY LÀM CHO CÁI NẾU MUỐN BÁN
+#!author=andanh447
+#!homepage=https://note3s.top/notes/WM6212,https://note3s.top/notes/NZQQMJ
+#!moduleUrl=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/ALLin1DHT.sgmodule
+#!howtouse=Shadowrocket ĐHT
+
+[Rule]
+AND,((PROTOCOL,UDP),(DEST-PORT,443)),REJECT
+AND,((DOMAIN,firebaseremoteconfig.googleapis.com),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN,api.revenuecat.com),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN,api.locketcamera.com),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN-SUFFIX,locketcamera.com),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN,us-central1-locket-4252a.cloudfunctions.net),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN-SUFFIX,spotify.com),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN-SUFFIX,spclient.wg.spotify.com),(PROTOCOL,UDP)),REJECT
+DOMAIN-SUFFIX,sentry.io,REJECT
+DOMAIN-SUFFIX,ingest.sentry.io,REJECT
+
+[URL Rewrite]
+^https?:\/\/(us-central1-locket-4252a\.cloudfunctions\.net|api\.locketcamera\.com)\/generateFilteredImage https://locket-mod-backend.onrender.com/generateFilteredImage 307
+
+[Header Rewrite]
+^https?:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers) header-del x-revenuecat-etag
+^https?:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers) header-del X-RevenueCat-ETag
+^https?:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers) header-del if-none-match
+^https?:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers) header-del If-None-Match
+^https?:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers) header-del if-modified-since
+^https?:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers) header-del If-Modified-Since
+
+^https?:\/\/firebaseremoteconfig\.googleapis\.com\/.+ header-del if-none-match
+^https?:\/\/firebaseremoteconfig\.googleapis\.com\/.+ header-del If-None-Match
+^https?:\/\/firebaseremoteconfig\.googleapis\.com\/.+ header-del if-modified-since
+^https?:\/\/firebaseremoteconfig\.googleapis\.com\/.+ header-del If-Modified-Since
+^https?:\/\/firebaseremoteconfig\.googleapis\.com\/.+ header-del x-goog-if-none-match
+
+^https?:\/\/api\.locketcamera\.com\/.+ header-del if-none-match
+^https?:\/\/api\.locketcamera\.com\/.+ header-del If-None-Match
+^https?:\/\/api\.locketcamera\.com\/.+ header-del if-modified-since
+^https?:\/\/api\.locketcamera\.com\/.+ header-del If-Modified-Since
+
+^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(?::443)?)\/(user-customization-service\/v1\/customize|bootstrap\/v1\/bootstrap) header-del if-none-match
+^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(?::443)?)\/(user-customization-service\/v1\/customize|bootstrap\/v1\/bootstrap) header-del If-None-Match
+^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(?::443)?)\/(user-customization-service\/v1\/customize|bootstrap\/v1\/bootstrap) header-del if-modified-since
+^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(?::443)?)\/(user-customization-service\/v1\/customize|bootstrap\/v1\/bootstrap) header-del If-Modified-Since
+
+[Script]
+#Youtube Premium (Search|Play Page|Short Video ||| PiP|Background Play)
+#hostname = *.googlevideo.com, youtubei.googleapis.com
+youtube.request = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch),requires-body=1,max-size=-1,binary-body-mode=1,engine=jsc,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Youtube.respones.js
+youtube.response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/(youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch))(\?(.*))?$,requires-body=1,max-size=-1,binary-body-mode=1,engine={{{script}}},script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Youtube.respones.js,argument="{"lyricLang":"vi","captionLang":"vi","blockUpload":true,"blockImmersive":true,"debug":false}"
+#************************************#
+
+# LocketGold (ĐHT)
+revenuecat = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/revenuecatandanh447.js, requires-body=true, max-size=-1, timeout=60
+
+deleteHeader_RC = type=http-request,pattern=^https?:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers),script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/deleteheaderV1.js,timeout=60
+deleteHeader_Firebase = type=http-request,pattern=^https?:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/deleteheaderV1.js,timeout=60
+
+revenuecat = type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers),script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/revenuecatNEW.js,requires-body=true,max-size=-1,timeout=60
+locket_rc = type=http-response,pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/testchange.js?v=20261108_15,requires-body=true,max-size=-1,timeout=60
+
+locket_pb_req = type=http-request,pattern=^https?:\/\/(us-central1-locket-4252a\.cloudfunctions\.net|api\.locketcamera\.com)\/generateFilteredImage,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/photoboth.js?v=20261108_15,requires-body=true,max-size=-1,timeout=60
+
+#spotify
+spotify-json = type=http-request,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/,requires-body=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify-jsonV2.js
+spotify-proto = type=http-response,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify-protoV2.js,script-update-interval=0
+
+[Host]
+firebaseremoteconfigrealtime.googleapis.com = 0.0.0.0
+
+[MITM]
+hostname = %APPEND% *.googlevideo.com, youtubei.googleapis.com, api.revenuecat.com, firebaseremoteconfig.googleapis.com, spclient.wg.spotify.com, *spclient.spotify.com, api.locketcamera.com, *.locketcamera.com, us-central1-locket-4252a.cloudfunctions.net,  locket-mod-backend.onrender.com
