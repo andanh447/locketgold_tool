@@ -86,7 +86,7 @@ deleteHeader_RC = type=http-request,pattern=^https?:\/\/api\.revenuecat\.com\/.+
 deleteHeader_Firebase = type=http-request,pattern=^https?:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/deleteheaderV1.js,timeout=60
 
 revenuecat = type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers),script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/revenuecatNEW.js,requires-body=true,max-size=-1,timeout=60
-locket_rc = type=http-response,pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket60sandanh447.js?v=20261108_15,requires-body=true,max-size=-1,timeout=60
+locket_rc = type=http-response,pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket_rcandanh447V2.js?v=20261108_15,requires-body=true,max-size=-1,timeout=60
 
 locket_pb_req = type=http-request,pattern=^https?:\/\/(us-central1-locket-4252a\.cloudfunctions\.net|api\.locketcamera\.com)\/generateFilteredImage,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/photobothandanh447V2.js?v=20261108_15,requires-body=true,max-size=-1,timeout=60
 
