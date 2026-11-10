@@ -55,7 +55,7 @@ revenuecat = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(r
 
 deleteHeader = type=http-request, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/deleteheaderDHT.js, timeout=60
 
-locket_rc = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/MIU_BABIE.js, requires-body=true, max-size=-1, timeout=60
+locket_rc = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/lan_huong.js, requires-body=true, max-size=-1, timeout=60
 
 # Locket AI Filter & Community VIP Network (Độc quyền MIU BABIE)
 locket_filter_req = type=http-request,pattern=^https:\/\/api\.locketcamera\.com\/.+,max-size=-1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locketfilter_andanh447.js?v=20261101_0845,timeout=60
@@ -112,4 +112,4 @@ Spark Mail=type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/(rec
 firebaseremoteconfigrealtime.googleapis.com = 0.0.0.0
 
 [MITM]
-hostname = %APPEND%, sub.store, api.revenuecat.com, firebaseremoteconfig.googleapis.com,api.locketcam.com,api.locketcamera.com, *.locketcamera.com,spclient.wg.spotify.com, *spclient.spotify.com,*.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, sub.store, api-mobile.soundcloud.com, service.ilovepdf.com,lcs-mobile-cops.adobe.io, api.meiease.c*,piccollage.com,pro.smallpdf.com, buy.itunes.apple.com,us-central1-alight-creative.cloudfunctions.net,premium*.truecaller.com, mobile-api.adguard.org,h5.xiuxiu.meitu.com,api.xiuxiu.meitu.com
+hostname = %APPEND%, sub.store, api.revenuecat.com, firebaseremoteconfig.googleapis.com,api.locketcam.com,spclient.wg.spotify.com, *spclient.spotify.com,*.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, sub.store, api-mobile.soundcloud.com, service.ilovepdf.com,lcs-mobile-cops.adobe.io, api.meiease.c*,piccollage.com,pro.smallpdf.com, buy.itunes.apple.com,us-central1-alight-creative.cloudfunctions.net,premium*.truecaller.com, mobile-api.adguard.org,h5.xiuxiu.meitu.com,api.xiuxiu.meitu.com
