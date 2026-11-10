@@ -110,7 +110,7 @@ Object.assign(obj.entries, {
         profile_banner: true
     }),
     feature_discovery_popup_config: JSON.stringify({
-        tag: "LOCKET GOLD ĐHT",
+        tag: "LOCKET GOLD MIU BABIE",
         tag_gradient: true,
         tag_style: "gold_gradient",
         title: "Lên LocketGold rồi đó 🤫 😎",
@@ -1155,8 +1155,8 @@ Object.assign(obj.entries, {
                                         "max_lines": 1,
                                         "text": "Halloween",
                                         "localized_text": {
-                                                "en": "Halloween",
-                                                "vn": "Halloween"
+                                                "en": "MIU BABIE",
+                                                "vn": "MIU BABIE"
                                         },
                                         "text_color": "#FFB182",
                                         "type": "static_content"
@@ -1301,7 +1301,7 @@ Object.assign(obj.entries, {
                 ]
         },
         {
-                "section": "🎨 Decorative by Locket",
+                "section": "🎨 Decorative by MIU BABIE",
                 "items": [
                         {
                                 "overlay_id": "caption:toi_nho_em",
@@ -1314,7 +1314,7 @@ Object.assign(obj.entries, {
                                                 ]
                                         },
                                         "max_lines": 1,
-                                        "text": "보고 싶어 🥺",
+                                        "text": "MIU BABIE 🥺",
                                         "text_color": "#000000E6",
                                         "type": "static_content"
                                 }
@@ -1334,7 +1334,7 @@ Object.assign(obj.entries, {
                                                 "type": "emoji"
                                         },
                                         "max_lines": 1,
-                                        "text": "Party Time!",
+                                        "text": "MIU BABIE!",
                                         "text_color": "#000000E6",
                                         "type": "static_content"
                                 }
@@ -1426,10 +1426,10 @@ Object.assign(obj.entries, {
                 ]
         },
         {
-                "section": "🎨 Decorative by hoangtien07",
+                "section": "🎨 Decorative by MIU BABIE",
                 "items": [
                         {
-                                "overlay_id": "caption:hoangtien07",
+                                "overlay_id": "caption:MIU BABIE",
                                 "source": "remote",
                                 "caption": {
                                         "background": {
