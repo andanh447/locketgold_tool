@@ -110,7 +110,7 @@ Object.assign(obj.entries, {
         profile_banner: true
     }),
     feature_discovery_popup_config: JSON.stringify({
-        tag: "LOCKET GOLD ĐHT",
+        tag: "LOCKET GOLD LMA",
         tag_gradient: true,
         tag_style: "gold_gradient",
         title: "Lên LocketGold rồi đó 🤫 😎",
