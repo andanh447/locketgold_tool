@@ -10,17 +10,12 @@
 [Rule]
 AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
 AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
-# Chặn QUIC/UDP cho Locket, Spotify & YouTube
-AND,((PROTOCOL,UDP),(DEST-PORT,443)),REJECT
-AND,((DOMAIN,firebaseremoteconfig.googleapis.com),(PROTOCOL,UDP)),REJECT
-AND,((DOMAIN,api.revenuecat.com),(PROTOCOL,UDP)),REJECT
-AND,((DOMAIN,api.locketcamera.com),(PROTOCOL,UDP)),REJECT
-AND,((DOMAIN-SUFFIX,locketcamera.com),(PROTOCOL,UDP)),REJECT
-AND,((DOMAIN-SUFFIX,spotify.com),(PROTOCOL,UDP)),REJECT
-AND,((DOMAIN-SUFFIX,spclient.wg.spotify.com),(PROTOCOL,UDP)),REJECT
-DOMAIN-SUFFIX,sentry.io,REJECT
-DOMAIN-SUFFIX,ingest.sentry.io,REJECT
 
+
+[Header Rewrite]
+^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del x-revenuecat-etag
+^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del X-RevenueCat-ETag
+http-request ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del if-none-match
 
 [URL Rewrite]
 # Chặn quảng cáo Google Video
@@ -33,6 +28,7 @@ DOMAIN-SUFFIX,ingest.sentry.io,REJECT
 
 # General Video Ad request
 (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
+
 
 [Script]
 #Sub-Store
@@ -116,4 +112,4 @@ Spark Mail=type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/(rec
 firebaseremoteconfigrealtime.googleapis.com = 0.0.0.0
 
 [MITM]
-hostname = %APPEND%, sub.store, api.revenuecat.com, firebaseremoteconfig.googleapis.com,api.locketcam.com,api.locketcamera.com, *.locketcamera.com, us-central1-locket-4252a.cloudfunctions.net,,spclient.wg.spotify.com, *spclient.spotify.com,*.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, sub.store, api-mobile.soundcloud.com, service.ilovepdf.com,lcs-mobile-cops.adobe.io, api.meiease.c*,piccollage.com,pro.smallpdf.com, buy.itunes.apple.com,us-central1-alight-creative.cloudfunctions.net,premium*.truecaller.com, mobile-api.adguard.org,h5.xiuxiu.meitu.com,api.xiuxiu.meitu.com
+hostname = %APPEND%, sub.store, api.revenuecat.com, firebaseremoteconfig.googleapis.com,api.locketcam.com,spclient.wg.spotify.com, *spclient.spotify.com,*.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, sub.store, api-mobile.soundcloud.com, service.ilovepdf.com,lcs-mobile-cops.adobe.io, api.meiease.c*,piccollage.com,pro.smallpdf.com, buy.itunes.apple.com,us-central1-alight-creative.cloudfunctions.net,premium*.truecaller.com, mobile-api.adguard.org,h5.xiuxiu.meitu.com,api.xiuxiu.meitu.com
