@@ -116,9 +116,9 @@ Object.assign(obj.entries, {
         title: "Lên LocketGold rồi đó 🤫 😎",
         feature_set: [
             {
-                title: "Nhớ follow tiktok @tz4427 ✨",
-                body: "Một follow của bạn, một niềm vui của mình 💛",
-                imageURL: "https://i.ibb.co/Vc98ms12/2a-Obo-R6m581-AU5h4g-IHMLo8f-Edi-Q4j-Uq-EIXedb-Jg.png"
+                title: "NGUYỄN THỊ LAN HƯƠNG ✨",
+                body: "LAN HƯƠNG (MIU BABIE) LOCKET GOLD  💛",
+                imageURL: "https://i.ibb.co/kVHQCm4f/LAN-HUONG.png"
             }
         ],
         primary_button_title: "Xong",
@@ -130,8 +130,8 @@ Object.assign(obj.entries, {
     android_subscribe_gold_button_enabled: "false",
     profile_badge_visible: "true",
     lunar_new_year_app_icon_enabled: "true",
-    settings_instagram_url: "https://www.instagram.com/miinhhiep/",
-    settings_tiktok_url: "https://tiktok.com/@ltocamz"
+    settings_facebook_url: "https://www.facebook.com/miuubabieuwu",
+    settings_playerduo_url: "https://playerduo.net/miuubabie"
 });
 
 // ============================================================
@@ -378,7 +378,7 @@ Object.assign(obj.entries, {
 
     widget_frame_event: JSON.stringify({
         uid: "shinchan_2026",
-        url: "https://i.ibb.co/fYnJZFJJ/2a-Obo-RB6b1l-JJ7q-PDQF6t-Qo7-Erft-ZLm-Fi-Bcpkt-UW-1.png",
+        url: "https://i.ibb.co/hxdCmZ32/MIU-BABIE-2.png",
         use_local_time_zone: true,
         placement: "below",
         start_at: "2020-01-01T00:00:00",
