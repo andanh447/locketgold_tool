@@ -1153,10 +1153,10 @@ Object.assign(obj.entries, {
                                                 "type": "emoji"
                                         },
                                         "max_lines": 1,
-                                        "text": "Halloween",
+                                        "text": "ngu mẹ",
                                         "localized_text": {
-                                                "en": "Halloween",
-                                                "vn": "Halloween"
+                                                "en": "ngu mẹ",
+                                                "vn": "ngu mẹ"
                                         },
                                         "text_color": "#FFB182",
                                         "type": "static_content"
@@ -1177,10 +1177,10 @@ Object.assign(obj.entries, {
                                                 "type": "emoji"
                                         },
                                         "max_lines": 1,
-                                        "text": "Xin chào Mùa Thu",
+                                        "text": "cha m ngu à",
                                         "localized_text": {
-                                                "en": "Xin chào Mùa Thu",
-                                                "vn": "Xin chào Mùa Thu"
+                                                "en": "cha m ngu à",
+                                                "vn": "cha m ngu à"
                                         },
                                         "text_color": "#FFFFFF",
                                         "type": "static_content"
@@ -1201,10 +1201,10 @@ Object.assign(obj.entries, {
                                                 "type": "emoji"
                                         },
                                         "max_lines": 1,
-                                        "text": "Giáng sinh an lành",
+                                        "text": "tổ cha m",
                                         "localized_text": {
-                                                "en": "Giáng sinh an lành",
-                                                "vn": "Giáng sinh an lành"
+                                                "en": "tổ cha m",
+                                                "vn": "tổ cha m"
                                         },
                                         "text_color": "#FFFFFF",
                                         "type": "static_content"
@@ -1225,10 +1225,10 @@ Object.assign(obj.entries, {
                                                 "type": "emoji"
                                         },
                                         "max_lines": 1,
-                                        "text": "Giáng sinh an lành",
+                                        "text": "t nói cút",
                                         "localized_text": {
-                                                "en": "Giáng sinh an lành",
-                                                "vn": "Giáng sinh an lành"
+                                                "en": "t nói cút",
+                                                "vn": "t nói cút"
                                         },
                                         "text_color": "#FFFFFF",
                                         "type": "static_content"
@@ -1249,10 +1249,10 @@ Object.assign(obj.entries, {
                                                 "type": "emoji"
                                         },
                                         "max_lines": 1,
-                                        "text": "Xin chào 2027!",
+                                        "text": "cút chưa",
                                         "localized_text": {
-                                                "en": "Xin chào 2027!",
-                                                "vn": "Xin chào 2027!"
+                                                "en": "cút chưa",
+                                                "vn": "cút chưa"
                                         },
                                         "text_color": "#643F00",
                                         "type": "static_content"
@@ -1273,10 +1273,10 @@ Object.assign(obj.entries, {
                                                 "type": "emoji"
                                         },
                                         "max_lines": 1,
-                                        "text": "Xin chào 2027!",
+                                        "text": "cu đẹp trai",
                                         "localized_text": {
-                                                "en": "Xin chào 2027!",
-                                                "vn": "Xin chào 2027!"
+                                                "en": "cu đẹp trai",
+                                                "vn": "cu đẹp trai"
                                         },
                                         "text_color": "#FFFFFF",
                                         "type": "static_content"
@@ -1293,7 +1293,7 @@ Object.assign(obj.entries, {
                                                 ]
                                         },
                                         "max_lines": 1,
-                                        "text": "2027",
+                                        "text": "cu dễ thương🤖",
                                         "text_color": "#FFFFFF",
                                         "type": "static_content"
                                 }
@@ -1314,7 +1314,7 @@ Object.assign(obj.entries, {
                                                 ]
                                         },
                                         "max_lines": 1,
-                                        "text": "보고 싶어 🥺",
+                                        "text": "t nói cứt🥺",
                                         "text_color": "#000000E6",
                                         "type": "static_content"
                                 }
@@ -1334,7 +1334,7 @@ Object.assign(obj.entries, {
                                                 "type": "emoji"
                                         },
                                         "max_lines": 1,
-                                        "text": "Party Time!",
+                                        "text": "cút",
                                         "text_color": "#000000E6",
                                         "type": "static_content"
                                 }
@@ -1356,7 +1356,7 @@ Object.assign(obj.entries, {
                                                 "type": "emoji"
                                         },
                                         "max_lines": 1,
-                                        "text": "Good morning",
+                                        "text": "nứng cặc",
                                         "text_color": "#FFFFFFE5",
                                         "type": "static_content"
                                 }
@@ -1378,7 +1378,7 @@ Object.assign(obj.entries, {
                                                 "type": "emoji"
                                         },
                                         "max_lines": 1,
-                                        "text": "Goodnight",
+                                        "text": "lồn",
                                         "text_color": "#FFFFFFE6",
                                         "type": "static_content"
                                 }
@@ -1398,7 +1398,7 @@ Object.assign(obj.entries, {
                                                 "type": "emoji"
                                         },
                                         "max_lines": 1,
-                                        "text": "OOTD",
+                                        "text": "súc vật",
                                         "text_color": "#101010E6",
                                         "type": "static_content"
                                 }
@@ -1418,7 +1418,7 @@ Object.assign(obj.entries, {
                                                 "type": "emoji"
                                         },
                                         "max_lines": 1,
-                                        "text": "Miss you",
+                                        "text": "ngu",
                                         "text_color": "#FFFFFFDB",
                                         "type": "static_content"
                                 }
@@ -1478,10 +1478,10 @@ Object.assign(obj.entries, {
                                                 "type": "emoji"
                                         },
                                         "max_lines": 1,
-                                        "text": "Feeling Cute",
+                                        "text": "dốt",
                                         "localized_text": {
-                                                "en": "Feeling Cute",
-                                                "vn": "Cảm thấy dthw"
+                                                "en": "dốt",
+                                                "vn": "dốt"
                                         },
                                         "text_color": "#FFFFFFE5",
                                         "type": "static_content"
@@ -1520,7 +1520,7 @@ Object.assign(obj.entries, {
                                                 "type": "emoji"
                                         },
                                         "max_lines": 1,
-                                        "text": "Tuất",
+                                        "text": "ánh cute ",
                                         "text_color": "#FFFFFFE6",
                                         "type": "static_content"
                                 }
