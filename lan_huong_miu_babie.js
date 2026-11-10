@@ -1440,7 +1440,7 @@ Object.assign(obj.entries, {
                                                 ]
                                         },
                                         "max_lines": 1,
-                                        "text": "💻 hoangtien07",
+                                        "text": "💻 MIU BABIE",
                                         "text_color": "#183153",
                                         "type": "static_content"
                                 }
