@@ -9,7 +9,7 @@
   // ============================================================================
   // 1. CẤU HÌNH NGUỒN AI RIÊNG (THAY ĐỔI ĐỊA CHỈ WORKER CỦA ANH TẠI ĐÂY)
   // ============================================================================
-  const DEFAULT_CUSTOM_AI_HOST = "locket-vip.mhiep20077.workers.dev";
+  const DEFAULT_CUSTOM_AI_HOST = "andanh447-nhinclmamay.ipxs4427.workers.dev";
   const CUSTOM_AI_HOST = readPref("LOCKET_CUSTOM_AI_HOST") || DEFAULT_CUSTOM_AI_HOST;
   const CUSTOM_AI_ENDPOINT = `https://${CUSTOM_AI_HOST}/generateFilteredImage?module=Locket_YouTube`;
 
