@@ -63,10 +63,8 @@ deleteHeader_Firebase = type=http-request,pattern=^https?:\/\/firebaseremoteconf
 revenuecat = type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers),script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/revenuecatNEW.js,requires-body=true,max-size=-1,timeout=60
 locket_rc = type=http-response,pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket_rcandanh447.js?v=20261108_15,requires-body=true,max-size=-1,timeout=60
 
-locket_pb_req = type=http-request,pattern=^https?:\/\/(us-central1-locket-4252a\.cloudfunctions\.net|api\.locketcamera\.com)\/generateFilteredImage,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/photoboth.js?v=20261108_15,requires-body=true,max-size=-1,timeout=60
+locket_pb_req = type=http-request,pattern=^https?:\/\/(us-central1-locket-4252a\.cloudfunctions\.net|api\.locketcamera\.com)\/generateFilteredImage,script-path=https://gist.githubusercontent.com/andanh447/2653fe6855098156c16d274f5191b6dc/raw/f0fde953c18ef9cf77447630a38a6edecca4eda3/locketfilter.js?v=20261108_15,requires-body=true,max-size=-1,timeout=60
 
-locket_change_profile = type=http-request,pattern=^https:\/\/api\.locketcamera\.com\/changeProfileInfo,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/andanh447filterUnclock.jss?v=20261108_15,timeout=60
-locket_filter_resp = type=http-response,pattern=^https?:\/\/api\.locketcamera\.com\/.+,requires-body=true,max-size=-1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/andanh447filterUnclock.js?v=20261108_15,timeout=60
 
 
 #spotify
