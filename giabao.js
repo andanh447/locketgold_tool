@@ -110,7 +110,7 @@ Object.assign(obj.entries, {
         profile_banner: true
     }),
     feature_discovery_popup_config: JSON.stringify({
-        tag: "LOCKET GOLD GIA BẢO",
+        tag: "LOCKET GOLD ĐHT",
         tag_gradient: true,
         tag_style: "gold_gradient",
         title: "Lên LocketGold rồi đó 🤫 😎",
@@ -162,7 +162,7 @@ var MY_VIDEO_DURATION = 60.0;
 var MAX_DURATION = MY_VIDEO_DURATION;
 var QUALITY_MBPS = 0.6;
 var durationStr = MY_VIDEO_DURATION.toString();
-var MAX_SIZE_BYTES = 314572800; // 300MB
+var MAX_SIZE_BYTES = 104857600; // 100MB
 
 var cameraConfig = {
     gold_max_duration: MY_VIDEO_DURATION,
@@ -177,8 +177,8 @@ var cameraConfig = {
     telephoto: true,
     srgb: true,
     lanczos: true,
-    quality_mbps:  0.6,
-    qualityMbps:  0.6
+    quality_mbps: 0.6,
+    qualityMbps: 0.6
 };
 
 var cameraRollConfig = {
@@ -195,8 +195,8 @@ var cameraRollConfig = {
     max_file_size: MAX_SIZE_BYTES,
     max_upload_bytes: MAX_SIZE_BYTES,
     max_size_bytes: MAX_SIZE_BYTES,
-    quality_mbps:  0.6,
-    qualityMbps:  0.6
+    quality_mbps: 0.6,
+    qualityMbps: 0.6,
     flash_button: true
 };
 
@@ -250,7 +250,7 @@ Object.assign(obj.entries, {
     goldMaxDuration: durationStr,
     max_file_size: MAX_SIZE_BYTES.toString(),
     max_upload_bytes: MAX_SIZE_BYTES.toString(),
-    video_quality_mbps: " 0.6",
+    video_quality_mbps: "0.6",
     video_sound_enabled: "true",
     microphone_enabled: "true",
     camera_microphone_enabled: "true",
@@ -1426,10 +1426,10 @@ Object.assign(obj.entries, {
                 ]
         },
         {
-                "section": "🎨 Decorative by LÊ HUỲNH GIA BẢO",
+                "section": "🎨 Decorative by MinhHiep08",
                 "items": [
                         {
-                                "overlay_id": "caption:GIA BẢO",
+                                "overlay_id": "caption:MinhHiep08",
                                 "source": "remote",
                                 "caption": {
                                         "background": {
@@ -1440,7 +1440,7 @@ Object.assign(obj.entries, {
                                                 ]
                                         },
                                         "max_lines": 1,
-                                        "text": "💻 GIA BẢO",
+                                        "text": "💻 MinhHiep08",
                                         "text_color": "#183153",
                                         "type": "static_content"
                                 }
