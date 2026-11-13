@@ -10,7 +10,8 @@
 [Rule]
 AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
 AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
-
+RULE-SET,https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/hostvn.sgmodule,REJECT
+RULE-SET,https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/noads.sgmodule,REJECT
 
 [Header Rewrite]
 ^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del x-revenuecat-etag
