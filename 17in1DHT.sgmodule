@@ -8,28 +8,91 @@
 
 
 [Rule]
+DOMAIN,gdmf.apple.com,REJECT
+DOMAIN,crl.apple.com,REJECT
+DOMAIN,appledid.apple.com,REJECT
+DOMAIN,certs.apple.com,REJECT
+DOMAIN,valid.apple.com,REJECT
+DOMAIN,ppq.apple.com,REJECT
+DOMAIN,ocsp2.apple.com,REJECT
+DOMAIN,ocsp.apple.com,REJECT
+RULE-SET,https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/hostvn.sgmodule,REJECT
+RULE-SET,https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/noads.sgmodule,REJECT
 AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
 AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
-# Chặn QUIC/UDP cho Locket, Spotify & YouTube
-AND,((PROTOCOL,UDP),(DEST-PORT,443)),REJECT
-AND,((DOMAIN,firebaseremoteconfig.googleapis.com),(PROTOCOL,UDP)),REJECT
-AND,((DOMAIN,api.revenuecat.com),(PROTOCOL,UDP)),REJECT
-AND,((DOMAIN,api.locketcamera.com),(PROTOCOL,UDP)),REJECT
-AND,((DOMAIN-SUFFIX,locketcamera.com),(PROTOCOL,UDP)),REJECT
-AND,((DOMAIN-SUFFIX,spotify.com),(PROTOCOL,UDP)),REJECT
-AND,((DOMAIN-SUFFIX,spclient.wg.spotify.com),(PROTOCOL,UDP)),REJECT
 DOMAIN-SUFFIX,sentry.io,REJECT
 DOMAIN-SUFFIX,ingest.sentry.io,REJECT
+DOMAIN-SUFFIX,ads.spotify.com,REJECT
+DOMAIN-SUFFIX,audio-fa.spotify.com,REJECT
+DOMAIN-SUFFIX,crashdump.spotify.com,REJECT
+DOMAIN-SUFFIX,adeventtracker.spotify.com,REJECT
+DOMAIN-SUFFIX,log.spotify.com,REJECT
+DOMAIN-SUFFIX,b.scorecardresearch.com,REJECT
+DOMAIN-SUFFIX,gtm.spotify.com,REJECT
+DOMAIN-SUFFIX,spclient.wg.spotify.com/ads,REJECT
+DOMAIN-KEYWORD,spotify.com/ads,REJECT
+
+# ==========================================
+# 🛡️ 1. TƯỜNG LỬA CHỐNG THEO DÕI & ĐÁNH CẮP DỮ LIỆU (Phản công)
+# Khóa mõm các máy chủ ngầm đo lường, theo dõi thao tác vuốt/chạm của anh
+# ==========================================
+DOMAIN-SUFFIX,appsflyer.com,REJECT
+DOMAIN-SUFFIX,kochava.com,REJECT
+DOMAIN-SUFFIX,adjust.com,REJECT
+DOMAIN-SUFFIX,branch.io,REJECT
+DOMAIN-SUFFIX,segment.com,REJECT
+DOMAIN-SUFFIX,crashlytics.com,REJECT
+DOMAIN-SUFFIX,mixpanel.com,REJECT
+DOMAIN-SUFFIX,flurry.com,REJECT
+DOMAIN-SUFFIX,scorecardresearch.com,REJECT
+DOMAIN-SUFFIX,app-measurement.com,REJECT
+DOMAIN-SUFFIX,analytics.google.com,REJECT
+DOMAIN-SUFFIX,rayjump.com,REJECT
+
+# ==========================================
+# ⚔️ 2. DIỆT SẠCH QUẢNG CÁO GAME & ỨNG DỤNG (Tuyệt đối không lag)
+# ==========================================
+DOMAIN-SUFFIX,applovin.com,REJECT
+DOMAIN-SUFFIX,applvn.com,REJECT
+DOMAIN-SUFFIX,unityads.unity3d.com,REJECT
+DOMAIN-SUFFIX,vungle.com,REJECT
+DOMAIN-SUFFIX,supersonicads.com,REJECT
+DOMAIN-SUFFIX,chartboost.com,REJECT
+DOMAIN-SUFFIX,adcolony.com,REJECT
+DOMAIN-SUFFIX,inmobi.com,REJECT
+DOMAIN-SUFFIX,voodoo-ads.io,REJECT
+DOMAIN-SUFFIX,byte-push.com,REJECT
+DOMAIN-SUFFIX,ironsrc.com,REJECT
+
+# ==========================================
+# 💣 3. QUÉT SẠCH QUẢNG CÁO HIỂN THỊ & POP-UP WEB
+# Chặn rác khi lướt Safari hoặc đọc báo trong app
+# ==========================================
+DOMAIN-SUFFIX,googleadservices.com,REJECT
+DOMAIN-SUFFIX,doubleclick.net,REJECT
+DOMAIN-SUFFIX,criteo.com,REJECT
+DOMAIN-SUFFIX,rubiconproject.com,REJECT
+DOMAIN-SUFFIX,pubmatic.com,REJECT
+DOMAIN-SUFFIX,outbrain.com,REJECT
+DOMAIN-SUFFIX,taboola.com,REJECT
+DOMAIN-SUFFIX,adzerk.net,REJECT
+DOMAIN-SUFFIX,moatads.com,REJECT
+DOMAIN-SUFFIX,adform.net,REJECT
 
 
-[URL Rewrite]
+[Header Rewrite]
+^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del x-revenuecat-etag
+^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del X-RevenueCat-ETag
+http-request ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del if-none-match
+
+[Url Rewrite]
 # Chặn quảng cáo Google Video
-^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad reject-200
+^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad _ reject-200
 
 # YouTube Ads
-^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads reject-200
-^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) reject-200
-^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext reject-200
+^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads _ reject-200
+^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) _ reject-200
+^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext _ reject-200
 
 # General Video Ad request
 (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
@@ -55,11 +118,11 @@ SoundCloudGo+=type=http-response,pattern=https://api-mobile.soundcloud.com/confi
 
 
 # LocketGold (ĐHT)
-revenuecat = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/revenuecatandanh447.js, requires-body=true, max-size=-1, timeout=60
+revenuecat = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locketgoldandanh442007.js, requires-body=true, max-size=-1, timeout=60
 
 deleteHeader = type=http-request, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/deleteheaderDHT.js, timeout=60
 
-locket_rc = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locketkhungshinV4.js, requires-body=true, max-size=-1, timeout=60
+locket_rc = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket30sbyDHT.js, requires-body=true, max-size=-1, timeout=60
 
 # Locket AI Filter & Community VIP Network (Độc quyền andanh447)
 locket_filter_req = type=http-request,pattern=^https:\/\/api\.locketcamera\.com\/.+,max-size=-1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locketfilter_andanh447.js?v=20261101_0845,timeout=60
