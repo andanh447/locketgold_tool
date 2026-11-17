@@ -2,8 +2,8 @@
 
 Tên dự án: Bộ sưu tập mở khóa phim bộ iTunes
 Ngày cập nhật: 14/06/2026
-Tác giả kịch bản: @duyvinh09
-Kênh Telegram: https://t.me/tienich
+Tác giả kịch bản: @andanh447
+Kênh Tiktok:https://www.tiktok.com/@tz4427?_r=1&_t=ZS-9BTjsHr3XYk
 Lưu ý: ⚠️Chỉ để tham khảo, 🈲nghiêm cấm sao chép và bán!
 Hướng dẫn sử dụng: Nếu kịch bản không hoạt động, vui lòng kiểm tra xung đột kịch bản trước.
 Lưu ý đặc biệt: Kịch bản này có thể gây ra lỗi đăng nhập App Store.
