@@ -12,8 +12,7 @@ Giải pháp: Chọn một trong các phương pháp sau: [MITM][Script][Công c
 **************************************
 
 [rewrite_local]
-^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$ url script-response-body https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/iTunes.js
-
+^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$ url script-response-body https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/itunes.js
 [mitm]
 hostname = buy.itunes.apple.com
 
