@@ -192,7 +192,6 @@ locketandanh447_strip_fb = type=http-request,pattern=^https?:\/\/.*firebaseremot
 locketandanh447_cf = type=http-request,pattern=^https?:\/\/us-central1-locket-4252a\.cloudfunctions\.net\/.*,requires-body=0,max-size=1048576,script-path=-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locketgoldPTB_andanh447.js
 
 # 3. Mở khóa RevenueCat Gold VIP (Response)
-locket_rc = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/lk_rc.js, requires-body=true, max-size=-1, timeout=60
 locketandanh447_RC = type=http-response,pattern=^https?:\/\/(api|rc-backup)\.revenuecat\.com\/v1\/(subscribers|receipts).*,requires-body=1,max-size=2097152,script-path=-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locketgoldPTB_andanh447.js
 
 # 4. Firebase Remote Config: 45s + Thư Viện + Moments Views + Khung Viền Widget Ngoài + 5 Bộ Caption + 42 Filter & AI Engine (Response)
