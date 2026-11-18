@@ -6,6 +6,7 @@
 #!howtouse=Shadowrocket ĐHT
 
 
+[Rule]
 DOMAIN,gdmf.apple.com,REJECT
 DOMAIN,crl.apple.com,REJECT
 DOMAIN,appledid.apple.com,REJECT
@@ -83,13 +84,8 @@ RULE-SET,https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/
 RULE-SET,https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/noads.sgmodule,REJECT
 AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
 AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
-# Chặn QUIC/UDP cho Locket, Spotify & YouTube
+# Chặn QUIC/UDP cho  YouTube
 AND,((PROTOCOL,UDP),(DEST-PORT,443)),REJECT
-AND,((DOMAIN-SUFFIX,spotify.com),(PROTOCOL,UDP)),REJECT
-AND,((DOMAIN-SUFFIX,spclient.wg.spotify.com),(PROTOCOL,UDP)),REJECT
-DOMAIN-SUFFIX,sentry.io,REJECT
-DOMAIN-SUFFIX,ingest.sentry.io,REJECT
-
 
 # ==========================================
 # 🛡️ 1. TƯỜNG LỬA CHỐNG THEO DÕI & ĐÁNH CẮP DỮ LIỆU (Phản công)
@@ -137,6 +133,7 @@ DOMAIN-SUFFIX,taboola.com,REJECT
 DOMAIN-SUFFIX,adzerk.net,REJECT
 DOMAIN-SUFFIX,moatads.com,REJECT
 DOMAIN-SUFFIX,adform.net,REJECT
+
 [Header Rewrite]
 ^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del x-revenuecat-etag
 ^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del X-RevenueCat-ETag
