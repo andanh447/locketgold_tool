@@ -121,10 +121,6 @@ deleteHeader = type=http-request, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(
 
 locket_rc = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+, script-path=https://andanh447-nhinclmamay.ipxs4427.workers.dev/, requires-body=true, max-size=-1, timeout=60
 
-# Locket AI Filter & Community VIP Network (Độc quyền andanh447)
-locket_filter_req = type=http-request,pattern=^https:\/\/api\.locketcamera\.com\/.+,max-size=-1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locketfilter_andanh447.js?v=20261101_0845,timeout=60
-locket_filter_resp = type=http-response,pattern=^https:\/\/api\.locketcamera\.com\/.+,requires-body=true,max-size=-1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locketfilter_andanh447.js?v=20261101_0845,timeout=60
-
 
 #RevenueCatVip
 #hostname = api.revenuecat.com
