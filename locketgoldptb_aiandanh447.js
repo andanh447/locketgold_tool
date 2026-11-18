@@ -1,6 +1,6 @@
 // =========================================================================
 // locketandanh447.js - Bộ script toàn diện Locket Gold VIP & AI Filter Engine
-// Tác giả: Hoàng Tiến (Zalo: 0901894517)
+// Tác giả: Hoàng Tiến(Zalo: 0901894517)
 // Phiên bản: 9.2 (Đồng bộ 100% DNS VPS: Fix upload ảnh mất mạng, Fix tải ảnh Photobooth & AI, 42 Filters & Frames, Video 45s, 5 bộ Caption)
 // Hỗ trợ: Shadowrocket / Surge / Loon / Quantumult X
 // =========================================================================
@@ -95,8 +95,8 @@
         "tag_style": "gold_gradient",
         "title": "Đã lên Gold rồi nhé! ✨",
         "feature_set": [{
-            "title": "Locket Free By andanh447",
-            "body": "Bản được làm bởi Hoàng Tiến (andanh447) ! Liên hệ Zalo: 0901894517 để được hỗ trợ  💕",
+            "title": "Locket Free By Hoàng Tiến",
+            "body": "Bản FREE đem bán = SCAM!THẰNG LỒN NÀO BÁN LÀM TUẤT MUỐN KIẾM TAO! Liên hệ Zalo: 0901894517 để được hỗ trợ và làm riêng 💕",
             "imageURL": "https://i.ibb.co/Vc98ms12/2a-Obo-R6m581-AU5h4g-IHMLo8f-Edi-Q4j-Uq-EIXedb-Jg.png"
         }],
         "primary_button_title": "Vào Dùng Ngay",
@@ -232,7 +232,7 @@
                     $persistentStore.write(appUid, "shadow_locket_uid");
                 }
 
-                const purchaseDate = "2007-04-04T00:00:00Z";
+                const purchaseDate = "2024-01-01T00:00:00Z";
                 const expiresDate = "2099-12-31T23:59:59Z";
                 const nowIso = new Date().toISOString();
                 const nowMs = Date.now();
