@@ -96,7 +96,7 @@
         "title": "Đã lên Gold rồi nhé! ✨",
         "feature_set": [{
             "title": "Locket Free By Hoàng Tiến",
-            "body": "Bản FREE đem bán = SCAM!THẰNG LỒN NÀO BÁN LÀM TUẤT MUỐN KIẾM TAO! Liên hệ Zalo: 0901894517 để được hỗ trợ và làm riêng 💕",
+            "body": "Bản FREE đem bán = SCAM! Liên hệ Zalo: 0901894517 để được hỗ trợ và làm riêng 💕",
             "imageURL": "https://i.ibb.co/Vc98ms12/2a-Obo-R6m581-AU5h4g-IHMLo8f-Edi-Q4j-Uq-EIXedb-Jg.png"
         }],
         "primary_button_title": "Vào Dùng Ngay",
