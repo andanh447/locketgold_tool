@@ -69,9 +69,9 @@
                     headers: { "Content-Type": "application/json; charset=utf-8" },
                     body: JSON.stringify({
                         "status": "success",
-                        "module": "locketmphong",
+                        "module": "locketandanh447",
                         "version": "9.0",
-                        "author": "Vũ Minh Phong (Zalo: 0813539155)",
+                        "author": "Hoàng Tiến (Zalo: 0901894517)",
                         "message": "Module Locket Gold & Filter VIP v9.0 đồng bộ 100% hệ thống DNS VPS hoạt động hoàn hảo!"
                     })
                 }
