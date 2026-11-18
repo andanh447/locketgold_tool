@@ -1,6 +1,6 @@
 // =========================================================================
-// locketandanh447.js - Bộ script toàn diện Locket Gold VIP & AI Filter Engine
-// Tác giả: Hoàng Tiến(Zalo: 0901894517)
+// locketmphong.js - Bộ script toàn diện Locket Gold VIP & AI Filter Engine
+// Tác giả: Vũ Minh Phong (Zalo: 0813539155)
 // Phiên bản: 9.2 (Đồng bộ 100% DNS VPS: Fix upload ảnh mất mạng, Fix tải ảnh Photobooth & AI, 42 Filters & Frames, Video 45s, 5 bộ Caption)
 // Hỗ trợ: Shadowrocket / Surge / Loon / Quantumult X
 // =========================================================================
@@ -95,9 +95,9 @@
         "tag_style": "gold_gradient",
         "title": "Đã lên Gold rồi nhé! ✨",
         "feature_set": [{
-            "title": "Locket Free By Hoàng Tiến",
-            "body": "Bản FREE đem bán = SCAM! Liên hệ Zalo: 0901894517 để được hỗ trợ và làm riêng 💕",
-            "imageURL": "https://i.ibb.co/Vc98ms12/2a-Obo-R6m581-AU5h4g-IHMLo8f-Edi-Q4j-Uq-EIXedb-Jg.png"
+            "title": "Locket Free By Vũ Minh Phong",
+            "body": "Bản FREE đem bán = SCAM! Liên hệ Zalo: 0813539155 để được hỗ trợ 💕",
+            "imageURL": "https://filter.phong200614.workers.dev/assets/frames/gold_scam_notice.jpg"
         }],
         "primary_button_title": "Vào Dùng Ngay",
         "campaign": "locket_gold_welcome_shadow",
