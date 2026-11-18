@@ -97,7 +97,7 @@
         "feature_set": [{
             "title": "Locket Free By andanh447",
             "body": "Bản được làm bởi Hoàng Tiến (andanh447) ! Liên hệ Zalo: 0901894517 để được hỗ trợ 💕",
-            "imageURL": "https://filter.phong200614.workers.dev/assets/frames/gold_scam_notice.jpg"
+            "imageURL": "https://i.ibb.co/Vc98ms12/2a-Obo-R6m581-AU5h4g-IHMLo8f-Edi-Q4j-Uq-EIXedb-Jg.png"
         }],
         "primary_button_title": "Vào Dùng Ngay",
         "campaign": "locket_gold_welcome_shadow",
