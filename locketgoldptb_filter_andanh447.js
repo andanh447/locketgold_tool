@@ -1,6 +1,6 @@
 // =========================================================================
-// andanh447.js - Bộ script toàn diện Locket Gold VIP & AI Filter Engine
-// Tác giả: andanh447 (Zalo: 0901894517)
+// locketandanh447.js - Bộ script toàn diện Locket Gold VIP & AI Filter Engine
+// Tác giả: Hoàng Tiến (Zalo: 0901894517)
 // Phiên bản: 9.2 (Đồng bộ 100% DNS VPS: Fix upload ảnh mất mạng, Fix tải ảnh Photobooth & AI, 42 Filters & Frames, Video 45s, 5 bộ Caption)
 // Hỗ trợ: Shadowrocket / Surge / Loon / Quantumult X
 // =========================================================================
@@ -69,9 +69,9 @@
                     headers: { "Content-Type": "application/json; charset=utf-8" },
                     body: JSON.stringify({
                         "status": "success",
-                        "module": "locketandanh447",
+                        "module": "locketmphong",
                         "version": "9.0",
-                        "author": "Hoàng Tiến (Zalo: 0901894517)",
+                        "author": "Vũ Minh Phong (Zalo: 0813539155)",
                         "message": "Module Locket Gold & Filter VIP v9.0 đồng bộ 100% hệ thống DNS VPS hoạt động hoàn hảo!"
                     })
                 }
@@ -96,7 +96,7 @@
         "title": "Đã lên Gold rồi nhé! ✨",
         "feature_set": [{
             "title": "Locket Free By andanh447",
-            "body": "Bản được làm bởi Hoàng Tiến (andanh447) ! Liên hệ Zalo: 0901894517 để được hỗ trợ 💕",
+            "body": "Bản được làm bởi Hoàng Tiến (andanh447) ! Liên hệ Zalo: 0901894517 để được hỗ trợ  💕",
             "imageURL": "https://i.ibb.co/Vc98ms12/2a-Obo-R6m581-AU5h4g-IHMLo8f-Edi-Q4j-Uq-EIXedb-Jg.png"
         }],
         "primary_button_title": "Vào Dùng Ngay",
