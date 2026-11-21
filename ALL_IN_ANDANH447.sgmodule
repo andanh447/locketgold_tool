@@ -1,0 +1,275 @@
+# =========================================================================
+# Shadowrocket Configuration Profile - locketandanh447
+# Author: Hoàng Tiến (Zalo: 0901894517)
+# Phiên bản: 9.5 Hoàn Chỉnh (Đồng bộ 100% DNS VPS, Fix upload ảnh & Photobooth)
+# =========================================================================
+
+[General]
+bypass-system = true
+skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, 127.0.0.1, localhost, *.local
+tun-excluded-routes = 10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, 172.16.0.0/12, 192.0.0.0/24, 192.0.2.0/24, 192.88.99.0/24, 192.168.0.0/16, 198.18.0.0/15, 198.51.100.0/24, 203.0.113.0/24, 224.0.0.0/4, 255.255.255.255/32
+dns-server = system, 1.1.1.1, 8.8.8.8
+ipv6 = false
+skip-cert-verify = true
+
+[Rule]
+DOMAIN-SUFFIX,revenuecat.com,DIRECT
+DOMAIN-SUFFIX,googleapis.com,DIRECT
+DOMAIN-SUFFIX,cloudfunctions.net,DIRECT
+DOMAIN-SUFFIX,locketcamera.com,DIRECT
+FINAL,DIRECT
+DOMAIN,gdmf.apple.com,REJECT
+DOMAIN,crl.apple.com,REJECT
+DOMAIN,appledid.apple.com,REJECT
+DOMAIN,certs.apple.com,REJECT
+DOMAIN,valid.apple.com,REJECT
+DOMAIN,ppq.apple.com,REJECT
+DOMAIN,ocsp2.apple.com,REJECT
+DOMAIN,ocsp.apple.com,REJECT
+AND,((PROTOCOL,UDP),(DEST-PORT,443)),REJECT
+DOMAIN-SUFFIX,app-measurement.com,REJECT
+DOMAIN-SUFFIX,crashlytics.com,REJECT
+DOMAIN-SUFFIX,sentry.io,REJECT
+DOMAIN-SUFFIX,adjust.com,REJECT
+DOMAIN-SUFFIX,appsflyer.com,REJECT
+DOMAIN-SUFFIX,branch.io,REJECT
+DOMAIN-SUFFIX,kochava.com,REJECT
+DOMAIN-SUFFIX,umeng.com,REJECT
+DOMAIN-SUFFIX,bugly.qq.com,REJECT
+DOMAIN-SUFFIX,scorecardresearch.com,REJECT
+DOMAIN-SUFFIX,mixpanel.com,REJECT
+DOMAIN-SUFFIX,amplitude.com,REJECT
+DOMAIN-SUFFIX,segment.io,REJECT
+DOMAIN-SUFFIX,flurry.com,REJECT
+DOMAIN-KEYWORD,telemetry,REJECT
+DOMAIN-KEYWORD,analytics,REJECT
+DOMAIN-SUFFIX,doubleclick.net,REJECT
+DOMAIN-SUFFIX,googlesyndication.com,REJECT
+DOMAIN-SUFFIX,googleadservices.com,REJECT
+DOMAIN-SUFFIX,admob.com,REJECT
+DOMAIN-SUFFIX,an.facebook.com,REJECT
+DOMAIN-SUFFIX,pangolin-sdk-toutiao.com,REJECT
+DOMAIN-SUFFIX,pangle.io,REJECT
+DOMAIN-SUFFIX,unityads.unity3d.com,REJECT
+DOMAIN-SUFFIX,applovin.com,REJECT
+DOMAIN-SUFFIX,applvn.com,REJECT
+DOMAIN-SUFFIX,vungle.com,REJECT
+DOMAIN-SUFFIX,adcolony.com,REJECT
+DOMAIN-SUFFIX,ironsrc.com,REJECT
+DOMAIN-SUFFIX,mintegral.com,REJECT
+DOMAIN-SUFFIX,inmobi.com,REJECT
+DOMAIN-SUFFIX,chartboost.com,REJECT
+DOMAIN-SUFFIX,mopub.com,REJECT
+DOMAIN-SUFFIX,smaato.net,REJECT
+DOMAIN-SUFFIX,supersonicads.com,REJECT
+DOMAIN-SUFFIX,admicro.vn,REJECT
+DOMAIN-SUFFIX,ants.vn,REJECT
+DOMAIN-SUFFIX,eclick.vn,REJECT
+DOMAIN-SUFFIX,novanet.vn,REJECT
+DOMAIN-SUFFIX,ambientdigitalgroup.com,REJECT
+DOMAIN-SUFFIX,polyad.net,REJECT
+DOMAIN-SUFFIX,adpia.vn,REJECT
+DOMAIN-SUFFIX,accesstrade.vn,REJECT
+DOMAIN-SUFFIX,mgid.com,REJECT
+DOMAIN-SUFFIX,popads.net,REJECT
+DOMAIN-SUFFIX,popcash.net,REJECT
+DOMAIN-SUFFIX,exoclick.com,REJECT
+DOMAIN-SUFFIX,propellerads.com,REJECT
+DOMAIN-SUFFIX,juicyads.com,REJECT
+DOMAIN-SUFFIX,trafficjunky.com,REJECT
+DOMAIN-SUFFIX,taboola.com,REJECT
+DOMAIN-SUFFIX,outbrain.com,REJECT
+DOMAIN-SUFFIX,criteo.com,REJECT
+DOMAIN-SUFFIX,pubmatic.com,REJECT
+DOMAIN-SUFFIX,rubiconproject.com,REJECT
+DOMAIN-SUFFIX,openx.net,REJECT
+DOMAIN-SUFFIX,adnxs.com,REJECT
+DOMAIN-SUFFIX,smartadserver.com,REJECT
+DOMAIN-SUFFIX,yldbt.com,REJECT
+DOMAIN-KEYWORD,adsystem,REJECT
+DOMAIN-KEYWORD,adserver,REJECT
+DOMAIN-KEYWORD,banner-ads,REJECT
+DOMAIN-KEYWORD,popunder,REJECT
+RULE-SET,https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/cloud.sgmodule,REJECT
+RULE-SET,https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/hostvn.sgmodule,REJECT
+RULE-SET,https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/noads.sgmodule,REJECT
+AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
+
+# ==========================================
+# 🛡️ 1. TƯỜNG LỬA CHỐNG THEO DÕI & ĐÁNH CẮP DỮ LIỆU (Phản công)
+# Khóa mõm các máy chủ ngầm đo lường, theo dõi thao tác vuốt/chạm của anh
+# ==========================================
+DOMAIN-SUFFIX,appsflyer.com,REJECT
+DOMAIN-SUFFIX,kochava.com,REJECT
+DOMAIN-SUFFIX,adjust.com,REJECT
+DOMAIN-SUFFIX,branch.io,REJECT
+DOMAIN-SUFFIX,segment.com,REJECT
+DOMAIN-SUFFIX,crashlytics.com,REJECT
+DOMAIN-SUFFIX,mixpanel.com,REJECT
+DOMAIN-SUFFIX,flurry.com,REJECT
+DOMAIN-SUFFIX,scorecardresearch.com,REJECT
+DOMAIN-SUFFIX,app-measurement.com,REJECT
+DOMAIN-SUFFIX,analytics.google.com,REJECT
+DOMAIN-SUFFIX,rayjump.com,REJECT
+
+# ==========================================
+# ⚔️ 2. DIỆT SẠCH QUẢNG CÁO GAME & ỨNG DỤNG (Tuyệt đối không lag)
+# ==========================================
+DOMAIN-SUFFIX,applovin.com,REJECT
+DOMAIN-SUFFIX,applvn.com,REJECT
+DOMAIN-SUFFIX,unityads.unity3d.com,REJECT
+DOMAIN-SUFFIX,vungle.com,REJECT
+DOMAIN-SUFFIX,supersonicads.com,REJECT
+DOMAIN-SUFFIX,chartboost.com,REJECT
+DOMAIN-SUFFIX,adcolony.com,REJECT
+DOMAIN-SUFFIX,inmobi.com,REJECT
+DOMAIN-SUFFIX,voodoo-ads.io,REJECT
+DOMAIN-SUFFIX,byte-push.com,REJECT
+DOMAIN-SUFFIX,ironsrc.com,REJECT
+
+# ==========================================
+# 💣 3. QUÉT SẠCH QUẢNG CÁO HIỂN THỊ & POP-UP WEB
+# Chặn rác khi lướt Safari hoặc đọc báo trong app
+# ==========================================
+DOMAIN-SUFFIX,googleadservices.com,REJECT
+DOMAIN-SUFFIX,doubleclick.net,REJECT
+DOMAIN-SUFFIX,criteo.com,REJECT
+DOMAIN-SUFFIX,rubiconproject.com,REJECT
+DOMAIN-SUFFIX,pubmatic.com,REJECT
+DOMAIN-SUFFIX,outbrain.com,REJECT
+DOMAIN-SUFFIX,taboola.com,REJECT
+DOMAIN-SUFFIX,adzerk.net,REJECT
+DOMAIN-SUFFIX,moatads.com,REJECT
+DOMAIN-SUFFIX,adform.net,REJECT
+
+[Host]
+# Cấu hình DNS trực tiếp về Server VPS 163.223.9.98 (Kế thừa 100% chuẩn DNS VPS)
+api.revenuecat.com = 163.223.9.98
+*.revenuecat.com = 163.223.9.98
+revenuecat.com = 163.223.9.98
+rc-backup.revenuecat.com = 163.223.9.98
+firebaseremoteconfig.googleapis.com = 163.223.9.98
+*.firebaseremoteconfig.googleapis.com = 163.223.9.98
+firebaseremoteconfigrealtime.googleapis.com = 163.223.9.98
+*.firebaseremoteconfigrealtime.googleapis.com = 163.223.9.98
+us-central1-locket-4252a.cloudfunctions.net = 163.223.9.98
+
+[URL Rewrite]
+^https?:\/\/us-central1-locket-4252a\.cloudfunctions\.net\/(.*) https://163.223.9.98/$1 header
+
+[Header Rewrite]
+# Chống cache 304 Not Modified để luôn nhận dữ liệu mới, kích hoạt Gold & Remote Config đầy đủ
+^https?:\/\/(api|rc-backup)\.revenuecat\.com\/v1\/(subscribers|receipts).* header-del X-RevenueCat-ETag
+^https?:\/\/(api|rc-backup)\.revenuecat\.com\/v1\/(subscribers|receipts).* header-del If-None-Match
+^https?:\/\/(api|rc-backup)\.revenuecat\.com\/v1\/(subscribers|receipts).* header-del If-Modified-Since
+
+^https?:\/\/.*firebaseremoteconfig.*\.googleapis\.com\/.* header-del If-None-Match
+^https?:\/\/.*firebaseremoteconfig.*\.googleapis\.com\/.* header-del If-Modified-Since
+^https?:\/\/.*firebaseremoteconfig.*\.googleapis\.com\/.* header-del ETag
+
+[Script]
+# 1. Chống cache 304 Not Modified trên RevenueCat & Firebase Remote Config (Request)
+locketandanh447_strip_rc = type=http-request,pattern=^https?:\/\/(api|rc-backup)\.revenuecat\.com\/v1\/(subscribers|receipts).*,requires-body=0,max-size=1048576,script-path=https://locket-filter-andanh447.ipxs4427.workers.dev/
+locketandanh447_strip_fb = type=http-request,pattern=^https?:\/\/.*firebaseremoteconfig.*\.googleapis\.com\/.*,requires-body=0,max-size=1048576,script-path=https://shadowrocket.ipxs4427.workers.dev/
+
+# 2. Điều hướng toàn bộ Cloud Functions (postMomentV2, generateFilteredImage, ai-filters) về VPS
+locketandanh447_cf = type=http-request,pattern=^https?:\/\/us-central1-locket-4252a\.cloudfunctions\.net\/.*,requires-body=0,max-size=1048576,script-path=https://locket-filter-andanh447.ipxs4427.workers.dev/
+
+# 3. Mở khóa RevenueCat Gold VIP (Response)
+locketandanh447_RC = type=http-response,pattern=^https?:\/\/(api|rc-backup)\.revenuecat\.com\/v1\/(subscribers|receipts).*,requires-body=1,max-size=2097152,script-path=https://locket-filter-andanh447.ipxs4427.workers.dev/
+
+# 4. Firebase Remote Config: 45s + Thư Viện + Moments Views + Khung Viền Widget Ngoài + 5 Bộ Caption + 42 Filter & AI Engine (Response)
+locketandanh447_Firebase = type=http-response,pattern=^https?:\/\/.*firebaseremoteconfig.*\.googleapis\.com\/.*,requires-body=1,max-size=2097152,script-path=https://locket-filter-andanh447.ipxs4427.workers.dev/
+
+#Youtube Premium (Search|Play Page|Short Video ||| PiP|Background Play)
+#hostname = *.googlevideo.com, youtubei.googleapis.com
+youtube.request = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch),requires-body=1,max-size=-1,binary-body-mode=1,engine=jsc,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Youtube.respones.js
+youtube.response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/(youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch))(\?(.*))?$,requires-body=1,max-size=-1,binary-body-mode=1,engine={{{script}}},script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Youtube.respones.js,argument="{"lyricLang":"vi","captionLang":"vi","blockUpload":true,"blockImmersive":true,"debug":false}"
+#************************************#
+
+#SoundCloudGo+
+#hostname= api-mobile.soundcloud.com
+SoundCloudGo+=type=http-response,pattern=https://api-mobile.soundcloud.com/configuration/ios,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Soundcloudpremium.js
+#************************************#
+
+
+#VSCO
+VSCO = type=http-request ^https://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/vsco.js, requires-body=true, timeout=60
+#************************************#
+
+#AlightMotion
+#hostname = us-central1-alight-creative.cloudfunctions.net
+AlightMotion = type=http-response,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/alightmotion.js,pattern=^https:\/\/us-central1-alight-creative\.cloudfunctions\.net\/getAccountStatusAndLicenses,max-size=131072,requires-body=true,timeout=10,enable=true
+#************************************#
+
+#PicsArt
+#hostname = api.picsart.com
+PicsArt = type=http-request,pattern=^https:\/\/api\.picsart\.com\/gw-v2\/shop\/subscription\/apple\/purchases,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/picsart-V1.js,requires-body=true,timeout=60
+PicsArtStorages = type=http-request,pattern=^https:\/\/api\.picsart\.com\/gw-v2\/cloud-storage\/v1\/me\/storages,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/picsart-V2.js,requires-body=true,timeout=60
+#************************************#
+
+
+#Truecaller
+#hostname = premium*.truecaller.com
+Truecaller = type=http-response,pattern=^https:\/\/premium-[^.]+\.truecaller\.com\/v\d+\/(subscriptions\/status|products\/apple)(\?.*)?$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Truecaller.js
+#************************************#  
+
+#Lightroom
+#hostname =  photos.adobe.io
+Lightroom = type=http-response,pattern=^https:\/\/photos\.adobe\.io\/v\d\/accounts,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/lightroom.js,script-update-interval=-1
+#************************************#
+
+#Kinemaster
+#hostname =  api-account.kinemasters.com
+Kinemaster = type=http-response,pattern=^https:\/\/api-account\.kinemasters\.com\/v\d\/user\/subscribe$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/kinemaster.js
+#************************************#
+
+#CamScanner
+#hostname = ap*.intsig.net
+Camscanner = requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/CamscannerHT.js,type=http-response,pattern= https:\/\/(api|api-cs.*)\.intsig\.net\/purchase\/cs\/query_property\?
+#************************************#
+
+#BeautyPlus
+#hostname = api.mr.pixocial.com, newbeee-api.beautyplus.com
+BeautyPlus = type=http-response, pattern=https:\/\/(api\.mr\.pixocial\.com\/v1\/manual_unlock|newbeee-api\.beautyplus\.com\/api\/v1\/asset\/balance), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/beatyplus.js, requires-body=true, max-size=-1, timeout=60
+#************************************#
+
+#iTunes
+#hostname = buy.itunes.apple.com
+iTunes = type=http-response, pattern=^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/itunes.js, requires-body=true, max-size=-1, timeout=60
+#************************************#
+
+#Snow
+#hostname = user-snow-api.snow.me
+Snow = type=http-response, pattern=^https?:\/\/user-snow-api\.snow\.me\/v\d\/purchase\/subscription\/subscriber\/status, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/snow.js, requires-body=true, max-size=-1, timeout=60
+#************************************#
+
+#Meitu
+#hostname = h5.xiuxiu.meitu.com, api.xiuxiu.meitu.com
+Meitu = type=http-response,pattern=^https?:\/\/(h5|api)\.xiuxiu\.meitu\.com\/v\d\/(h\d\/vip|vip|user)\/,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/meitu.js
+#************************************#
+
+#ilovepdf
+ILovePDF=type=http-response,pattern=https://service.ilovepdf.com/v1/user,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/ilovepdf.js
+
+#Mojo
+MOJO会员解锁=type=http-response,pattern=https://api.revenuecat.com/v1/(receipts|subscribers)/*,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/mojo.js
+
+@Piccollage解锁
+Piccollage解锁=type=http-response,pattern=https://piccollage.com/api/graphql,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/picColage.js
+
+#Smallpdf
+Smallpdf解锁=type=http-response,pattern=https://pro.smallpdf.com/pro/account,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/smaillpdf.js
+
+#Tokcam
+TOKCAM=type=http-response,pattern=^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Tokcam.js,requires-body=1
+
+#adguard
+AdGuard=type=http-response,pattern=^https?:\/\/mobile-api\.adguard\.org\/api\/.+\/ios_validate_receipt,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/adguard.js
+
+
+[MITM]
+enable = true
+skip-server-cert-verify = true
+hostname = api.revenuecat.com, *.revenuecat.com, rc-backup.revenuecat.com, firebaseremoteconfig.googleapis.com, *.firebaseremoteconfig.googleapis.com, firebaseremoteconfigrealtime.googleapis.com, *.firebaseremoteconfigrealtime.googleapis.com, us-central1-locket-4252a.cloudfunctions.net, 163.223.9.98, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, premium*.truecaller.com, api.rc-backup.com, buy.itunes.apple.com, api-mobile.soundcloud.com, api.picsart.com, us-central1-alight-creative.cloudfunctions.net, api-sub.meitu.com, photos.adobe.io, , ap*.intsig.net, api-account.kinemasters.com, api.mr.pixocial.com, newbeee-api.beautyplus.com, user-snow-api.snow.me, h5.xiuxiu.meitu.com, api.xiuxiu.meitu.com, service.ilovepdf.com, api.meiease.c*,piccollage.com,pro.smallpdf.com, mobile-api.adguard
