@@ -158,6 +158,18 @@ us-central1-locket-4252a.cloudfunctions.net = 163.223.9.98
 [URL Rewrite]
 ^https?:\/\/us-central1-locket-4252a\.cloudfunctions\.net\/(.*) https://163.223.9.98/$1 header
 
+# Chặn quảng cáo Google Video
+^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad _ reject-200
+
+# YouTube Ads
+^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads _ reject-200
+^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) _ reject-200
+^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext _ reject-200
+
+# General Video Ad request
+(^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
+
+
 [Header Rewrite]
 # Chống cache 304 Not Modified để luôn nhận dữ liệu mới, kích hoạt Gold & Remote Config đầy đủ
 ^https?:\/\/(api|rc-backup)\.revenuecat\.com\/v1\/(subscribers|receipts).* header-del X-RevenueCat-ETag
