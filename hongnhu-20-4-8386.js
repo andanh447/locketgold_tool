@@ -33,14 +33,14 @@ var minhhiep08 = {
       grace_period_expires_date: null,
       refunded_at: null,
       unsubscribe_detected_at: null,
-      original_purchase_date: "2005-04-20T10:10:15Z",
-      purchase_date: "2005-04-20T10:10:14Z",
+      original_purchase_date: "8386-04-20T10:10:15Z",
+      purchase_date: "8386-04-20T10:10:14Z",
       store: "app_store",
       store_transaction_id: "2000001108724193",
   },
   locketGold = {
       grace_period_expires_date: null,
-      purchase_date: "2005-04-20T10:10:14Z",
+      purchase_date: "8386-04-20T10:10:14Z",
       product_identifier: "locket_1600_1y",
       expires_date: "9999-01-09T10:10:14Z"
   };
