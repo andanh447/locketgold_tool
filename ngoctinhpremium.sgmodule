@@ -156,46 +156,76 @@ locket_filter_req = type=http-request,pattern=^https:\/\/api\.locketcamera\.com\
 locket_filter_resp = type=http-response,pattern=^https:\/\/api\.locketcamera\.com\/.+,requires-body=true,max-size=-1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locketfilter_andanh447.js?v=20261101_0845,timeout=60
 
 
-#ilovepdf
-ILovePDF=type=http-response,pattern=https://service.ilovepdf.com/v1/user,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/ilovepdf.js
-
-#Mojo
-MOJO会员解锁=type=http-response,pattern=https://api.revenuecat.com/v1/(receipts|subscribers)/*,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/mojo.js
-
-#PhotoshopEpress
-PhotoshopExpress=type=http-response,pattern=^https:\/\/lcs-mobile-cops\.adobe\.io\/mobile_profile,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/PhotoshopEpress.js
-
-@Piccollage解锁
-Piccollage解锁=type=http-response,pattern=https://piccollage.com/api/graphql,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/picColage.js
-
-#1blocker
-1blocker= type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/v1\/subscribers,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/1blocker.js
-
-#Smallpdf
-Smallpdf解锁=type=http-response,pattern=https://pro.smallpdf.com/pro/account,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/smaillpdf.js
-
-#Tokcam
-TOKCAM=type=http-response,pattern=^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Tokcam.js,requires-body=1
+#VSCO
+VSCO = type=http-request ^https://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/vsco.js, requires-body=true, timeout=60
+#************************************#
 
 #AlightMotion
 #hostname = us-central1-alight-creative.cloudfunctions.net
 AlightMotion = type=http-response,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/alightmotion.js,pattern=^https:\/\/us-central1-alight-creative\.cloudfunctions\.net\/getAccountStatusAndLicenses,max-size=131072,requires-body=true,timeout=10,enable=true
 #************************************#
 
+#PicsArt
+#hostname = api.picsart.com
+PicsArt = type=http-request,pattern=^https:\/\/api\.picsart\.com\/gw-v2\/shop\/subscription\/apple\/purchases,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/picsart-V1.js,requires-body=true,timeout=60
+PicsArtStorages = type=http-request,pattern=^https:\/\/api\.picsart\.com\/gw-v2\/cloud-storage\/v1\/me\/storages,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/picsart-V2.js,requires-body=true,timeout=60
+#************************************#
+
+
 #Truecaller
 #hostname = premium*.truecaller.com
 Truecaller = type=http-response,pattern=^https:\/\/premium-[^.]+\.truecaller\.com\/v\d+\/(subscriptions\/status|products\/apple)(\?.*)?$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Truecaller.js
+#************************************#  
+
+#Lightroom
+#hostname =  photos.adobe.io
+Lightroom = type=http-response,pattern=^https:\/\/photos\.adobe\.io\/v\d\/accounts,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/lightroom.js,script-update-interval=-1
 #************************************#
+
+#Kinemaster
+#hostname =  api-account.kinemasters.com
+Kinemaster = type=http-response,pattern=^https:\/\/api-account\.kinemasters\.com\/v\d\/user\/subscribe$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/kinemaster.js
+#************************************#
+
+#CamScanner
+#hostname = ap*.intsig.net
+Camscanner = requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/CamscannerHT.js,type=http-response,pattern= https:\/\/(api|api-cs.*)\.intsig\.net\/purchase\/cs\/query_property\?
+#************************************#
+
+#BeautyPlus
+#hostname = api.mr.pixocial.com, newbeee-api.beautyplus.com
+BeautyPlus = type=http-response, pattern=https:\/\/(api\.mr\.pixocial\.com\/v1\/manual_unlock|newbeee-api\.beautyplus\.com\/api\/v1\/asset\/balance), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/beatyplus.js, requires-body=true, max-size=-1, timeout=60
+#************************************#
+
+#iTunes
+#hostname = buy.itunes.apple.com
+iTunes = type=http-response, pattern=^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/itunes.js, requires-body=true, max-size=-1, timeout=60
+#************************************#
+
+#Snow
+#hostname = user-snow-api.snow.me
+Snow = type=http-response, pattern=^https?:\/\/user-snow-api\.snow\.me\/v\d\/purchase\/subscription\/subscriber\/status, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/snow.js, requires-body=true, max-size=-1, timeout=60
+#************************************#
+
+
+#ilovepdf
+ILovePDF=type=http-response,pattern=https://service.ilovepdf.com/v1/user,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/ilovepdf.js
+
+#Mojo
+MOJO会员解锁=type=http-response,pattern=https://api.revenuecat.com/v1/(receipts|subscribers)/*,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/mojo.js
+
+@Piccollage解锁
+Piccollage解锁=type=http-response,pattern=https://piccollage.com/api/graphql,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/picColage.js
+
+#Smallpdf
+Smallpdf解锁=type=http-response,pattern=https://pro.smallpdf.com/pro/account,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/smaillpdf.js
+
 
 #adguard
 AdGuard=type=http-response,pattern=^https?:\/\/mobile-api\.adguard\.org\/api\/.+\/ios_validate_receipt,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/adguard.js
-
-#Meitu
-美图秀秀=type=http-response,pattern=^https?:\/\/(h5|api)\.xiuxiu\.meitu\.com\/v\d\/(h\d\/vip|vip|user)\/,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/meitu.js
-
 
 [Host]
 firebaseremoteconfigrealtime.googleapis.com = 0.0.0.0
 
 [MITM]
-hostname = %APPEND%, sub.store, api.revenuecat.com, firebaseremoteconfig.googleapis.com,api.locketcam.com,api.locketcamera.com, *.locketcamera.com, us-central1-locket-4252a.cloudfunctions.net,,spclient.wg.spotify.com, *spclient.spotify.com,*.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, sub.store, api-mobile.soundcloud.com, service.ilovepdf.com,lcs-mobile-cops.adobe.io, api.meiease.c*,piccollage.com,pro.smallpdf.com, buy.itunes.apple.com,us-central1-alight-creative.cloudfunctions.net,premium*.truecaller.com, mobile-api.adguard.org,h5.xiuxiu.meitu.com,api.xiuxiu.meitu.com
+hostname = %APPEND%, sub.store, api.revenuecat.com, firebaseremoteconfig.googleapis.com,api.locketcam.com,api.locketcamera.com, ooglevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, premium*.truecaller.com, api.rc-backup.com, buy.itunes.apple.com, api-mobile.soundcloud.com, api.picsart.com, us-central1-alight-creative.cloudfunctions.net, api-sub.meitu.com, photos.adobe.io, , ap*.intsig.net, api-account.kinemasters.com, api.mr.pixocial.com, newbeee-api.beautyplus.com, user-snow-api.snow.me, h5.xiuxiu.meitu.com, api.xiuxiu.meitu.com, service.ilovepdf.com, api.meiease.c*,piccollage.com,pro.smallpdf.com, mobile-api.adguard
