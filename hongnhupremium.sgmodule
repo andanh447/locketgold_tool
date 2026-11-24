@@ -61,4 +61,4 @@ iTunes = type=http-response, pattern=^https?:\/\/buy\.itunes\.apple\.com\/verify
 
 
 MITM]
-hostname = %APPEND%, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, sub.store, api.revenuecat.com,  buy.itunes.apple.com
+hostname = *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, sub.store, api.revenuecat.com,  buy.itunes.apple.com
