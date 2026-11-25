@@ -13,6 +13,8 @@ ipv6 = false
 skip-cert-verify = true
 
 [Rule]
+AND,((DOMAIN-SUFFIX,spotify.com),(PROTOCOL,QUIC)),REJECT
+DOMAIN,aet.spotify.com,REJECT
 DOMAIN-SUFFIX,revenuecat.com,DIRECT
 DOMAIN-SUFFIX,googleapis.com,DIRECT
 DOMAIN-SUFFIX,cloudfunctions.net,DIRECT
@@ -178,6 +180,12 @@ us-central1-locket-4252a.cloudfunctions.net = 163.223.9.98
 # General Video Ad request
 (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
 
+^https:\/\/(spclient\.wg|.*-spclient)\.spotify\.com(:443)?\/pendragon - reject-dict
+^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\/(?:ads\/|ad-logic\/|[^?#]*\/ad-on-app-open|premium-marketing\/upsellOffer) - reject
+[Header Rewrite]
+http-request ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize header-del 'if-none-match'
+http-request ^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\/(?:remote-config-resolver\/v\d+\/configuration|nebula\/v\d+\/configuration\/attributes)(?:\?[^#]*)?$ header-del 'if-none-match'
+
 [Header Rewrite]
 # Chống cache 304 Not Modified để luôn nhận dữ liệu mới, kích hoạt Gold & Remote Config đầy đủ
 ^https?:\/\/(api|rc-backup)\.revenuecat\.com\/v1\/(subscribers|receipts).* header-del X-RevenueCat-ETag
@@ -190,22 +198,31 @@ us-central1-locket-4252a.cloudfunctions.net = 163.223.9.98
 
 [Script]
 # 1. Chống cache 304 Not Modified trên RevenueCat & Firebase Remote Config (Request)
-locketmphong_strip_rc = type=http-request,pattern=^https?:\/\/(api|rc-backup)\.revenuecat\.com\/v1\/(subscribers|receipts).*,requires-body=0,max-size=1048576,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket_gold_PTB_andanh447.js
-locketmphong_strip_fb = type=http-request,pattern=^https?:\/\/.*firebaseremoteconfig.*\.googleapis\.com\/.*,requires-body=0,max-size=1048576,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket_gold_PTB_andanh447.js
+locketandanh447_strip_rc = type=http-request,pattern=^https?:\/\/(api|rc-backup)\.revenuecat\.com\/v1\/(subscribers|receipts).*,requires-body=0,max-size=1048576,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket_gold_PTB_andanh447.js
+locketandanh447_strip_fb = type=http-request,pattern=^https?:\/\/.*firebaseremoteconfig.*\.googleapis\.com\/.*,requires-body=0,max-size=1048576,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket_gold_PTB_andanh447.js
 
 # 2. Điều hướng toàn bộ Cloud Functions (postMomentV2, generateFilteredImage, ai-filters) về VPS
-locketmphong_cf = type=http-request,pattern=^https?:\/\/us-central1-locket-4252a\.cloudfunctions\.net\/.*,requires-body=0,max-size=1048576,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket_gold_PTB_andanh447.js
+locketandanh447_cf = type=http-request,pattern=^https?:\/\/us-central1-locket-4252a\.cloudfunctions\.net\/.*,requires-body=0,max-size=1048576,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket_gold_PTB_andanh447.js
 # 3. Mở khóa RevenueCat Gold VIP (Response)
-locketmphong_RC = type=http-response,pattern=^https?:\/\/(api|rc-backup)\.revenuecat\.com\/v1\/(subscribers|receipts).*,requires-body=1,max-size=2097152,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket_gold_PTB_andanh447.js
+locketandanh447_RC = type=http-response,pattern=^https?:\/\/(api|rc-backup)\.revenuecat\.com\/v1\/(subscribers|receipts).*,requires-body=1,max-size=2097152,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket_gold_PTB_andanh447.js
 
 # 4. Firebase Remote Config: 45s + Thư Viện + Moments Views + Khung Viền Widget Ngoài + 5 Bộ Caption + 42 Filter & AI Engine (Response)
-locketmphong_Firebase = type=http-response,pattern=^https?:\/\/.*firebaseremoteconfig.*\.googleapis\.com\/.*,requires-body=1,max-size=2097152,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket_gold_PTB_andanh447.js
+locketandanh447_Firebase = type=http-response,pattern=^https?:\/\/.*firebaseremoteconfig.*\.googleapis\.com\/.*,requires-body=1,max-size=2097152,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket_gold_PTB_andanh447.js
 
 #Youtube Premium (Search|Play Page|Short Video ||| PiP|Background Play)
 #hostname = *.googlevideo.com, youtubei.googleapis.com
 youtube.request = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch),requires-body=1,max-size=-1,binary-body-mode=1,engine=jsc,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Youtube.respones.js
 youtube.response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/(youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch))(\?(.*))?$,requires-body=1,max-size=-1,binary-body-mode=1,engine={{{script}}},script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Youtube.respones.js,argument="{"lyricLang":"vi","captionLang":"vi","blockUpload":true,"blockImmersive":true,"debug":false}"
 #************************************#
+
+#Spotify Premium
+Spotify gabo = type=http-request, pattern=^https:\/\/(.*-spclient\.spotify\.com(:443)?|spclient\.wg\.spotify\.com)\/gabo-receiver-service, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify_gapo_andanh447.js, timeout=10
+Spotify search ads = type=http-response, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/browsita\/v.\/browse, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify_andanh447_nosearchnoads.js, requires-body=true, binary-body-mode=true, timeout=10
+Spotify home ads = type=http-response, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/casita\/v.\/home\/, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify-nohomeads_V2.js, requires-body=true, binary-body-mode=true, timeout=10
+Spotify scroll ads = type=http-response, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/scrollsita\/v.\/scroll\/spotify, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify_NoScrollAds_HT.js, requires-body=true, binary-body-mode=true, timeout=10
+{{{spot_remote_config}}}Spotify protobuf (remote) = type=http-response, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)(\?.*)?$, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify-proto_andanh447.js, requires-body=true, binary-body-mode=true, timeout=10
+Spotify protobuf (local) = type=http-response, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)(\?.*)?$, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify-proto_andanh447.js, requires-body=true, binary-body-mode=true, timeout=10
+Spotify protobuf (app 9.1.98+ configuration and attributes) = type=http-response, pattern=^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\/(?:remote-config-resolver\/v\d+\/configuration|nebula\/v\d+\/configuration\/attributes)(?:\?[^#]*)?$, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify-proto_andanh447.js, requires-body=true, binary-body-mode=true, timeout=10
 
 #SoundCloudGo+
 #hostname= api-mobile.soundcloud.com
@@ -297,4 +314,4 @@ AdGuard = type=http-response,pattern=^https?:\/\/mobile-api\.adguard\.org\/api\/
 [MITM]
 enable = true
 skip-server-cert-verify = true
-hostname = api.revenuecat.com, *.revenuecat.com, rc-backup.revenuecat.com, firebaseremoteconfig.googleapis.com, *.firebaseremoteconfig.googleapis.com, firebaseremoteconfigrealtime.googleapis.com, *.firebaseremoteconfigrealtime.googleapis.com, us-central1-locket-4252a.cloudfunctions.net, 163.223.9.98, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, premium*.truecaller.com, sub.store, api.revenuecat.com, api.rc-backup.com, buy.itunes.apple.com, api-mobile.soundcloud.com, api.picsart.com, us-central1-alight-creative.cloudfunctions.net, api-sub.meitu.com, photos.adobe.io, , ap*.intsig.net, api-account.kinemasters.com, api.mr.pixocial.com, newbeee-api.beautyplus.com, user-snow-api.snow.me, h5.xiuxiu.meitu.com, api.xiuxiu.meitu.com, service.ilovepdf.com, api.meiease.c*,piccollage.com,pro.smallpdf.com, mobile-api.adguard
+hostname = api.revenuecat.com, *.revenuecat.com, rc-backup.revenuecat.com, firebaseremoteconfig.googleapis.com, *.firebaseremoteconfig.googleapis.com, firebaseremoteconfigrealtime.googleapis.com, *.firebaseremoteconfigrealtime.googleapis.com, us-central1-locket-4252a.cloudfunctions.net, 163.223.9.98, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com,spclient.wg.spotify.com, *spclient.spotify.com, premium*.truecaller.com, sub.store, api.revenuecat.com, api.rc-backup.com, buy.itunes.apple.com, api-mobile.soundcloud.com, api.picsart.com, us-central1-alight-creative.cloudfunctions.net, api-sub.meitu.com, photos.adobe.io, , ap*.intsig.net, api-account.kinemasters.com, api.mr.pixocial.com, newbeee-api.beautyplus.com, user-snow-api.snow.me, h5.xiuxiu.meitu.com, api.xiuxiu.meitu.com, service.ilovepdf.com, api.meiease.c*,piccollage.com,pro.smallpdf.com, mobile-api.adguard`;
