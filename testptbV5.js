@@ -1,8 +1,8 @@
-// ============================================================
+	// ============================================================
 // Locket Remote Config Rewrite
 // Endpoint: firebaseremoteconfig.googleapis.com
 // Dùng cho: Loon / Quantumult X / Surge / Shadowrocket
-// Tác giả: @andanh447
+// Tác giả: @duyvinh09
 // Vui lòng khi chia sẽ hoặc lấy về, làm ơn để nguồn giúp mình. Mình cảm ơn
 // ============================================================
 
@@ -57,9 +57,9 @@ if (ua.includes("Locket")) {
             title: "Lên Locket Gold rồi đó 😎",
             feature_set: [
                 {
-                    title: "Nhớ follow tiktok @tz4427 ✨",
-                    body: "muốn làm gì liên hệ hotline 0901894517 💛",
-                    imageURL: "https://i.ibb.co/Vc98ms12/2a-Obo-R6m581-AU5h4g-IHMLo8f-Edi-Q4j-Uq-EIXedb-Jg.png"
+                    title: "Nhớ follow kênh tiktok @duyvinh.09 ✨",
+                    body: "Một follow của bạn, một niềm vui của mình 💛",
+                    imageURL: "https://locket.dinhduyvinh.tech/images/feature_discovery.avif"
                 }
             ],
             primary_button_title: "Xong rồi nhé!",
@@ -763,9 +763,9 @@ if (ua.includes("Locket")) {
                 ]
             },
             {
-                section: "🎨 Decorative by Hoàng Tiến",
+                section: "🎨 Decorative by Duy Vinh",
                 items: [
-                    { overlay_id: "caption:hoangtien07", source: "remote", caption: { background: { colors: ["#B8E7FF", "#A8F5D0", "#DCCBFF"] }, icon: { data: "tortoise.fill", type: "sf_symbol", color: "#183153" }, max_lines: 1, text: "duyvinh09", text_color: "#183153", type: "static_content" } },
+                    { overlay_id: "caption:duyvinh09", source: "remote", caption: { background: { colors: ["#B8E7FF", "#A8F5D0", "#DCCBFF"] }, icon: { data: "tortoise.fill", type: "sf_symbol", color: "#183153" }, max_lines: 1, text: "duyvinh09", text_color: "#183153", type: "static_content" } },
                     // { overlay_id: "caption:vu", source: "remote", caption: { background: { colors: ["#FFB6C1", "#FF69B4", "#FFC0CB"] }, icon: { data: "crown.fill", type: "sf_symbol", color: "#183153" }, max_lines: 1, text: "Vũ Bá Khí", text_color: "#183153", type: "static_content" } },
                     { overlay_id: "caption:cu", source: "remote", caption: { background: { colors: ["#FFD6A5", "#FFF1A8", "#FFC4D6"] }, max_lines: 1, text: "Cu 🐎", text_color: "#633B24", type: "static_content" } },
                     { overlay_id: "caption:tuat", source: "remote", caption: { background: { colors: ["#2C1A0E", "#5D4037", "#D7A86E"] }, icon: { data: "🐕", type: "emoji" }, max_lines: 1, text: "Tuất", text_color: "#FFFFFFE6", type: "static_content" } },
