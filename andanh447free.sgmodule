@@ -1,8 +1,9 @@
-# =========================================================================
-# Shadowrocket Configuration Profile - locketandanh447
-# Author: Hoàng Tiến (Zalo: 0901894517)
-# Phiên bản: 9.5 Hoàn Chỉnh (Đồng bộ 100% DNS VPS, Fix upload ảnh & Photobooth)
-# =========================================================================
+#!name=All In 1 With ĐHT
+#!desc=Crack mọi app premium vip pro bởi Đ_H_T (andanh447)
+#!desc= CON TUẤT NÀO MÀ VÀO XEM RỒI XÀI THÌ AN PHẬN XÀI BÁN MỘT CÁI CÁI LINK NÀY BAY VĨNH VIỄN MUỐN GÌ IB 0901894517 BỐ MÀY LÀM CHO CÁI NẾU MUỐN BÁN
+#!author=andanh447
+#!howtouse=Shadowrocket ĐHT
+
 
 [General]
 bypass-system = true
@@ -24,27 +25,7 @@ RULE-SET,https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/
 RULE-SET,https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/noads.sgmodule,REJECT
 AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
 AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
-# Chặn QUIC/UDP cho Locket, Spotify & YouTube
-AND,((PROTOCOL,UDP),(DEST-PORT,443)),REJECT
-AND,((DOMAIN-SUFFIX,spotify.com),(PROTOCOL,UDP)),REJECT
-AND,((DOMAIN-SUFFIX,spclient.wg.spotify.com),(PROTOCOL,UDP)),REJECT
-DOMAIN-SUFFIX,sentry.io,REJECT
-DOMAIN-SUFFIX,ingest.sentry.io,REJECT
 
-
-
-
-[Host]
-# Cấu hình DNS trực tiếp về Server VPS 163.223.9.98 (Kế thừa 100% chuẩn DNS VPS)
-api.revenuecat.com = 163.223.9.98
-*.revenuecat.com = 163.223.9.98
-revenuecat.com = 163.223.9.98
-rc-backup.revenuecat.com = 163.223.9.98
-firebaseremoteconfig.googleapis.com = 163.223.9.98
-*.firebaseremoteconfig.googleapis.com = 163.223.9.98
-firebaseremoteconfigrealtime.googleapis.com = 163.223.9.98
-*.firebaseremoteconfigrealtime.googleapis.com = 163.223.9.98
-us-central1-locket-4252a.cloudfunctions.net = 163.223.9.98
 
 [URL Rewrite]
 ^https?:\/\/us-central1-locket-4252a\.cloudfunctions\.net\/(.*) https://163.223.9.98/$1 header
@@ -111,6 +92,7 @@ Spotify protobuf (app 9.1.98+ configuration and attributes) = type=http-response
 SoundCloudGo+ = type=http-response,pattern=https://api-mobile.soundcloud.com/configuration/ios,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Soundcloudpremium.js
 #************************************#
 
+
 #PicsArt
 #hostname = api.picsart.com
 PicsArt = type=http-request,pattern=^https:\/\/api\.picsart\.com\/gw-v2\/shop\/subscription\/apple\/purchases,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/picsart-V1.js,requires-body=true,timeout=60
@@ -121,4 +103,4 @@ PicsArtStorages = type=http-request,pattern=^https:\/\/api\.picsart\.com\/gw-v2\
 [MITM]
 enable = true
 skip-server-cert-verify = true
-hostname = api.revenuecat.com, firebaseremoteconfig.googleapis.com,api.locketcam.com, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com,spclient.wg.spotify.com, *spclient.spotify.com,  api-mobile.soundcloud.com, api.picsart.com`;
+hostname = %APPEND%, api.revenuecat.com, firebaseremoteconfig.googleapis.com, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, spclient.wg.spotify.com, *spclient.spotify.com, api-mobile.soundcloud.com, api.picsart.com
