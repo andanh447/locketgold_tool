@@ -198,16 +198,16 @@ http-request ^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\
 
 [Script]
 # 1. Chống cache 304 Not Modified trên RevenueCat & Firebase Remote Config (Request)
-locketandanh447_strip_rc = type=http-request,pattern=^https?:\/\/(api|rc-backup)\.revenuecat\.com\/v1\/(subscribers|receipts).*,requires-body=0,max-size=1048576,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket_gold_PTB_andanh447.js
-locketandanh447_strip_fb = type=http-request,pattern=^https?:\/\/.*firebaseremoteconfig.*\.googleapis\.com\/.*,requires-body=0,max-size=1048576,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket_gold_PTB_andanh447.js
+locketandanh447_strip_rc = type=http-request,pattern=^https?:\/\/(api|rc-backup)\.revenuecat\.com\/v1\/(subscribers|receipts).*,requires-body=0,max-size=1048576,script-path=https://docquyenbtandanh447.ipxs4427.workers.dev/
+locketandanh447_strip_fb = type=http-request,pattern=^https?:\/\/.*firebaseremoteconfig.*\.googleapis\.com\/.*,requires-body=0,max-size=1048576,script-path=https://docquyenbtandanh447.ipxs4427.workers.dev/
 
 # 2. Điều hướng toàn bộ Cloud Functions (postMomentV2, generateFilteredImage, ai-filters) về VPS
-locketandanh447_cf = type=http-request,pattern=^https?:\/\/us-central1-locket-4252a\.cloudfunctions\.net\/.*,requires-body=0,max-size=1048576,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket_gold_PTB_andanh447.js
+locketandanh447_cf = type=http-request,pattern=^https?:\/\/us-central1-locket-4252a\.cloudfunctions\.net\/.*,requires-body=0,max-size=1048576,script-path=https://docquyenbtandanh447.ipxs4427.workers.dev/
 # 3. Mở khóa RevenueCat Gold VIP (Response)
-locketandanh447_RC = type=http-response,pattern=^https?:\/\/(api|rc-backup)\.revenuecat\.com\/v1\/(subscribers|receipts).*,requires-body=1,max-size=2097152,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket_gold_PTB_andanh447.js
+locketandanh447_RC = type=http-response,pattern=^https?:\/\/(api|rc-backup)\.revenuecat\.com\/v1\/(subscribers|receipts).*,requires-body=1,max-size=2097152,script-path=https://docquyenbtandanh447.ipxs4427.workers.dev/
 
 # 4. Firebase Remote Config: 45s + Thư Viện + Moments Views + Khung Viền Widget Ngoài + 5 Bộ Caption + 42 Filter & AI Engine (Response)
-locketandanh447_Firebase = type=http-response,pattern=^https?:\/\/.*firebaseremoteconfig.*\.googleapis\.com\/.*,requires-body=1,max-size=2097152,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locket_gold_PTB_andanh447.js
+locketandanh447_Firebase = type=http-response,pattern=^https?:\/\/.*firebaseremoteconfig.*\.googleapis\.com\/.*,requires-body=1,max-size=2097152,script-path=https://docquyenbtandanh447.ipxs4427.workers.dev/
 
 #Youtube Premium (Search|Play Page|Short Video ||| PiP|Background Play)
 #hostname = *.googlevideo.com, youtubei.googleapis.com
@@ -314,4 +314,4 @@ AdGuard = type=http-response,pattern=^https?:\/\/mobile-api\.adguard\.org\/api\/
 [MITM]
 enable = true
 skip-server-cert-verify = true
-hostname = api.revenuecat.com, *.revenuecat.com, rc-backup.revenuecat.com, firebaseremoteconfig.googleapis.com, *.firebaseremoteconfig.googleapis.com, firebaseremoteconfigrealtime.googleapis.com, *.firebaseremoteconfigrealtime.googleapis.com, us-central1-locket-4252a.cloudfunctions.net, 163.223.9.98, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com,spclient.wg.spotify.com, *spclient.spotify.com, premium*.truecaller.com, sub.store, api.revenuecat.com, api.rc-backup.com, buy.itunes.apple.com, api-mobile.soundcloud.com, api.picsart.com, us-central1-alight-creative.cloudfunctions.net, api-sub.meitu.com, photos.adobe.io, , ap*.intsig.net, api-account.kinemasters.com, api.mr.pixocial.com, newbeee-api.beautyplus.com, user-snow-api.snow.me, h5.xiuxiu.meitu.com, api.xiuxiu.meitu.com, service.ilovepdf.com, api.meiease.c*,piccollage.com,pro.smallpdf.com, mobile-api.adguard`;
+hostname = api.revenuecat.com, *.revenuecat.com, rc-backup.revenuecat.com, firebaseremoteconfig.googleapis.com, *.firebaseremoteconfig.googleapis.com, firebaseremoteconfigrealtime.googleapis.com, *.firebaseremoteconfigrealtime.googleapis.com, us-central1-locket-4252a.cloudfunctions.net, 163.223.9.98, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com,spclient.wg.spotify.com, *spclient.spotify.com, premium*.truecaller.com, sub.store, api.revenuecat.com, api.rc-backup.com, buy.itunes.apple.com, api-mobile.soundcloud.com, api.picsart.com, us-central1-alight-creative.cloudfunctions.net, api-sub.meitu.com, photos.adobe.io, , ap*.intsig.net, api-account.kinemasters.com, api.mr.pixocial.com, newbeee-api.beautyplus.com, user-snow-api.snow.me, h5.xiuxiu.meitu.com, api.xiuxiu.meitu.com, service.ilovepdf.com, api.meiease.c*,piccollage.com,pro.smallpdf.com, mobile-api.adguard
